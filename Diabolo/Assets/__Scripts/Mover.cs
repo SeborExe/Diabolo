@@ -8,18 +8,22 @@ public class Mover : MonoBehaviour
     [SerializeField] Transform target;
 
     NavMeshAgent navMeshAgent;
+    Animator animator;
 
     private void Awake()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             MoveToTarget();
         }
+
+        UpdateAnimator();
     }
 
     private void MoveToTarget()
@@ -32,5 +36,13 @@ public class Mover : MonoBehaviour
         {
             navMeshAgent.destination = hit.point;
         }
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = navMeshAgent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        animator.SetFloat("Vertical", speed);
     }
 }
