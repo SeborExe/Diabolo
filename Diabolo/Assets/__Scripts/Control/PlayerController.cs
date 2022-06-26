@@ -1,3 +1,4 @@
+using RPG.Combat;
 using RPG.Movement;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,30 +9,60 @@ namespace RPG.Control
     public class PlayerController : MonoBehaviour
     {
         Mover mover;
+        Fighter fighter;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
+            fighter = GetComponent<Fighter>();
         }
 
         private void Update()
         {
-            MoveToTarget();
+            if (InteractWithCombat()) return;
+            if (MoveToTarget()) return; ;
         }
 
-        private void MoveToTarget()
+        private bool MoveToTarget()
         {
-            if (Input.GetMouseButton(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                bool hasHit = Physics.Raycast(ray, out hit);
+             RaycastHit hit;
+             bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
 
-                if (hasHit)
+             if (hasHit)
+             {
+                 if (Input.GetMouseButton(0))
+                 {
+                     mover.MoveTo(hit.point);
+                 }
+
+                 return true;
+             }
+
+            return false;
+        }
+
+        private static Ray GetMouseRay()
+        {
+            return Camera.main.ScreenPointToRay(Input.mousePosition);
+        }
+
+        private bool InteractWithCombat()
+        {
+            RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
+            foreach (RaycastHit hit in hits)
+            {
+                CombatTarget target =  hit.transform.GetComponent<CombatTarget>();
+                if (target == null) continue;
+
+                if (Input.GetMouseButtonDown(0))
                 {
-                    mover.MoveTo(hit.point);
+                    fighter.Attack(target);
                 }
+
+                return true;
             }
+
+            return false;
         }
     }
 }
