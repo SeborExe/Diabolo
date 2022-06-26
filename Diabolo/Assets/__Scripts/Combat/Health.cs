@@ -6,17 +6,31 @@ namespace RPG.Combat
 {
     public class Health : MonoBehaviour
     {
-        [SerializeField] float health = 100f;
+        Animator animator;
+
+        [SerializeField] float maxHealth = 100f;
         [SerializeField] float curretHealth;
+
+        bool isDead;
 
         private void Awake()
         {
-            curretHealth = health;
+            animator = GetComponent<Animator>();
+
+            curretHealth = maxHealth;
         }
 
         public void TakeDamage(float damage)
         {
             curretHealth = Mathf.Max(curretHealth - damage, 0);
+
+            if (curretHealth == 0)
+            {
+                if (isDead) return;
+
+                isDead = true;
+                animator.SetTrigger("die");
+            }
         }
     }
 }
