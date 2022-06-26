@@ -11,16 +11,14 @@ namespace RPG.Movement
     {
         [SerializeField] Transform target;
 
-        NavMeshAgent navMeshAgent;
         Animator animator;
-        Fighter fighter;
+        NavMeshAgent navMeshAgent;
         ActionScheduler actionScheduler;
 
         private void Awake()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
             animator = GetComponent<Animator>();
-            fighter = GetComponent<Fighter>();
             actionScheduler = GetComponent<ActionScheduler>();
         }
 
