@@ -9,7 +9,7 @@ namespace RPG.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         Mover mover;
-        Transform target;
+        Health target;
         Animator animator;
         ActionScheduler actionScheduler;
 
@@ -31,6 +31,8 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
+            if (target.IsDead()) return;
+
             MoveToAttack();
         }
 
@@ -38,44 +40,65 @@ namespace RPG.Combat
         {
             if (!GetIsInRange())
             {
-                mover.MoveTo(target.position);
+                mover.MoveTo(target.transform.position);
             }
             else
             {
                 mover.Cancel();
+                transform.LookAt(target.transform);
 
                 if (timeSinceLastAttack > timeBetweenAttacks)
                 {
                     //Trigger Hit event
-                    animator.SetTrigger("attack");
+                    TriggerAttack();
                     timeSinceLastAttack = 0;
-
-
                 }
             }
+        }
+
+        private void TriggerAttack()
+        {
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
         }
 
         //Animation Event
         public void Hit()
         {
-            target.TryGetComponent<Health>(out Health health);
-            health.TakeDamage(weaponDamage);
+            if (target == null) { return; }
+
+            target.TakeDamage(weaponDamage);
         }
 
         private bool GetIsInRange()
         {
-            return Vector3.Distance(transform.position, target.position) < weaponRange;
+            return Vector3.Distance(transform.position, target.transform.position) < weaponRange;
         }
 
         public void Attack(CombatTarget combatTarget)
         {
             actionScheduler.StartAction(this);
-            target = combatTarget.transform;
+            target = combatTarget.GetComponent<Health>();
+        }
+
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            if (combatTarget == null) return false;
+
+            Health targetToTest = combatTarget.GetComponent<Health>();
+            return targetToTest != null && !targetToTest.IsDead();
         }
 
         public void Cancel()
         {
+            StopAttack();
             target = null;
+        }
+
+        private void StopAttack()
+        {
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
         }
     }
 }

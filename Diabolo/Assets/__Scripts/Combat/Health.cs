@@ -13,6 +13,8 @@ namespace RPG.Combat
 
         bool isDead;
 
+        public bool IsDead() => isDead;
+
         private void Awake()
         {
             animator = GetComponent<Animator>();
