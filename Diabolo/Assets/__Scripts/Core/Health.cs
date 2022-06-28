@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace RPG.Combat
+    
+namespace RPG.Core
 {
     public class Health : MonoBehaviour
     {
         Animator animator;
+        ActionScheduler actionScheduler;
 
         [SerializeField] float maxHealth = 100f;
         [SerializeField] float curretHealth;
@@ -18,6 +19,7 @@ namespace RPG.Combat
         private void Awake()
         {
             animator = GetComponent<Animator>();
+            actionScheduler = GetComponent<ActionScheduler>();
 
             curretHealth = maxHealth;
         }
@@ -32,6 +34,7 @@ namespace RPG.Combat
 
                 isDead = true;
                 animator.SetTrigger("die");
+                actionScheduler.CancelCurrentAction();
             }
         }
     }
