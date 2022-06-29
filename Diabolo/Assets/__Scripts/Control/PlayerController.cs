@@ -61,7 +61,7 @@ namespace RPG.Control
 
                 if (!fighter.CanAttack(target.gameObject)) continue;
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     fighter.Attack(target.gameObject);
                 }
