@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
+using RPG.Core;
 
 namespace RPG.SceneManagement
 {
@@ -16,7 +17,10 @@ namespace RPG.SceneManagement
 
         [SerializeField] int sceneIndexToLoad = -1;
         [SerializeField] Transform spawnPoint;
-        [SerializeField] DestinationIdentifier destination;   
+        [SerializeField] DestinationIdentifier destination;
+        [SerializeField] float fadeOutTime = 0.5f;
+        [SerializeField] float fadeInTime = 1f;
+        [SerializeField] float fadeWaitTime = 0.5f;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -31,10 +35,17 @@ namespace RPG.SceneManagement
             if (sceneIndexToLoad < 0) yield break;
 
             DontDestroyOnLoad(gameObject);
+
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
 
             Portal otherPortal = GetOtherPortal();
             UpdatePlayer(otherPortal);
+
+            yield return new WaitForSeconds(fadeWaitTime);
+            yield return fader.FadeIn(fadeInTime);
 
             Destroy(gameObject);
         }
