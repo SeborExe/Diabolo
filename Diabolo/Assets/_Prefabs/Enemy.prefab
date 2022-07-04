@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5492663605363562839}
   - component: {fileID: 5492663605363562838}
   - component: {fileID: 5492663605363562837}
+  - component: {fileID: 1845172431}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -101,7 +102,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5.66
+  m_Speed: 4
   m_Acceleration: 15
   avoidancePriority: 50
   m_AngularSpeed: 3000
@@ -137,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e889bddb90d82a24485362dfeb5261c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   curretHealth: 0
 --- !u!114 &5492663605363562839
 MonoBehaviour:
@@ -152,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  maxSpeed: 5
 --- !u!114 &5492663605363562838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,9 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c71b113865cf4fbbcaf20550de56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
+  weaponRange: 1.5
   timeBetweenAttacks: 1.3
-  weaponDamage: 10
+  weaponDamage: 3
 --- !u!114 &5492663605363562837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +181,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d917f1d3b522424d85c1ab605a09828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1845172431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5492663605363562862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5c6859becbe82a4fa445b30af0f81b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseDistance: 10
+  patrolPath: {fileID: 0}
+  suspictionTime: 5
+  waypointTolerance: 1
+  waypointDwellTime: 3
+  patrolSpeedFraction: 0.2
 --- !u!1001 &5492663605730372561
 PrefabInstance:
   m_ObjectHideFlags: 0
