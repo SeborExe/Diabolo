@@ -1536,7 +1536,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 78be5954566d2d848918e51832341fa3, type: 2}
+  - {fileID: 2100000, guid: bfbe2e8b331e2cc42be1591f949c0e41, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2265,7 +2265,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3333221181802303891}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.25
   m_Speed: 5.66
@@ -2323,6 +2323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  maxSpeed: 5
 --- !u!114 &3552080525172928950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2347,9 +2348,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c71b113865cf4fbbcaf20550de56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 2
+  weaponRange: 1.5
   timeBetweenAttacks: 1.3
-  weaponDamage: 10
+  weaponDamage: 3
 --- !u!114 &8844493083015003403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2374,5 +2375,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e889bddb90d82a24485362dfeb5261c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 35
   curretHealth: 0
