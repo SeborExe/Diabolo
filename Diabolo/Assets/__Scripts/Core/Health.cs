@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using RPG.Saving;
     
 namespace RPG.Core
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, ISaveable
     {
         Animator animator;
         ActionScheduler actionScheduler;
@@ -27,7 +28,11 @@ namespace RPG.Core
         public void TakeDamage(float damage)
         {
             curretHealth = Mathf.Max(curretHealth - damage, 0);
+            Die();
+        }
 
+        private void Die()
+        {
             if (curretHealth == 0)
             {
                 if (isDead) return;
@@ -36,6 +41,17 @@ namespace RPG.Core
                 animator.SetTrigger("die");
                 actionScheduler.CancelCurrentAction();
             }
+        }
+
+        public object CaptureState()
+        {
+            return curretHealth;
+        }
+
+        public void RestoreState(object state)
+        {
+            curretHealth = (float)state;
+            Die();
         }
     }
 }
