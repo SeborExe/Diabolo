@@ -3,6 +3,7 @@ using RPG.Core;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace RPG.Combat
 {
@@ -17,6 +18,9 @@ namespace RPG.Combat
         [SerializeField] float timeBetweenAttacks = 1.3f;
         [SerializeField] float weaponDamage = 10f;
 
+        [SerializeField] GameObject weaponPrefab = null;
+        [SerializeField] Transform handTransform = null;
+
         float timeSinceLastAttack = Mathf.Infinity;
 
         private void Awake()
@@ -24,6 +28,11 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
             animator = GetComponent<Animator>();
+        }
+
+        private void Start()
+        {
+            SpawnWeapon();
         }
 
         private void Update()
@@ -100,6 +109,11 @@ namespace RPG.Combat
         {
             animator.ResetTrigger("attack");
             animator.SetTrigger("stopAttack");
+        }
+
+        private void SpawnWeapon()
+        {
+            Instantiate(weaponPrefab, handTransform);
         }
     }
 }

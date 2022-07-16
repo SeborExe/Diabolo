@@ -2173,6 +2173,7 @@ GameObject:
   - component: {fileID: 8844493083015003395}
   - component: {fileID: 8844493083015003403}
   - component: {fileID: 8844493083015003404}
+  - component: {fileID: 3451250644111720509}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2187,8 +2188,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3333221181802303891}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.49, y: 0.17, z: -6.16}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 40.76, y: 1.52, z: -34.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2351,6 +2352,8 @@ MonoBehaviour:
   weaponRange: 1.5
   timeBetweenAttacks: 1.3
   weaponDamage: 3
+  weaponPrefab: {fileID: 6546343054094277701, guid: 433b52b52c382d84eace1ab511870e3d, type: 3}
+  handTransform: {fileID: 2263552057788040189}
 --- !u!114 &8844493083015003403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2377,3 +2380,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 35
   curretHealth: 0
+--- !u!114 &3451250644111720509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3333221181802303891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea9374b509b70f4bba37e4a2ca8cf00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: player
