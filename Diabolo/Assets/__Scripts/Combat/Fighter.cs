@@ -1,10 +1,9 @@
 using RPG.Movement;
 using RPG.Core;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using RPG.Saving;
+using RPG.Attributes;
 
 namespace RPG.Combat
 {

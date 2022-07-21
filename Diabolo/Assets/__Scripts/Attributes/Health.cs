@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
-    
-namespace RPG.Core
+using RPG.Stats;
+using RPG.Core;
+
+namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
         Animator animator;
         ActionScheduler actionScheduler;
 
-        [SerializeField] float maxHealth = 100f;
         [SerializeField] float curretHealth;
+        float maxHealth;
 
         bool isDead;
 
@@ -21,6 +23,7 @@ namespace RPG.Core
         {
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
+            maxHealth = GetComponent<BaseStats>().GetHealth();
 
             curretHealth = maxHealth;
         }

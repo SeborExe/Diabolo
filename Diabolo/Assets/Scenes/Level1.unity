@@ -4317,6 +4317,14 @@ PrefabInstance:
       value: Core
       objectReference: {fileID: 0}
     - target: {fileID: 3569001837081301934, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
+      propertyPath: progression
+      value: 
+      objectReference: {fileID: 11400000, guid: 24d3cf8932b7c7d42a0fa71630ba2a7b, type: 2}
+    - target: {fileID: 3569001837081301934, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3569001837081301934, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
       propertyPath: characterClass
       value: 0
       objectReference: {fileID: 0}
