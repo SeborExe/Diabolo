@@ -93,8 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1475832644933837081}
   m_Layer: 0
-  m_Name: OneHandSwordTransform (Missing Prefab with guid_ be97dbce87b6a844488a2b44d9527eaf)
-    (Missing Prefab with guid_ b28cc83cc45f61e4db5f5942c2a889b1)
+  m_Name: OneHandSwordTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

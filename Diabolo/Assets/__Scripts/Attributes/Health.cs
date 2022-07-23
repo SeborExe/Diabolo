@@ -13,7 +13,7 @@ namespace RPG.Attributes
         Animator animator;
         ActionScheduler actionScheduler;
 
-        [SerializeField] float curretHealth;
+        float curretHealth = -1f;
         float maxHealth;
 
         bool isDead;
@@ -24,9 +24,12 @@ namespace RPG.Attributes
         {
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
-            maxHealth = GetComponent<BaseStats>().GetHealth();
+            maxHealth = GetComponent<BaseStats>().GetStat(Stat.Health);
 
-            curretHealth = maxHealth;
+            if (curretHealth < 0)
+            {
+                curretHealth = maxHealth;
+            }
         }
 
         public void TakeDamage(GameObject instigator, float damage)
@@ -58,7 +61,7 @@ namespace RPG.Attributes
             Experience experience = instigator.GetComponent<Experience>();
             if (experience == null) { return; }
 
-            experience.GainExperience(GetComponent<BaseStats>().GetExperienceReward());
+            experience.GainExperience(GetComponent<BaseStats>().GetStat(Stat.ExperienceReward));
         }
 
         public object CaptureState()
