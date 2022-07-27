@@ -13,7 +13,7 @@ namespace RPG.Combat
         Health target;
         Animator animator;
         ActionScheduler actionScheduler;
-        Weapon currentWeapon = null;
+        [SerializeField] Weapon currentWeapon = null;
 
         [SerializeField] float timeBetweenAttacks = 1.3f;
         [SerializeField] Transform rightHandTransform = null;
@@ -128,7 +128,6 @@ namespace RPG.Combat
         public void EquipWeapon(Weapon weapon)
         {
             currentWeapon = weapon;
-            Animator animator = GetComponent<Animator>();
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
 

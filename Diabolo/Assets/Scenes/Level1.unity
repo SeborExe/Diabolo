@@ -5870,6 +5870,10 @@ PrefabInstance:
       propertyPath: characterClass
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3569001837081301934, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
+      propertyPath: levelUpParticles
+      value: 
+      objectReference: {fileID: 786827874834799790, guid: 2f899c937d3a73745927cf63f0380084, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
 --- !u!1001 &5492663605091232816
