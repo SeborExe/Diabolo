@@ -4,11 +4,8 @@ using UnityEngine;
 
 namespace RPG.Stats
 {
-    public enum Stat
+    public interface IModifierProvider
     {
-        Health,
-        ExperienceReward,
-        ExperienceToLevelUp,
-        Damage
+        IEnumerable<float> GetAdditiveModifiers(Stat stat);
     }
 }

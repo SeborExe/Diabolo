@@ -1,18 +1,20 @@
 using RPG.Movement;
 using RPG.Core;
-using System.Collections;
 using UnityEngine;
 using RPG.Saving;
 using RPG.Attributes;
+using RPG.Stats;
+using System.Collections.Generic;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
     {
         Mover mover;
         Health target;
         Animator animator;
         ActionScheduler actionScheduler;
+        BaseStats baseStats;
         [SerializeField] Weapon currentWeapon = null;
 
         [SerializeField] float timeBetweenAttacks = 1.3f;
@@ -27,6 +29,7 @@ namespace RPG.Combat
             mover = GetComponent<Mover>();
             actionScheduler = GetComponent<ActionScheduler>();
             animator = GetComponent<Animator>();
+            baseStats = GetComponent<BaseStats>();
         }
 
         private void Start()
@@ -78,13 +81,15 @@ namespace RPG.Combat
         {
             if (target == null) { return; }
 
+            float damage = baseStats.GetStat(Stat.Damage);
+
             if (currentWeapon.HasProjectile())
             {
-                currentWeapon.LunchProjectile(rightHandTransform, leftHandTransform, target, gameObject);
+                currentWeapon.LunchProjectile(rightHandTransform, leftHandTransform, target, gameObject, damage);
             }
             else
             {
-                target.TakeDamage(gameObject, currentWeapon.GetDamage());
+                target.TakeDamage(gameObject, damage);
             }
         }
 
@@ -123,6 +128,14 @@ namespace RPG.Combat
         {
             animator.ResetTrigger("attack");
             animator.SetTrigger("stopAttack");
+        }
+
+        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
+        {
+            if (stat == Stat.Damage)
+            {
+                yield return currentWeapon.GetDamage();
+            }
         }
 
         public void EquipWeapon(Weapon weapon)
