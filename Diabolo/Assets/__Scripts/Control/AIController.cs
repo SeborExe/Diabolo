@@ -4,6 +4,7 @@ using RPG.Core;
 using RPG.Movement;
 using System;
 using UnityEngine;
+using RPG.Utils;
 
 namespace RPG.Control
 {
@@ -18,7 +19,7 @@ namespace RPG.Control
         ActionScheduler actionScheduler;
 
         [Header("Guard stats")]
-        Vector3 guardPosition;
+        LazyValue<Vector3> guardPosition;
         float timeSinceLastSawPlayer = Mathf.Infinity;
         float timeSinceArrivedAtWaypoint = Mathf.Infinity;
         int currentWaypointIndex = 0;
@@ -38,11 +39,12 @@ namespace RPG.Control
             actionScheduler = GetComponent<ActionScheduler>();
 
             player = GameObject.Find("Player");
+            guardPosition = new LazyValue<Vector3>(GetGuardPosition);
         }
 
         private void Start()
         {
-            guardPosition = transform.position;
+            guardPosition.ForceInit();
         }
 
         private void Update()
@@ -67,6 +69,11 @@ namespace RPG.Control
             UpdateTimers();
         }
 
+        private Vector3 GetGuardPosition()
+        {
+            return transform.position;
+        } 
+
         private void UpdateTimers()
         {
             timeSinceLastSawPlayer += Time.deltaTime;
@@ -75,7 +82,7 @@ namespace RPG.Control
 
         private void PatrolBehaviour()
         {
-            Vector3 nextPosition = guardPosition;
+            Vector3 nextPosition = guardPosition.value;
 
             if (patrolPath != null)
             {
