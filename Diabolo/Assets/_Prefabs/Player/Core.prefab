@@ -507,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 8844493083015003395, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: defaultWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: a437b076b5a91f249b353b71be9e49da, type: 2}
+      objectReference: {fileID: 11400000, guid: 419726ef0962a1042b9f6baa53855765, type: 2}
     - target: {fileID: 8844493083015003395, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: leftHandTransform
       value: 
@@ -523,6 +523,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7285240116466975344, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
   m_PrefabInstance: {fileID: 8933201348878659264}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6176933500622585683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3333221181802303891, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
+  m_PrefabInstance: {fileID: 8933201348878659264}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3569001837081301934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176933500622585683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 799643b4291414c4b86a717265a998be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingLevel: 1
+  characterClass: 0
+  progression: {fileID: 11400000, guid: 24d3cf8932b7c7d42a0fa71630ba2a7b, type: 2}
+  levelUpParticles: {fileID: 786827874834799790, guid: 2f899c937d3a73745927cf63f0380084, type: 3}
+  shouldUseModifiers: 1
+--- !u!114 &235640918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176933500622585683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061800289f5fb6643a36c5ba44a4cd50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  experiencePoints: 0
 --- !u!4 &7246533493247470909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2263552057788040189, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
