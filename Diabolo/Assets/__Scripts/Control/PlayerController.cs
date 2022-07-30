@@ -1,7 +1,9 @@
 using RPG.Attributes;
 using RPG.Combat;
 using RPG.Movement;
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace RPG.Control
 {
@@ -10,6 +12,24 @@ namespace RPG.Control
         Mover mover;
         Fighter fighter;
         Health health;
+
+        enum CursorType
+        {
+            None,
+            Movement,
+            Combat,
+            UI
+        }
+
+        [System.Serializable]
+        struct CursorMapping
+        {
+            public CursorType type;
+            public Vector2 hotspot;
+            public Texture2D texture;
+        }
+
+        [SerializeField] CursorMapping[] cursorMapping = null;
 
         private void Awake()
         {
@@ -20,9 +40,17 @@ namespace RPG.Control
 
         private void Update()
         {
-            if (health.IsDead()) return;
+            if (InteractWithUI()) return;
+            if (health.IsDead())
+            {
+                SetCursor(CursorType.None);
+                return;
+            }
+
             if (InteractWithCombat()) return;
             if (MoveToTarget()) return; ;
+
+            SetCursor(CursorType.None);
         }
 
         private bool MoveToTarget()
@@ -37,7 +65,8 @@ namespace RPG.Control
                      mover.StartMoveAction(hit.point, 1f);
                  }
 
-                 return true;
+                SetCursor(CursorType.Movement);
+                return true;
              }
 
             return false;
@@ -64,6 +93,37 @@ namespace RPG.Control
                     fighter.Attack(target.gameObject);
                 }
 
+                SetCursor(CursorType.Combat);
+                return true;
+            }
+
+            return false;
+        }
+
+        private void SetCursor(CursorType type)
+        {
+            CursorMapping mapping = GetCursorMapping(type);
+            Cursor.SetCursor(mapping.texture, mapping.hotspot, CursorMode.Auto);
+        }
+
+        private CursorMapping GetCursorMapping(CursorType type)
+        {
+            foreach (CursorMapping mapping in cursorMapping)
+            {
+                if (mapping.type == type)
+                {
+                    return mapping;
+                }
+            }
+
+            return cursorMapping[0];
+        }
+
+        private bool InteractWithUI()
+        {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                SetCursor(CursorType.UI);
                 return true;
             }
 

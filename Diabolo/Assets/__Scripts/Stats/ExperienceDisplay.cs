@@ -8,8 +8,12 @@ namespace RPG.Stats
 {
     public class ExperienceDisplay : MonoBehaviour
     {
-        [SerializeField]
         Experience experience;
+
+        private void Awake()
+        {
+            experience = GameObject.FindGameObjectWithTag("Player").GetComponent<Experience>();
+        }
 
         private void Update()
         {

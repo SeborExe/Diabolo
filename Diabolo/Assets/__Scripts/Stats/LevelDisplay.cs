@@ -6,8 +6,12 @@ namespace RPG.Stats
 {
     public class LevelDisplay : MonoBehaviour
     {
-        [SerializeField]
         BaseStats baseStats;
+
+        private void Awake()
+        {
+            baseStats = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseStats>();
+        }
 
         private void Update()
         {

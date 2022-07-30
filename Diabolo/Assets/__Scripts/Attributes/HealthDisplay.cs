@@ -8,8 +8,12 @@ namespace RPG.Attributes
 {
     public class HealthDisplay : MonoBehaviour
     {
-        [SerializeField]
         Health health;
+
+        private void Awake()
+        {
+            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+        }
 
         private void Update()
         {
