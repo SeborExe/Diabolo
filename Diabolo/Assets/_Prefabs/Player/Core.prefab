@@ -462,7 +462,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: cursorMapping.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: cursorMapping.Array.data[1].type
@@ -475,6 +475,10 @@ PrefabInstance:
     - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: cursorMapping.Array.data[3].type
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
+      propertyPath: cursorMapping.Array.data[4].type
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: cursorMapping.Array.data[0].texture
@@ -492,6 +496,10 @@ PrefabInstance:
       propertyPath: cursorMapping.Array.data[3].texture
       value: 
       objectReference: {fileID: 2800000, guid: 2e71a8202d3b4a3448ec85ced5a40265, type: 3}
+    - target: {fileID: 3552080525172928950, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
+      propertyPath: cursorMapping.Array.data[4].texture
+      value: 
+      objectReference: {fileID: 2800000, guid: f8c873f1e53e83f4aabf342d6be1dfc3, type: 3}
     - target: {fileID: 7285240116466975344, guid: 472499e41a41ce441bdcc06f9b36f6af, type: 3}
       propertyPath: m_RootOrder
       value: 0
