@@ -11,6 +11,7 @@ namespace RPG.Attributes
     {
         [SerializeField] float regenerationPercentage = 100;
         [SerializeField] TakeDamageEvent takeDamage;
+        [SerializeField] HealthBar healthBar = null;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -39,6 +40,11 @@ namespace RPG.Attributes
         private void Start()
         {
             healthPoints.ForceInit();
+
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+            }
         }
 
         private float GetInitialHealth()
@@ -59,6 +65,11 @@ namespace RPG.Attributes
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+            }
 
             if (healthPoints.value == 0)
             {
