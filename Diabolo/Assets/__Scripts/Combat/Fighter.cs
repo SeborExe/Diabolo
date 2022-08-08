@@ -16,12 +16,12 @@ namespace RPG.Combat
         Animator animator;
         ActionScheduler actionScheduler;
         BaseStats baseStats;
-        LazyValue<Weapon> currentWeapon;
+        LazyValue<WeaponConfig> currentWeapon;
 
         [SerializeField] float timeBetweenAttacks = 1.3f;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
-        [SerializeField] Weapon defaultWeapon = null;
+        [SerializeField] WeaponConfig defaultWeapon = null;
 
         float timeSinceLastAttack = Mathf.Infinity;
 
@@ -32,7 +32,7 @@ namespace RPG.Combat
             animator = GetComponent<Animator>();
             baseStats = GetComponent<BaseStats>();
 
-            currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+            currentWeapon = new LazyValue<WeaponConfig>(SetupDefaultWeapon);
         }
 
         private void Start()
@@ -50,7 +50,7 @@ namespace RPG.Combat
             MoveToAttack();
         }
 
-        private Weapon SetupDefaultWeapon()
+        private WeaponConfig SetupDefaultWeapon()
         {
             AttachWeapon(defaultWeapon);
             return defaultWeapon;
@@ -152,13 +152,13 @@ namespace RPG.Combat
             };
         }
 
-        public void EquipWeapon(Weapon weapon)
+        public void EquipWeapon(WeaponConfig weapon)
         {
             currentWeapon.value = weapon;
             AttachWeapon(weapon);
         }
 
-        private void AttachWeapon(Weapon weapon)
+        private void AttachWeapon(WeaponConfig weapon)
         {
             weapon.Spawn(rightHandTransform, leftHandTransform, animator);
         }
@@ -176,7 +176,7 @@ namespace RPG.Combat
         public void RestoreState(object state)
         {
             string weaponName = (string)state;
-            Weapon weapon = Resources.Load<Weapon>(weaponName);
+            WeaponConfig weapon = Resources.Load<WeaponConfig>(weaponName);
             EquipWeapon(weapon);
         }
     }
