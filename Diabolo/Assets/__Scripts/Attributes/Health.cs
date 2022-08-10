@@ -3,12 +3,28 @@ using RPG.Saving;
 using RPG.Stats;
 using RPG.Core;
 using RPG.Utils;
+using UnityEngine.Events;
+using System;
 
 namespace RPG.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
+        AudioSource audioSource;
+
         [SerializeField] float regenerationPercentage = 100;
+        [SerializeField] public TakeDamageEvent takeDamage;
+        [SerializeField] HealthBar healthBar = null;
+        [SerializeField] AudioClip[] OnHitClips;
+        [SerializeField] AudioClip[] OnDieClips;
+
+        public event Action OnTakeDamage;
+        public event Action OnDie;
+
+        [System.Serializable]
+        public class TakeDamageEvent : UnityEvent<float>
+        {
+        }
 
         Animator animator;
         ActionScheduler actionScheduler;
@@ -25,6 +41,7 @@ namespace RPG.Attributes
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
             baseStats = GetComponent<BaseStats>();
+            audioSource = GetComponent<AudioSource>();
 
             healthPoints = new LazyValue<float>(GetInitialHealth);
         }
@@ -32,7 +49,12 @@ namespace RPG.Attributes
         private void Start()
         {
             healthPoints.ForceInit();
-        }
+
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+            }
+        }        
 
         private float GetInitialHealth()
         {
@@ -42,21 +64,45 @@ namespace RPG.Attributes
         private void OnEnable()
         {
             baseStats.onLevelUp += RegenerateHealth;
+
+            OnDie += PlayDieClip;
+            OnTakeDamage += PlayTakeDamageClip;
         }
 
         private void OnDisable()
         {
             baseStats.onLevelUp -= RegenerateHealth;
+
+            OnDie -= PlayDieClip;
+            OnTakeDamage -= PlayTakeDamageClip;
         }
 
         public void TakeDamage(GameObject instigator, float damage)
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+
+            OnTakeDamage?.Invoke();
+
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+            }
+
             if (healthPoints.value == 0)
             {
+                OnDie.Invoke();
                 Die();
                 AwardExperience(instigator);
             }
+            else
+            {
+                takeDamage.Invoke(damage);
+            }
+        }
+
+        public void Heal(float amount)
+        {
+            healthPoints.value = Mathf.Min(healthPoints.value + amount, GetMaxHealthPoints()); 
         }
 
         public float GetHealthPoints()
@@ -81,6 +127,30 @@ namespace RPG.Attributes
             isDead = true;
             animator.SetTrigger("die");
             actionScheduler.CancelCurrentAction();
+        }
+
+        private void PlayDieClip()
+        {
+            audioSource.clip = GetRandomDieClip();
+            audioSource.Play();
+        }
+
+        private void PlayTakeDamageClip()
+        {
+            audioSource.clip = GetRandomTakeDamageClip();
+            audioSource.Play();
+        }
+
+        private AudioClip GetRandomDieClip()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, OnDieClips.Length);
+            return OnDieClips[randomIndex];
+        }
+
+        private AudioClip GetRandomTakeDamageClip()
+        {
+            int randomIndex = UnityEngine.Random.Range(0, OnHitClips.Length);
+            return OnHitClips[randomIndex];
         }
 
         private void RegenerateHealth()
