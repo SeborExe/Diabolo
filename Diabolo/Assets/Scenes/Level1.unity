@@ -4582,6 +4582,7 @@ GameObject:
   - component: {fileID: 1795227200}
   - component: {fileID: 1795227199}
   - component: {fileID: 1795227198}
+  - component: {fileID: 1795227201}
   m_Layer: 0
   m_Name: StatsCanvas
   m_TagString: Untagged
@@ -4671,6 +4672,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1795227201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795227196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e14916296cca84b84d5972f6ad6c6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toggleKey: 105
+  uiContainer: {fileID: 519622548}
 --- !u!224 &1828408132 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 222602514709830009, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
@@ -5400,7 +5415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 222602514603123087, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_MovementType
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 222602514603123087, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_ScrollSensitivity
@@ -5686,6 +5701,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2716726529868873951, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+    - target: {fileID: 2716726529868873951, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2716726531420240784, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5733,6 +5756,14 @@ PrefabInstance:
     - target: {fileID: 3517668040416867634, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3517668042103508605, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aba0f700d91d4fc4fa8c724899ab04ab, type: 3}
+    - target: {fileID: 3517668042103508605, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3937858091205641108, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchorMax.y
@@ -5788,7 +5819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4783935256041455641, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -662.5
+      value: -662.5001
       objectReference: {fileID: 0}
     - target: {fileID: 4968338283781921044, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchorMax.y
