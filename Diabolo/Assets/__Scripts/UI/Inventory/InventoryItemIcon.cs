@@ -8,7 +8,7 @@ namespace RPG.UI.Inventory
     [RequireComponent(typeof(Image))]
     public class InventoryItemIcon : MonoBehaviour
     {
-        public void SetItem(Sprite item)
+        public void SetItem(InventoryItem item)
         {
             var iconImage = GetComponent<Image>();
             if (item == null)
@@ -18,19 +18,8 @@ namespace RPG.UI.Inventory
             else
             {
                 iconImage.enabled = true;
-                iconImage.sprite = item;
+                iconImage.sprite = item.GetIcon();
             }
-        }
-
-        public Sprite GetItem()
-        {
-            var iconImage = GetComponent<Image>();
-            if (!iconImage.enabled)
-            {
-                return null;
-            }
-
-            return iconImage.sprite;
         }
     }
 }
