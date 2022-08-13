@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using RPG.Stats;
 
 namespace RPG.Attributes
 {
@@ -9,6 +11,8 @@ namespace RPG.Attributes
     {
         Slider slider;
         Canvas rootCanvas;
+        [SerializeField] TMP_Text levelText;
+        [SerializeField] BaseStats baseStats;
 
         private void Awake()
         {
@@ -18,6 +22,7 @@ namespace RPG.Attributes
 
         private void Start()
         {
+            levelText.text = baseStats.CurrentLevel.ToString();
             rootCanvas.enabled = false;
         }
 
