@@ -18,8 +18,8 @@ namespace RPG.UI.Inventory
         private void Awake()
         {
             slots = new InventoryItem[inventorySize];
-            slots[0] = InventoryItem.GetFromID("71e73607-4bac-4e42-b7d6-5e6f91e92dc4");
-            slots[1] = InventoryItem.GetFromID("0aa7c8b8-4796-42aa-89d0-9d100ea67d7b");
+            slots[0] = InventoryItem.GetFromID("b1e32c44-f503-4bf8-9b2e-83ef2021fa69");
+            slots[1] = InventoryItem.GetFromID("b1e32c44-f503-4bf8-9b2e-83ef2021fa69");
         }
 
         public static Inventory GetPlayerInventory()
