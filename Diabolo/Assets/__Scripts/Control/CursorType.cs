@@ -6,6 +6,7 @@ namespace RPG.Control
         Movement,
         Combat,
         UI,
-        PickUp
+        PickUp,
+        FullPickUp
     }
 }
