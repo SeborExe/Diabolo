@@ -4,15 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using RPG.Stats;
+using UnityEngine.EventSystems;
 
 namespace RPG.Attributes
 {
-    public class HealthBar : MonoBehaviour
+    public class InfoAboveHead : MonoBehaviour
     {
         Slider slider;
         Canvas rootCanvas;
+
         [SerializeField] TMP_Text levelText;
         [SerializeField] BaseStats baseStats;
+
+        [HideInInspector] public bool isDamaged = false;
+
+        public Canvas RootCanvas { get => rootCanvas; set => value = rootCanvas; }
 
         private void Awake()
         {

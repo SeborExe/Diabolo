@@ -266,6 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 696fdb01d986da6479297f97afa0e6ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoAboveHead: {fileID: 4584066797421946864}
 --- !u!114 &5492663605363562836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  healthBar: {fileID: 4584066797421946864}
+  infoAboveHead: {fileID: 4584066797421946864}
   OnHitClips:
   - {fileID: 8300000, guid: c67b8f28ccb1a184cba5b958315fb75f, type: 3}
   - {fileID: 8300000, guid: 3298d4d468badd044b2ca8930315e21d, type: 3}
@@ -742,6 +743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelText: {fileID: 9128915649482760179}
   baseStats: {fileID: 6931924063375969532}
+  isDamaged: 0
 --- !u!4 &7303626320227663356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 415593186563576055, guid: ee764f63d2532e345855927f79668e08, type: 3}

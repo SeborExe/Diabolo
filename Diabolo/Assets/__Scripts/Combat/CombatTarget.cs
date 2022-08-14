@@ -1,12 +1,15 @@
 using RPG.Attributes;
 using UnityEngine;
 using RPG.Control;
+using UnityEngine.EventSystems;
 
 namespace RPG.Combat
 {
     [RequireComponent(typeof(Health))]
     public class CombatTarget : MonoBehaviour, IRaycastable
     {
+        [SerializeField] InfoAboveHead infoAboveHead;
+
         public CursorType GetCursorType()
         {
             return CursorType.Combat;
@@ -22,6 +25,18 @@ namespace RPG.Combat
             }
 
             return true;
+        }
+
+        private void OnMouseEnter()
+        {
+            if (infoAboveHead.isDamaged) return;
+            infoAboveHead.RootCanvas.enabled = true;
+        }
+
+        private void OnMouseExit()
+        {
+            if (infoAboveHead.isDamaged) return;
+            infoAboveHead.RootCanvas.enabled = false;
         }
     }
 }

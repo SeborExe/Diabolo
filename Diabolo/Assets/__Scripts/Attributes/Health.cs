@@ -14,7 +14,7 @@ namespace RPG.Attributes
 
         [SerializeField] float regenerationPercentage = 100;
         [SerializeField] public TakeDamageEvent takeDamage;
-        [SerializeField] HealthBar healthBar = null;
+        [SerializeField] InfoAboveHead infoAboveHead = null;
         [SerializeField] AudioClip[] OnHitClips;
         [SerializeField] AudioClip[] OnDieClips;
 
@@ -50,9 +50,9 @@ namespace RPG.Attributes
         {
             healthPoints.ForceInit();
 
-            if (healthBar != null)
+            if (infoAboveHead != null)
             {
-                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+                infoAboveHead.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
             }
         }        
 
@@ -83,9 +83,10 @@ namespace RPG.Attributes
 
             OnTakeDamage?.Invoke();
 
-            if (healthBar != null)
+            if (infoAboveHead != null)
             {
-                healthBar.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
+                infoAboveHead.isDamaged = true;
+                infoAboveHead.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
             }
 
             if (healthPoints.value == 0)
