@@ -1,6 +1,7 @@
 using RPG.Attributes;
 using RPG.Combat;
 using RPG.Movement;
+using RPG.UI.Inventory;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
@@ -26,6 +27,8 @@ namespace RPG.Control
         [SerializeField] float maxNavMeshProjectionDistance = 1f;
         [SerializeField] float raycastRadius = 1f;
 
+        bool movementStarted = false;
+
         private void Awake()
         {
             mover = GetComponent<Mover>();
@@ -35,15 +38,20 @@ namespace RPG.Control
 
         private void Update()
         {
-            if (InteractWithUI()) return;
             if (health.IsDead())
             {
                 SetCursor(CursorType.None);
                 return;
             }
 
+            if (Input.GetMouseButtonUp(0))
+            {
+                movementStarted = false;
+            }
+
+            if (InteractWithUI()) return;
             if (InteractWithComponent()) return;
-            if (MoveToTarget()) return; ;
+            if (MoveToTarget()) return;
 
             SetCursor(CursorType.None);
         }
@@ -57,10 +65,15 @@ namespace RPG.Control
              {
                 if (!mover.CanMoveTo(target)) return false;
 
-                 if (Input.GetMouseButton(0))
-                 {
-                     mover.StartMoveAction(target, 1f);
-                 }
+                if (Input.GetMouseButtonDown(0))
+                {
+                    movementStarted = true;
+                }
+
+                if (Input.GetMouseButton(0) && movementStarted)
+                {
+                    mover.StartMoveAction(target, 1f);
+                }
 
                 SetCursor(CursorType.Movement);
                 return true;

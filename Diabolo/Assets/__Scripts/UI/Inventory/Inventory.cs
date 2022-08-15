@@ -91,7 +91,7 @@ namespace RPG.UI.Inventory
         {
             if (slots[slot] != null)
             {
-                return AddToFirstEmptySlot(item); ;
+                return AddToFirstEmptySlot(item);
             }
 
             slots[slot] = item;
@@ -129,6 +129,7 @@ namespace RPG.UI.Inventory
                     slotStrings[i] = slots[i].GetItemID();
                 }
             }
+
             return slotStrings;
         }
 
