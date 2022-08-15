@@ -5533,6 +5533,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 222602514223341322, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 222602514469351005, guid: 846bc9f1e6e5723458301b7af904df69, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
