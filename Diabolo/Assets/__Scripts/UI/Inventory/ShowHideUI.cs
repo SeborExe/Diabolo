@@ -8,10 +8,12 @@ namespace RPG.UI.Inventory
     {
         [SerializeField] KeyCode toggleKey = KeyCode.Escape;
         [SerializeField] GameObject uiContainer = null;
+        [SerializeField] GameObject statsPanel = null;
 
         void Start()
         {
             uiContainer.SetActive(false);
+            statsPanel.SetActive(true);
         }
 
         void Update()
@@ -19,6 +21,7 @@ namespace RPG.UI.Inventory
             if (Input.GetKeyDown(toggleKey))
             {
                 uiContainer.SetActive(!uiContainer.activeSelf);
+                statsPanel.SetActive(!statsPanel.activeSelf);
             }
         }
     }

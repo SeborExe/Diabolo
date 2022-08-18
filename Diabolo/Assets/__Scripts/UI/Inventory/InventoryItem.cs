@@ -5,7 +5,7 @@ using UnityEngine;
 namespace RPG.UI.Inventory
 {
     [CreateAssetMenu(menuName = ("ScriptableObjects/Inventory/Item"))]
-    public class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
+    public abstract class InventoryItem : ScriptableObject, ISerializationCallbackReceiver
     {
         [Tooltip("Auto-generated UUID for saving/loading. Clear this field if you want to generate a new one.")]
         [SerializeField] string itemID = null;
@@ -32,7 +32,7 @@ namespace RPG.UI.Inventory
                 {
                     if (itemLookupCache.ContainsKey(item.itemID))
                     {
-                        Debug.LogError(string.Format("Looks like there's a duplicate GameDevTV.UI.InventorySystem ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
+                        Debug.LogError(string.Format("Looks like there's a duplicate Item ID for objects: {0} and {1}", itemLookupCache[item.itemID], item));
                         continue;
                     }
 
