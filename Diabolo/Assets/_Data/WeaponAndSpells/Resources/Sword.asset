@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d454763856838e46a550a00b50c4309, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
+  itemID: 449f0b0d-5634-4114-988d-b0583a7e67f8
+  displayName: Sword
+  description: 'Heavy one hand sword. It''s sharp! '
+  icon: {fileID: 21300000, guid: d19901b0ee3c38743a7d383bd484b0b5, type: 3}
+  pickup: {fileID: 6684267687016083325, guid: f67e7e0f3136f474a8feb3f8a8532038, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 7a0d8ca627e6ebc4dacec27c5803da52, type: 2}
   equippedPrefab: {fileID: 5720112004884696865, guid: 433b52b52c382d84eace1ab511870e3d, type: 3}
   weaponDamage: 2

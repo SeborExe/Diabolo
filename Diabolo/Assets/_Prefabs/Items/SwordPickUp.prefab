@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3312340913717592439}
   - component: {fileID: 5034517545250956013}
-  - component: {fileID: 6073869944240100628}
+  - component: {fileID: 6684267687016083325}
+  - component: {fileID: 8883243469968575216}
   m_Layer: 0
   m_Name: SwordPickUp
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4393562075995759071}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 6997258668515237975}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!135 &5034517545250956013
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -47,7 +48,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.8
   m_Center: {x: 0, y: 0.54, z: 0}
---- !u!114 &6073869944240100628
+--- !u!114 &6684267687016083325
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -56,10 +57,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4393562075995759071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52beedcdde9aa3942951ce95f89829d3, type: 3}
+  m_Script: {fileID: 11500000, guid: 3ca9c3826cf2a354192bc65d51612aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 11400000, guid: 419726ef0962a1042b9f6baa53855765, type: 2}
+--- !u!114 &8883243469968575216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4393562075995759071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5e412e79757844bbc28b203a5325b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6997258668514794073
 PrefabInstance:
   m_ObjectHideFlags: 0

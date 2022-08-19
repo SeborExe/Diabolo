@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d454763856838e46a550a00b50c4309, type: 3}
   m_Name: Bow
   m_EditorClassIdentifier: 
+  itemID: a9664974-900c-4a40-9862-7f210de04c1f
+  displayName: Old Bow
+  description: 'Wood old bow. '
+  icon: {fileID: 21300000, guid: ec22508be0cdfba4abbaeb770bef08aa, type: 3}
+  pickup: {fileID: 3762661548565864693, guid: 54d895810ba3f6f45846c1dd187d69f3, type: 3}
+  stackable: 0
+  allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: c039da52a85098b4b9e8476f618126ec, type: 2}
   equippedPrefab: {fileID: 6335796956712247721, guid: b7f710ecf1ae04a4c88535e76edc7a57, type: 3}
   weaponDamage: 1
