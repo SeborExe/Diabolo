@@ -19,6 +19,8 @@ namespace RPG.Stats
 
         LazyValue<int> currentLevel;
 
+        public int CurrentLevel { get => CalculateLevel(); }
+
         private void Awake()
         {
             experience = GetComponent<Experience>();

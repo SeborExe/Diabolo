@@ -6,10 +6,11 @@ using RPG.Attributes;
 using RPG.Stats;
 using System.Collections.Generic;
 using RPG.Utils;
+using RPG.UI.Inventory;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable, IModifierProvider
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         Mover mover;
         Health target;
@@ -17,6 +18,7 @@ namespace RPG.Combat
         ActionScheduler actionScheduler;
         BaseStats baseStats;
         WeaponConfig currentWeaponConfig;
+        Equipment equipment;
         LazyValue <Weapon> currentWeapon;
 
         [SerializeField] float timeBetweenAttacks = 1.3f;
@@ -32,9 +34,15 @@ namespace RPG.Combat
             actionScheduler = GetComponent<ActionScheduler>();
             animator = GetComponent<Animator>();
             baseStats = GetComponent<BaseStats>();
+            equipment = GetComponent<Equipment>();
 
             currentWeaponConfig = defaultWeapon;
             currentWeapon = new LazyValue<Weapon>(SetupDefaultWeapon);
+
+            if (equipment != null)
+            {
+                equipment.equipmentUpdated += UpdateWeapon;
+            }
         }
 
         private void Start()
@@ -143,26 +151,24 @@ namespace RPG.Combat
             animator.SetTrigger("stopAttack");
         }
 
-        public IEnumerable<float> GetAdditiveModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetDamage();
-            }
-        }
-
-        public IEnumerable<float> GetPercentageModifiers(Stat stat)
-        {
-            if (stat == Stat.Damage)
-            {
-                yield return currentWeaponConfig.GetPercentageBonus();
-            };
-        }
-
         public void EquipWeapon(WeaponConfig weapon)
         {
             currentWeaponConfig = weapon;
             currentWeapon.value = AttachWeapon(weapon);
+        }
+
+        private void UpdateWeapon()
+        {
+            WeaponConfig weapon = equipment.GetItemInSlot(EquipLocation.Weapon) as WeaponConfig;
+
+            if (weapon == null)
+            {
+                EquipWeapon(defaultWeapon);
+            }
+            else
+            {
+                EquipWeapon(weapon);
+            }
         }
 
         private Weapon AttachWeapon(WeaponConfig weapon)

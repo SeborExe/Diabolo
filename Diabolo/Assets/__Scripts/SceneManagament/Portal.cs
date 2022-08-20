@@ -13,7 +13,7 @@ namespace RPG.SceneManagement
     {
         enum DestinationIdentifier
         {
-            A, B, C, D, E, F, G
+            A, B, C, D, E, F, G, H, I, J, K
         }
 
         [SerializeField] int sceneIndexToLoad = -1;
@@ -37,13 +37,13 @@ namespace RPG.SceneManagement
             DontDestroyOnLoad(gameObject);
 
             Fader fader = FindObjectOfType<Fader>();
+            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
             PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
             playerController.enabled = false;
 
             yield return fader.FadeOut(fadeOutTime);
 
             //Save current level
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
             wrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
