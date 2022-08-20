@@ -6,7 +6,7 @@ namespace RPG.UI.Inventory
 {
     public class ShowHideUI : MonoBehaviour
     {
-        [SerializeField] KeyCode toggleKey = KeyCode.Escape;
+        [SerializeField] KeyCode[] toggleKey;
         [SerializeField] GameObject uiContainer = null;
         [SerializeField] GameObject statsPanel = null;
 
@@ -18,12 +18,23 @@ namespace RPG.UI.Inventory
 
         void Update()
         {
-            if (Input.GetKeyDown(toggleKey))
+            foreach (KeyCode key in toggleKey)
             {
-                uiContainer.SetActive(!uiContainer.activeSelf);
-                statsPanel.SetActive(!statsPanel.activeSelf);
+                if (Input.GetKeyDown(key))
+                {
+                    uiContainer.SetActive(!uiContainer.activeSelf);
+                    statsPanel.SetActive(!statsPanel.activeSelf);
+                }
+            }
+
+            if (uiContainer.activeSelf)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    uiContainer.SetActive(false);
+                    statsPanel.SetActive(true);
+                }
             }
         }
     }
-
 }

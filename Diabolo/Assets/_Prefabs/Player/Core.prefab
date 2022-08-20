@@ -5216,10 +5216,10 @@ GameObject:
   - component: {fileID: 232094895250457599}
   - component: {fileID: 235640918}
   - component: {fileID: 715110999}
-  - component: {fileID: 715111001}
   - component: {fileID: 3569001837081301934}
   - component: {fileID: 2130596205}
   - component: {fileID: 3161559730799432446}
+  - component: {fileID: 2130596224}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5609,18 +5609,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySize: 16
---- !u!114 &715111001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6176933500622585683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c374bf2052068b4eb0eef4bccf29929, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3569001837081301934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5662,6 +5650,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbe05671116db34aaad4dce172a1924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2130596224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176933500622585683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c1467080e782b4689766b9295a189f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scatterDistance: 2.2
+  dropLibrary: []
+  chanseToDrop: 0.5
+  numberOfDrops: 2
 --- !u!1 &7246533493247181217
 GameObject:
   m_ObjectHideFlags: 0

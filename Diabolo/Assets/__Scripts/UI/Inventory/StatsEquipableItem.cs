@@ -39,5 +39,25 @@ namespace RPG.UI.Inventory
                 }
             }
         }
+
+        public string AdditiveModifier()
+        {
+            for (int i = 0; i < additiveModifier.Length; i++)
+            {
+                return $"Increase {additiveModifier[i].stat} : {additiveModifier[i].value} \n";
+            }
+
+            return null;
+        }
+
+        public string PercentageModifier()
+        {
+            for (int i = 0; i < percentageModifier.Length; i++)
+            {
+                return $"Increase {percentageModifier[i].stat} : {percentageModifier[i].value}% \n";
+            }
+
+            return null;
+        }
     }
 }
