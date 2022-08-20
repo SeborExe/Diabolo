@@ -5218,7 +5218,8 @@ GameObject:
   - component: {fileID: 715110999}
   - component: {fileID: 715111001}
   - component: {fileID: 3569001837081301934}
-  - component: {fileID: 8878065341612330205}
+  - component: {fileID: 2130596205}
+  - component: {fileID: 3161559730799432446}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5421,7 +5422,7 @@ MonoBehaviour:
   timeBetweenAttacks: 1.3
   rightHandTransform: {fileID: 7246533493247470909}
   leftHandTransform: {fileID: 7246533493247528255}
-  defaultWeapon: {fileID: 11400000, guid: 89832dee921218f43a8ec9f08ad18c9b, type: 2}
+  defaultWeapon: {fileID: 11400000, guid: a437b076b5a91f249b353b71be9e49da, type: 2}
 --- !u!114 &91453884273382347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5637,7 +5638,7 @@ MonoBehaviour:
   progression: {fileID: 11400000, guid: 24d3cf8932b7c7d42a0fa71630ba2a7b, type: 2}
   levelUpParticles: {fileID: 786827874834799790, guid: 2f899c937d3a73745927cf63f0380084, type: 3}
   shouldUseModifiers: 1
---- !u!114 &8878065341612330205
+--- !u!114 &2130596205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5646,7 +5647,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6176933500622585683}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73606ee7bb4892e4b8a604d3cd6ecc3f, type: 3}
+  m_Script: {fileID: 11500000, guid: 024ae17f246fab14db9e4c5e7f5357ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3161559730799432446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176933500622585683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbbe05671116db34aaad4dce172a1924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7246533493247181217
