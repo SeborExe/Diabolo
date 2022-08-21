@@ -31,8 +31,11 @@ namespace RPG.Dialogue
                 DialogueNode rootNode = new DialogueNode();
                 rootNode.uniqueID = Guid.NewGuid().ToString();
                 nodes.Add(rootNode);
+                OnValidate();
             }
         }
+
+#endif
 
         private void OnValidate()
         {
@@ -42,8 +45,6 @@ namespace RPG.Dialogue
                 nodeLookup[node.uniqueID] = node;
             }
         }
-
-#endif
 
         public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parentNode)
         {
@@ -63,6 +64,21 @@ namespace RPG.Dialogue
             parent.children.Add(newNode.uniqueID);
             nodes.Add(newNode);
             OnValidate();
+        }
+
+        public void DeleteNode(DialogueNode nodeToDelete)
+        {
+            nodes.Remove(nodeToDelete);
+            OnValidate();
+            CleanDanglingChildren(nodeToDelete);
+        }
+
+        private void CleanDanglingChildren(DialogueNode nodeToDelete)
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                node.children.Remove(nodeToDelete.uniqueID);
+            }
         }
     }
 }
