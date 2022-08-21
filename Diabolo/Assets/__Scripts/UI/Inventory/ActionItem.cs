@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace RPG.UI.Inventory
 {
-    [CreateAssetMenu(menuName = ("ScriptableObjects/Action Item"))]
+    [CreateAssetMenu(menuName = ("ScriptableObjects/Action Item/Item"))]
     public class ActionItem : InventoryItem
     {
         [Tooltip("Does an instance of this item get consumed every time it's used.")]
