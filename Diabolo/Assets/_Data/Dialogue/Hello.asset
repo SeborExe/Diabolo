@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 6b3342bf-ab8d-4e95-a953-7d3676fc9750
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
+  text: LoooooooLLLL!
   children:
   - 236544c2-c864-4371-b4e1-2aabb5b29553
   - 9af76bf1-825e-4e99-ab74-a9cc3b25585a
@@ -21,6 +21,27 @@ MonoBehaviour:
     serializedVersion: 2
     x: 362
     y: 195.00002
+    width: 200
+    height: 100
+--- !u!114 &-7481543227577067435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Naprawde!!
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 871
+    y: 131.00002
     width: 200
     height: 100
 --- !u!114 &-5302186038313639626
@@ -36,12 +57,14 @@ MonoBehaviour:
   m_Name: 9af76bf1-825e-4e99-ab74-a9cc3b25585a
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: 
-  children: []
+  text: NIe no co ty!
+  children:
+  - a580178e-e425-47ca-9e88-527e21f592a2
+  - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
     serializedVersion: 2
-    x: 619
-    y: 179.00002
+    x: 620
+    y: 194.00002
     width: 200
     height: 100
 --- !u!114 &11400000
@@ -54,14 +77,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c65ef1b5a24318341a72dee1cb77180f, type: 3}
-  m_Name: Dialogue_
+  m_Name: Hello
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -7485730157260513452}
   - {fileID: 2990783298251452318}
   - {fileID: 7307048612191397865}
   - {fileID: -5302186038313639626}
+  - {fileID: 2451809035572357270}
+  - {fileID: -7481543227577067435}
   newNodeOffset: {x: 250, y: 0}
+--- !u!114 &2451809035572357270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: a580178e-e425-47ca-9e88-527e21f592a2
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "No go\u015Bciu! M\xF3wi\u0119 ci!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 871
+    y: 268
+    width: 200
+    height: 100
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,14 +120,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
   m_Name: 236544c2-c864-4371-b4e1-2aabb5b29553
   m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: 
+  isPlayerSpeaking: 1
+  text: "KEKW zi\u0105!"
   children:
   - ec181934-75e0-49ae-bb72-01d3b129f3b2
   rect:
     serializedVersion: 2
-    x: 72
-    y: 108
+    x: 569
+    y: 15
     width: 200
     height: 100
 --- !u!114 &7307048612191397865
@@ -97,11 +143,11 @@ MonoBehaviour:
   m_Name: ec181934-75e0-49ae-bb72-01d3b129f3b2
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: 
+  text: Bezimienny to ty!
   children: []
   rect:
     serializedVersion: 2
-    x: 353
-    y: 59
+    x: 860
+    y: 16
     width: 200
     height: 100
