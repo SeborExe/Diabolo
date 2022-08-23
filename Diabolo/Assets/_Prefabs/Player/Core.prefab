@@ -5220,6 +5220,7 @@ GameObject:
   - component: {fileID: 2130596205}
   - component: {fileID: 3161559730799432446}
   - component: {fileID: 2130596224}
+  - component: {fileID: 4861243741106548791}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -5405,6 +5406,9 @@ MonoBehaviour:
   - type: 5
     hotspot: {x: 0, y: 0}
     texture: {fileID: 2800000, guid: cecad95c851b97f40b105b30b0bfede3, type: 3}
+  - type: 6
+    hotspot: {x: 0, y: 0}
+    texture: {fileID: 2800000, guid: 96d4bfdb0d6d8c042bf8fccf6524d239, type: 3}
   maxNavMeshProjectionDistance: 1
   raycastRadius: 1
 --- !u!114 &91453884273382339
@@ -5663,9 +5667,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scatterDistance: 2.2
-  dropLibrary: []
-  chanseToDrop: 0.5
-  numberOfDrops: 2
+  dropLibrary: {fileID: 0}
+--- !u!114 &4861243741106548791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6176933500622585683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc3ce33e93e3c245ad0dced543678c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: Sebcio
 --- !u!1 &7246533493247181217
 GameObject:
   m_ObjectHideFlags: 0

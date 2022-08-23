@@ -10,6 +10,7 @@ namespace RPG.Dialogue
     {
         [SerializeField] DialogueSO dialogue = null;
         [SerializeField] float distanceToTalk = 2f;
+        [SerializeField] string npcName;
 
         public CursorType GetCursorType()
         {
@@ -26,11 +27,16 @@ namespace RPG.Dialogue
 
                 if (Vector3.Distance(transform.position, callingController.transform.position) < distanceToTalk)
                 {
-                    callingController.GetComponent<PlayerConversant>().StartDialogue(dialogue);
+                    callingController.GetComponent<PlayerConversant>().StartDialogue(this ,dialogue);
                 }
             }
 
             return true;
+        }
+
+        public string GetNPCName()
+        {
+            return npcName;
         }
     }
 }

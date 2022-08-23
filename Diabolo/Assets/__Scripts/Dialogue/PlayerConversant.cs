@@ -8,15 +8,19 @@ namespace RPG.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
+        [SerializeField] string playerName;
+
         DialogueSO currentDialogue;
         DialogueNode currentNode = null;
+        AIConversant currentConversant = null;
 
         bool isChoosing = false;
 
         public event Action OnConversationUpdated;
 
-        public void StartDialogue(DialogueSO newDialogue)
+        public void StartDialogue(AIConversant newConversant, DialogueSO newDialogue)
         {
+            currentConversant = newConversant;
             currentDialogue = newDialogue;
             currentNode = currentDialogue.GetRootNode();
             TriggerEnterAction();
@@ -29,6 +33,7 @@ namespace RPG.Dialogue
             TriggerExitAction();
             currentNode = null;
             isChoosing = false;
+            currentConversant = null;
             OnConversationUpdated?.Invoke();
         }
 
@@ -40,6 +45,12 @@ namespace RPG.Dialogue
         public bool IsChoosing()
         {
             return isChoosing;
+        }
+
+        public string GetCurrentConversantName()
+        {
+            if (isChoosing) return playerName;
+            else return currentConversant.GetNPCName();
         }
 
         public string GetText()
@@ -88,17 +99,27 @@ namespace RPG.Dialogue
 
         private void TriggerEnterAction()
         {
-            if (currentNode != null && currentNode.GetOnEnterAction() != "")
+            if (currentNode != null)
             {
-
+                TriggerAction(currentNode.GetOnEnterAction());
             }
         }
 
         private void TriggerExitAction()
         {
-            if (currentNode != null && currentNode.GetOnExitAction() != "")
+            if (currentNode != null)
             {
+                TriggerAction(currentNode.GetOnExitAction());
+            }
+        }
 
+        private void TriggerAction(string action)
+        {
+            if (action == "") return;
+
+            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
             }
         }
     }

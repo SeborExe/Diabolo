@@ -16,6 +16,7 @@ namespace RPG.UI.Dialogue
         [SerializeField] GameObject AIResponse;
         [SerializeField] Transform choiseRootTransform;
         [SerializeField] GameObject choisePrefab;
+        [SerializeField] TMP_Text nameText;
 
         private void Start()
         {
@@ -32,7 +33,8 @@ namespace RPG.UI.Dialogue
             gameObject.SetActive(playerConversant.IsActive());
 
             if (!playerConversant.IsActive()) return;
- 
+
+            nameText.text = playerConversant.GetCurrentConversantName();
             AIResponse.SetActive(!playerConversant.IsChoosing());
             choiseRootTransform.gameObject.SetActive(playerConversant.IsChoosing());
 
