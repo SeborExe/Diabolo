@@ -25,6 +25,7 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  isEnable: 1
 --- !u!114 &-7481543227577067435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,12 +43,13 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 871
-    y: 131.00002
+    x: 868
+    y: 205
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: 
+  onExitAction: Obraz
+  isEnable: 1
 --- !u!114 &-5302186038313639626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,16 +65,16 @@ MonoBehaviour:
   isPlayerSpeaking: 1
   text: NIe no co ty!
   children:
-  - a580178e-e425-47ca-9e88-527e21f592a2
   - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
     serializedVersion: 2
-    x: 581
-    y: 198.00002
+    x: 572
+    y: 205.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  isEnable: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90,32 +92,8 @@ MonoBehaviour:
   - {fileID: 2990783298251452318}
   - {fileID: 7307048612191397865}
   - {fileID: -5302186038313639626}
-  - {fileID: 2451809035572357270}
   - {fileID: -7481543227577067435}
   newNodeOffset: {x: 250, y: 0}
---- !u!114 &2451809035572357270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
-  m_Name: a580178e-e425-47ca-9e88-527e21f592a2
-  m_EditorClassIdentifier: 
-  isPlayerSpeaking: 0
-  text: "No go\u015Bciu! M\xF3wi\u0119 ci!"
-  children: []
-  rect:
-    serializedVersion: 2
-    x: 869
-    y: 270
-    width: 200
-    height: 100
-  onEnterAction: 
-  onExitAction: 
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,12 +112,13 @@ MonoBehaviour:
   - ec181934-75e0-49ae-bb72-01d3b129f3b2
   rect:
     serializedVersion: 2
-    x: 569
-    y: 15
+    x: 567
+    y: 14
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  isEnable: 0
 --- !u!114 &7307048612191397865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +142,4 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: Attack
+  isEnable: 1

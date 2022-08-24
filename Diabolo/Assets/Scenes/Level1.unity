@@ -1563,6 +1563,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 413494, guid: c2849fd453abd0445a702a035f04ac60, type: 3}
   m_PrefabInstance: {fileID: 382680062}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &421831944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7643552439059043985, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+  m_PrefabInstance: {fileID: 2171633661141898989}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &462713703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 131018, guid: dce1a891bc9f6744f8c11b28a4bf775d, type: 3}
@@ -5132,9 +5137,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 58310979}
     m_Modifications:
     - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
       propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58310980}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: ea3d45ccd4c6ce54bad8427d2bec2c18, type: 2}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: RPG.Combat.AggroGroup, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643552439059043948, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
+      propertyPath: OnTrigger.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7643552439059043985, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
       propertyPath: m_Name
       value: NPC
@@ -5651,7 +5680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1648859733525810507, guid: f41d1246bc47d41408fa866dadedf441, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -662.5
+      value: -662.5001
       objectReference: {fileID: 0}
     - target: {fileID: 2628805135327674966, guid: f41d1246bc47d41408fa866dadedf441, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6566,9 +6595,37 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7643552439059043949, guid: 25b2592eeb41ff140a44c5f7ed6bd223, type: 3}
   m_PrefabInstance: {fileID: 2171633661141898989}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 421831944}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce2c71b113865cf4fbbcaf20550de56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8372309617732714640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421831944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbecf3123a8a6774889e303ce708e9ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  action: Obraz
+  OnTrigger:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2990783298251452318, guid: ea3d45ccd4c6ce54bad8427d2bec2c18, type: 2}
+        m_TargetAssemblyTypeName: RPG.Dialogue.DialogueNode, Assembly-CSharp
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2

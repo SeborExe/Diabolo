@@ -50,7 +50,8 @@ namespace RPG.Dialogue
             {
                 if (node.IsPlayerSpeaking())
                 {
-                    yield return node;
+                    if (node.IsEnable()) 
+                        yield return node;
                 }
             }
         }
@@ -61,10 +62,24 @@ namespace RPG.Dialogue
             {
                 if (!node.IsPlayerSpeaking())
                 {
-                    yield return node;
+                    if (node.IsEnable())
+                        yield return node;
                 }
             }
         }
+
+        /*
+        public void ChangeDialogueActive(string dialogueName, bool active)
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                if (node.name == dialogueName)
+                {
+                    node.SetActive(active);
+                }
+            }
+        }
+        */
 
 #if UNITY_EDITOR
 
