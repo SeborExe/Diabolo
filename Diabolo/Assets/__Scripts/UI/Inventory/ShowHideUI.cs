@@ -12,8 +12,11 @@ namespace RPG.UI.Inventory
 
         void Start()
         {
-            uiContainer.SetActive(false);
-            statsPanel.SetActive(true);
+            if (uiContainer != null)
+                uiContainer.SetActive(false);
+
+            if (statsPanel != null)
+                statsPanel.SetActive(true);
         }
 
         void Update()
@@ -22,8 +25,7 @@ namespace RPG.UI.Inventory
             {
                 if (Input.GetKeyDown(key))
                 {
-                    uiContainer.SetActive(!uiContainer.activeSelf);
-                    statsPanel.SetActive(!statsPanel.activeSelf);
+                    Toogle();
                 }
             }
 
@@ -31,10 +33,22 @@ namespace RPG.UI.Inventory
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
-                    uiContainer.SetActive(false);
-                    statsPanel.SetActive(true);
+                    if (uiContainer != null)
+                        uiContainer.SetActive(false);
+
+                    if (statsPanel != null)
+                        statsPanel.SetActive(true);
                 }
             }
+        }
+
+        public void Toogle()
+        {
+            if (uiContainer != null)
+                uiContainer.SetActive(!uiContainer.activeSelf);
+
+            if (statsPanel != null)
+                statsPanel.SetActive(!statsPanel.activeSelf);
         }
     }
 }
