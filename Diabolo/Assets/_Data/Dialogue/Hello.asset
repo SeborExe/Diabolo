@@ -17,6 +17,7 @@ MonoBehaviour:
   children:
   - 236544c2-c864-4371-b4e1-2aabb5b29553
   - 9af76bf1-825e-4e99-ab74-a9cc3b25585a
+  - 84468dec-00a4-4231-8b7a-4b5c042d9f11
   rect:
     serializedVersion: 2
     x: 322
@@ -39,11 +40,14 @@ MonoBehaviour:
   m_Name: 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Naprawde!!
-  children: []
+  text: "Czy m\xF3g\u0142by\u015B mi pom\xF3c znale\u015B\u0107 m\xF3j ukochany miecz?
+    Zgubi\u0142em go ostatio jak zabija\u0142em ludzi w pobliskiej wiosce..."
+  children:
+  - 50c93834-7a1c-43f9-bcad-6e2ad399a117
+  - 30bf2786-4692-46f9-b6fd-27b95fc955b6
   rect:
     serializedVersion: 2
-    x: 868
+    x: 851
     y: 200
     width: 200
     height: 100
@@ -63,7 +67,7 @@ MonoBehaviour:
   m_Name: 9af76bf1-825e-4e99-ab74-a9cc3b25585a
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 1
-  text: NIe no co ty!
+  text: To prawda.
   children:
   - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
@@ -74,6 +78,79 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  isEnable: 1
+--- !u!114 &-5168944530493872545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 30bf2786-4692-46f9-b6fd-27b95fc955b6
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: "Nie mam czasu na g\u0142upoty kolego."
+  children:
+  - 25c543fc-20f9-4d3f-ad83-5f2b3866cda0
+  rect:
+    serializedVersion: 2
+    x: 1118
+    y: 151.00002
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  isEnable: 1
+--- !u!114 &-4337105181767722451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 2952d9f5-0335-4f0d-bc1f-7225ac31fef4
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Super! Teraz musisz tylko znale\u015B\u0107 m\xF3j miecz!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 842
+    y: 106.00003
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: TestObjective
+  isEnable: 1
+--- !u!114 &-2756478232439251842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 622ca37b-dcc5-42be-a16c-a802ad9739cf
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Dzi\u0119kuj\u0119 dzi\u0119kuj\u0119! "
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1367
+    y: 256
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: GiveQuest
   isEnable: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -93,7 +170,39 @@ MonoBehaviour:
   - {fileID: 7307048612191397865}
   - {fileID: -5302186038313639626}
   - {fileID: -7481543227577067435}
+  - {fileID: 645987054089403497}
+  - {fileID: -5168944530493872545}
+  - {fileID: 4880105286329827370}
+  - {fileID: -2756478232439251842}
+  - {fileID: 3082473140340507738}
+  - {fileID: -4337105181767722451}
   newNodeOffset: {x: 250, y: 0}
+--- !u!114 &645987054089403497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 50c93834-7a1c-43f9-bcad-6e2ad399a117
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: "Jasne! Ch\u0119tnie dobij\u0119 pozosta\u0142ych i postaram si\u0119 znale\u015B\u0107
+    tw\xF3j or\u0119\u017C. "
+  children:
+  - 622ca37b-dcc5-42be-a16c-a802ad9739cf
+  rect:
+    serializedVersion: 2
+    x: 1117
+    y: 256
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  isEnable: 1
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,7 +227,56 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 0
+  isEnable: 1
+--- !u!114 &3082473140340507738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 84468dec-00a4-4231-8b7a-4b5c042d9f11
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: "By\u0142em w wiosce!"
+  children:
+  - 2952d9f5-0335-4f0d-bc1f-7225ac31fef4
+  rect:
+    serializedVersion: 2
+    x: 572
+    y: 106.00003
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  isEnable: 1
+--- !u!114 &4880105286329827370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 25c543fc-20f9-4d3f-ad83-5f2b3866cda0
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Ajjj szoda.... Powodzenia w pord\xF3\u017Cy!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1368
+    y: 151.00002
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  isEnable: 1
 --- !u!114 &7307048612191397865
 MonoBehaviour:
   m_ObjectHideFlags: 0

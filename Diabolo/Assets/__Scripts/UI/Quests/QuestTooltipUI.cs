@@ -11,9 +11,11 @@ namespace RPG.UI.Quests
         [SerializeField] TMP_Text title;
         [SerializeField] Transform objectivesContainer;
         [SerializeField] GameObject objectivePrefab;
+        [SerializeField] GameObject objectiveIncompletePrefab;
 
-        public void Setup(QuestSO quest)
+        public void Setup(QuestStatus status)
         {
+            QuestSO quest = status.GetQuest();
             title.text = quest.GetTitle();
 
             foreach (Transform child in objectivesContainer)
@@ -23,7 +25,8 @@ namespace RPG.UI.Quests
 
             foreach (string objective in quest.GetObjectives())
             {
-                GameObject objectiveInstance = Instantiate(objectivePrefab, objectivesContainer);
+                GameObject prefab = status.IsObjectiveComplete(objective) ? objectivePrefab : objectiveIncompletePrefab;
+                GameObject objectiveInstance = Instantiate(prefab, objectivesContainer);
                 TMP_Text objectiveText = objectiveInstance.GetComponentInChildren<TMP_Text>();
                 objectiveText.text = objective; 
             }
