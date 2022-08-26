@@ -7632,34 +7632,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c71b113865cf4fbbcaf20550de56d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8372309617732714640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421831944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbecf3123a8a6774889e303ce708e9ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: Obraz
-  OnTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2990783298251452318, guid: ea3d45ccd4c6ce54bad8427d2bec2c18, type: 2}
-        m_TargetAssemblyTypeName: RPG.Dialogue.DialogueNode, Assembly-CSharp
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &8372309617732714656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7742,4 +7714,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quest: {fileID: 11400000, guid: 66d620eb7f9dc9a4db2814e26e241019, type: 2}
-  objective: Go to village.
+  objective: Village

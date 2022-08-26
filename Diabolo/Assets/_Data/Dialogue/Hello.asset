@@ -26,7 +26,9 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-7481543227577067435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,13 +49,15 @@ MonoBehaviour:
   - 30bf2786-4692-46f9-b6fd-27b95fc955b6
   rect:
     serializedVersion: 2
-    x: 851
-    y: 200
+    x: 783
+    y: 233
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: Obraz
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-5302186038313639626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -72,13 +76,15 @@ MonoBehaviour:
   - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
     serializedVersion: 2
-    x: 583
-    y: 200.00002
+    x: 572
+    y: 233.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-5168944530493872545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,13 +103,15 @@ MonoBehaviour:
   - 25c543fc-20f9-4d3f-ad83-5f2b3866cda0
   rect:
     serializedVersion: 2
-    x: 1118
-    y: 151.00002
+    x: 1013
+    y: 189.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-4337105181767722451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,13 +129,15 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 842
-    y: 106.00003
+    x: 790
+    y: 118.00003
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: TestObjective
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &-2756478232439251842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,13 +155,15 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1367
-    y: 256
+    x: 1225
+    y: 282
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: GiveQuest
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,13 +208,15 @@ MonoBehaviour:
   - 622ca37b-dcc5-42be-a16c-a802ad9739cf
   rect:
     serializedVersion: 2
-    x: 1117
-    y: 256
+    x: 1015
+    y: 285
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,7 +241,9 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &3082473140340507738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,13 +262,16 @@ MonoBehaviour:
   - 2952d9f5-0335-4f0d-bc1f-7225ac31fef4
   rect:
     serializedVersion: 2
-    x: 572
-    y: 106.00003
+    x: 568
+    y: 122.00003
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: HasQuest
+    parameters:
+    - Find My Sword!
 --- !u!114 &4880105286329827370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,13 +289,15 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1368
-    y: 151.00002
+    x: 1224
+    y: 190.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []
 --- !u!114 &7307048612191397865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,10 +315,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 879
-    y: 15
+    x: 788
+    y: 12
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: Attack
-  isEnable: 1
+  condition:
+    predicate: 
+    parameters: []

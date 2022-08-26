@@ -35,6 +35,19 @@ namespace RPG.Quests
             return quest;
         }
 
+        public bool IsComplete()
+        {
+            foreach (QuestSO.Objective objective in quest.GetObjectives())
+            {
+                if (!completedObjectives.Contains(objective.references))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         public int GetCompletedCount()
         {
             return completedObjectives.Count;

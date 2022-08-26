@@ -50,8 +50,7 @@ namespace RPG.Dialogue
             {
                 if (node.IsPlayerSpeaking())
                 {
-                    if (node.IsEnable()) 
-                        yield return node;
+                    yield return node;
                 }
             }
         }
@@ -62,8 +61,7 @@ namespace RPG.Dialogue
             {
                 if (!node.IsPlayerSpeaking())
                 {
-                    if (node.IsEnable())
-                        yield return node;
+                    yield return node;
                 }
             }
         }

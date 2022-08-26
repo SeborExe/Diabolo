@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.UI.Inventory;
+using RPG.Core;
 
 namespace RPG.Quests
 {
-    public class QuestList : MonoBehaviour, ISaveable
+    public class QuestList : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
         List<QuestStatus> statuses = new List<QuestStatus>();
 
@@ -30,6 +32,12 @@ namespace RPG.Quests
         {
             QuestStatus status = GetQuestStatus(quest);
             status.CompleteObjective(objective);
+
+            if (status.IsComplete())
+            {
+                GiveReward(quest);
+            }
+
             OnUpdate?.Invoke();
         }
 
@@ -46,6 +54,42 @@ namespace RPG.Quests
             }
 
             return null;
+        }
+
+        private void GiveReward(QuestSO quest)
+        {
+            foreach (QuestSO.Reward reward in quest.GetRewards())
+            {
+                if (!reward.item.IsStackable())
+                {
+                    int given = 0;
+
+                    for (int i = 0; i < reward.number; i++)
+                    {
+                        bool isGiven = GetComponent<Inventory>().AddToFirstEmptySlot(reward.item, 1);
+                        if (!isGiven) break;
+                        given++;
+                    }
+
+                    if (given == reward.number) continue;
+
+                    for (int i = given; i < reward.number; i++)
+                    {
+                        GetComponent<ItemDropper>().DropItem(reward.item, 1);
+                    }
+                }
+                else
+                {
+                    bool isGiven = GetComponent<Inventory>().AddToFirstEmptySlot(reward.item, reward.number);
+                    if (!isGiven)
+                    {
+                        for (int i = 0; i < reward.number; i++)
+                        {
+                            GetComponent<ItemDropper>().DropItem(reward.item, reward.number);
+                        }
+                    }
+                }
+            }
         }
 
         public object CaptureState()
@@ -69,6 +113,13 @@ namespace RPG.Quests
             {
                 statuses.Add(new QuestStatus(objectState));
             }
+        }
+
+        public bool? Evalueate(string predicate, string[] parameters)
+        {
+            if (predicate != "HasQuest") return null;
+
+            return HasQuest(QuestSO.GetByName(parameters[0]));
         }
     }
 }
