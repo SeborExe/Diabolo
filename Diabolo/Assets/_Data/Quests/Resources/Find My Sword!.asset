@@ -15,7 +15,7 @@ MonoBehaviour:
   objectives:
   - references: Village
     description: Go to village.
-  - references: Sword
+  - references: FindSword
     description: Find sword in some corps.
   rewards:
   - number: 1

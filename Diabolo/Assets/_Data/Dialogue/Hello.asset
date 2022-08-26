@@ -18,6 +18,7 @@ MonoBehaviour:
   - 236544c2-c864-4371-b4e1-2aabb5b29553
   - 9af76bf1-825e-4e99-ab74-a9cc3b25585a
   - 84468dec-00a4-4231-8b7a-4b5c042d9f11
+  - 13ce1559-6a28-4c6b-bed0-e3619e898b75
   rect:
     serializedVersion: 2
     x: 322
@@ -49,12 +50,12 @@ MonoBehaviour:
   - 30bf2786-4692-46f9-b6fd-27b95fc955b6
   rect:
     serializedVersion: 2
-    x: 783
-    y: 233
+    x: 790
+    y: 230
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: Obraz
+  onExitAction: 
   condition:
     predicate: 
     parameters: []
@@ -76,8 +77,8 @@ MonoBehaviour:
   - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
     serializedVersion: 2
-    x: 572
-    y: 233.00002
+    x: 578
+    y: 229.00002
     width: 200
     height: 100
   onEnterAction: 
@@ -129,12 +130,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 790
+    x: 794
     y: 118.00003
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: TestObjective
+  onExitAction: Village
   condition:
     predicate: 
     parameters: []
@@ -155,8 +156,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 1225
-    y: 282
+    x: 1227
+    y: 287
     width: 200
     height: 100
   onEnterAction: 
@@ -188,6 +189,8 @@ MonoBehaviour:
   - {fileID: -2756478232439251842}
   - {fileID: 3082473140340507738}
   - {fileID: -4337105181767722451}
+  - {fileID: 2134112003458789146}
+  - {fileID: 652959577166082281}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &645987054089403497
 MonoBehaviour:
@@ -208,7 +211,7 @@ MonoBehaviour:
   - 622ca37b-dcc5-42be-a16c-a802ad9739cf
   rect:
     serializedVersion: 2
-    x: 1015
+    x: 1010
     y: 285
     width: 200
     height: 100
@@ -217,6 +220,60 @@ MonoBehaviour:
   condition:
     predicate: 
     parameters: []
+--- !u!114 &652959577166082281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 050aae5e-1a55-44fe-8fee-04e6a3a8cb69
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Dzi\u0119kuj\u0119!"
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 778
+    y: 357
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: RemoveItem
+  condition:
+    predicate: 
+    parameters: []
+--- !u!114 &2134112003458789146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 13ce1559-6a28-4c6b-bed0-e3619e898b75
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: "Mam tw\xF3j miecz"
+  children:
+  - 050aae5e-1a55-44fe-8fee-04e6a3a8cb69
+  rect:
+    serializedVersion: 2
+    x: 560
+    y: 355
+    width: 200
+    height: 100
+  onEnterAction: FindSword
+  onExitAction: 
+  condition:
+    predicate: HasInventoryItem
+    parameters:
+    - 0cd2f5d2-6721-43b5-9452-9e747b5ddc7b
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,8 +319,8 @@ MonoBehaviour:
   - 2952d9f5-0335-4f0d-bc1f-7225ac31fef4
   rect:
     serializedVersion: 2
-    x: 568
-    y: 122.00003
+    x: 579
+    y: 117.00003
     width: 200
     height: 100
   onEnterAction: 

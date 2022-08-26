@@ -21,7 +21,7 @@ namespace RPG.UI.Quests
         {
             foreach (Transform child in transform)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
 
             foreach (QuestStatus status in questList.GetStatuses())

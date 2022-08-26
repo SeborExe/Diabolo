@@ -22,12 +22,18 @@ namespace RPG.UI.Quests
 
             foreach (Transform child in objectivesContainer)
             {
-                Destroy(child);
+                Destroy(child.gameObject);
             }
 
             foreach (QuestSO.Objective objective in quest.GetObjectives())
             {
-                GameObject prefab = status.IsObjectiveComplete(objective.references) ? objectivePrefab : objectiveIncompletePrefab;
+                GameObject prefab = objectiveIncompletePrefab;
+
+                if (status.IsObjectiveComplete(objective.references))
+                {
+                    prefab = objectivePrefab;
+                }
+
                 GameObject objectiveInstance = Instantiate(prefab, objectivesContainer);
                 TMP_Text objectiveText = objectiveInstance.GetComponentInChildren<TMP_Text>();
                 objectiveText.text = objective.description; 

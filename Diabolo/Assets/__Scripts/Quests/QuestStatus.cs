@@ -9,7 +9,6 @@ namespace RPG.Quests
     {
         QuestSO quest;
         List<string> completedObjectives = new List<string>();
-        private object objectState;
 
         [System.Serializable]
         class QuestStatusRecord
