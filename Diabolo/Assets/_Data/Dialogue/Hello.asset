@@ -28,8 +28,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &-7481543227577067435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,8 +56,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &-5302186038313639626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,15 +75,14 @@ MonoBehaviour:
   - 1eb9df43-1547-4513-b1fa-dcf198f1fb0c
   rect:
     serializedVersion: 2
-    x: 578
-    y: 229.00002
+    x: 566
+    y: 230.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &-5168944530493872545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,8 +108,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &-4337105181767722451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,8 +133,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: Village
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &-2756478232439251842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,14 +152,13 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1227
-    y: 287
+    y: 288
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: GiveQuest
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,8 +212,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &652959577166082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,8 +237,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: RemoveItem
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &2134112003458789146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,12 +260,18 @@ MonoBehaviour:
     y: 355
     width: 200
     height: 100
-  onEnterAction: FindSword
-  onExitAction: 
+  onEnterAction: 
+  onExitAction: FindSword
   condition:
-    predicate: HasInventoryItem
-    parameters:
-    - 0cd2f5d2-6721-43b5-9452-9e747b5ddc7b
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Find My Sword!
+    - or:
+      - predicate: HasInventoryItem
+        parameters:
+        - 0cd2f5d2-6721-43b5-9452-9e747b5ddc7b
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,8 +297,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &3082473140340507738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,16 +316,18 @@ MonoBehaviour:
   - 2952d9f5-0335-4f0d-bc1f-7225ac31fef4
   rect:
     serializedVersion: 2
-    x: 579
+    x: 571
     y: 117.00003
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: HasQuest
-    parameters:
-    - Find My Sword!
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - Find My Sword!
 --- !u!114 &4880105286329827370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,8 +352,7 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    predicate: 
-    parameters: []
+    and: []
 --- !u!114 &7307048612191397865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,5 +377,4 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: Attack
   condition:
-    predicate: 
-    parameters: []
+    and: []

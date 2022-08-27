@@ -32,13 +32,12 @@ namespace RPG.Quests
         {
             QuestStatus status = GetQuestStatus(quest);
             status.CompleteObjective(objective);
+            OnUpdate?.Invoke();
 
             if (status.IsComplete())
             {
                 GiveReward(quest);
             }
-
-            OnUpdate?.Invoke();
         }
 
         public bool HasQuest(QuestSO quest)
