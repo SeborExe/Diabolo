@@ -638,9 +638,9 @@ RectTransform:
   m_Father: {fileID: 5694911072798861905}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -192.73999}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 400, y: 0}
   m_SizeDelta: {x: 720, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2830219610166459212
@@ -696,6 +696,8 @@ GameObject:
   - component: {fileID: 5547202581484186487}
   - component: {fileID: 731024371369120415}
   - component: {fileID: 8758737872898187493}
+  - component: {fileID: 9161495175546542881}
+  - component: {fileID: 5066518243952856665}
   m_Layer: 5
   m_Name: QuestTooltip
   m_TagString: Untagged
@@ -805,3 +807,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!114 &9161495175546542881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171905228169190237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreLayout: 0
+  m_MinWidth: -1
+  m_MinHeight: -1
+  m_PreferredWidth: -1
+  m_PreferredHeight: 412
+  m_FlexibleWidth: -1
+  m_FlexibleHeight: -1
+  m_LayoutPriority: 1
+--- !u!114 &5066518243952856665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8171905228169190237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a37d33919335a48478c4ab589de9fe27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: {fileID: 1725780930472103970}
+  objectivesContainer: {fileID: 4073492291802340736}
+  objectivePrefab: {fileID: 6095274522805111787, guid: 7bbdf9934e992cd4297ab71be402cc2e, type: 3}
+  objectiveIncompletePrefab: {fileID: 0}
+  rewardText: {fileID: 0}

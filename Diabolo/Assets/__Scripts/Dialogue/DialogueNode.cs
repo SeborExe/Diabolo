@@ -1,4 +1,3 @@
-using RPG.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,6 +12,9 @@ namespace RPG.Dialogue
         [SerializeField] string text;
         [SerializeField] List<string> children = new List<string>();
         [SerializeField] Rect rect = new Rect(100, 100, 200, 100);
+        [SerializeField] string onEnterAction;
+        [SerializeField] string onExitAction;
+        [SerializeField] bool isEnable = true;
 
         public Rect GetRect()
         {
@@ -32,6 +34,26 @@ namespace RPG.Dialogue
         public bool IsPlayerSpeaking()
         {
             return isPlayerSpeaking;
+        }
+
+        public string GetOnEnterAction()
+        {
+            return onEnterAction;
+        }
+
+        public string GetOnExitAction()
+        {
+            return onExitAction;
+        }
+
+        public bool IsEnable()
+        {
+            return isEnable;
+        }
+
+        public void SetActive(bool active)
+        {
+            isEnable = active;
         }
 
 #if UNITY_EDITOR

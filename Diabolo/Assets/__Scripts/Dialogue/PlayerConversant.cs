@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using RPG.Core;
 
 namespace RPG.Dialogue
 {
@@ -71,12 +70,12 @@ namespace RPG.Dialogue
 
         public IEnumerable<DialogueNode> GetChoices()
         {
-            return FilterOnCondition(currentDialogue.GetPlayerChildren(currentNode));
+            return currentDialogue.GetPlayerChildren(currentNode);
         }
 
         public void Next()
         {
-            int numPlayerResponses = FilterOnCondition(currentDialogue.GetPlayerChildren(currentNode)).Count();
+            int numPlayerResponses = currentDialogue.GetPlayerChildren(currentNode).Count();
             if (numPlayerResponses > 0)
             {
                 isChoosing = true;
@@ -85,7 +84,7 @@ namespace RPG.Dialogue
                 return;
             }
 
-            DialogueNode[] children = FilterOnCondition(currentDialogue.GetAIChildren(currentNode)).ToArray();
+            DialogueNode[] children = currentDialogue.GetAIChildren(currentNode).ToArray();
             int randomIndex = UnityEngine.Random.Range(0, children.Count());
             TriggerExitAction();
             currentNode = children[randomIndex];
@@ -95,7 +94,33 @@ namespace RPG.Dialogue
 
         public bool HasNext()
         {
-            return FilterOnCondition(currentDialogue.GetAllChildren(currentNode)).Count() > 0;
+            return currentDialogue.GetAllChildren(currentNode).Count() > 0;
+        }
+
+        private void TriggerEnterAction()
+        {
+            if (currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnEnterAction());
+            }
+        }
+
+        private void TriggerExitAction()
+        {
+            if (currentNode != null)
+            {
+                TriggerAction(currentNode.GetOnExitAction());
+            }
+        }
+
+        private void TriggerAction(string action)
+        {
+            if (action == "") return;
+
+            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
+            {
+                trigger.Trigger(action);
+            }
         }
     }
 }
