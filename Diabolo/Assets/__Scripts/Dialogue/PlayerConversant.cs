@@ -97,47 +97,5 @@ namespace RPG.Dialogue
         {
             return FilterOnCondition(currentDialogue.GetAllChildren(currentNode)).Count() > 0;
         }
-
-        private IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
-        {
-            foreach (var node in inputNode)
-            {
-                if (node.CheckContition(GetEvaluators()))
-                {
-                    yield return node;
-                }
-            }
-        }
-
-        private IEnumerable<IPredicateEvaluator> GetEvaluators()
-        {
-            return GetComponents<IPredicateEvaluator>();
-        }
-
-        private void TriggerEnterAction()
-        {
-            if (currentNode != null)
-            {
-                TriggerAction(currentNode.GetOnEnterAction());
-            }
-        }
-
-        private void TriggerExitAction()
-        {
-            if (currentNode != null)
-            {
-                TriggerAction(currentNode.GetOnExitAction());
-            }
-        }
-
-        private void TriggerAction(string action)
-        {
-            if (action == "") return;
-
-            foreach (DialogueTrigger trigger in currentConversant.GetComponents<DialogueTrigger>())
-            {
-                trigger.Trigger(action);
-            }
-        }
     }
 }

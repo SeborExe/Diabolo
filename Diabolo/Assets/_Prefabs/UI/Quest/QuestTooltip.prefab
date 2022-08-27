@@ -696,7 +696,6 @@ GameObject:
   - component: {fileID: 5547202581484186487}
   - component: {fileID: 731024371369120415}
   - component: {fileID: 8758737872898187493}
-  - component: {fileID: -1340314803580308905}
   m_Layer: 5
   m_Name: QuestTooltip
   m_TagString: Untagged
@@ -806,20 +805,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
---- !u!114 &-1340314803580308905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8171905228169190237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a37d33919335a48478c4ab589de9fe27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: {fileID: 1725780930472103970}
-  objectivesContainer: {fileID: 4073492291802340736}
-  objectivePrefab: {fileID: 6095274522805111787, guid: 7bbdf9934e992cd4297ab71be402cc2e, type: 3}
-  objectiveIncompletePrefab: {fileID: 3749006988199909402, guid: 97b56e5e24429144a87f0f498c7aa65f, type: 3}
-  rewardText: {fileID: 6953171951608024365}

@@ -7,7 +7,7 @@ using System;
 
 namespace RPG.UI.Inventory
 {
-    public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator
+    public class Inventory : MonoBehaviour, ISaveable
     {
         [Tooltip("Allowed size")]
         [SerializeField] int inventorySize = 16;
@@ -215,17 +215,6 @@ namespace RPG.UI.Inventory
             {
                 inventoryUpdated();
             }
-        }
-
-        public bool? Evalueate(string predicate, string[] parameters)
-        {
-            switch (predicate)
-            {
-                case "HasInventoryItem":
-                    return HasItem(InventoryItem.GetFromID(parameters[0]));
-            }
-            
-            return null;
         }
     }
 }
