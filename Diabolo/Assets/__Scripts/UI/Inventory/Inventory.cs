@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Core;
 using System;
 
 namespace RPG.UI.Inventory
 {
-    public class Inventory : MonoBehaviour, ISaveable
+    public class Inventory : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
         [Tooltip("Allowed size")]
         [SerializeField] int inventorySize = 16;
@@ -93,6 +94,18 @@ namespace RPG.UI.Inventory
             if (inventoryUpdated != null)
             {
                 inventoryUpdated();
+            }
+        }
+
+        public void RemoveItem(string itemID)
+        {
+            for (int i = 0; i < inventorySize; i++)
+            {
+                if (GetItemInSlot(i) == InventoryItem.GetFromID(itemID))
+                {
+                    int number = GetNumberInSlot(i);
+                    RemoveFromSlot(i, number);
+                }
             }
         }
 
@@ -202,6 +215,17 @@ namespace RPG.UI.Inventory
             {
                 inventoryUpdated();
             }
+        }
+
+        public bool? Evalueate(string predicate, string[] parameters)
+        {
+            switch (predicate)
+            {
+                case "HasInventoryItem":
+                    return HasItem(InventoryItem.GetFromID(parameters[0]));
+            }
+            
+            return null;
         }
     }
 }
