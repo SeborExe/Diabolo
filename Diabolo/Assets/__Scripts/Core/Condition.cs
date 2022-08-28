@@ -52,9 +52,12 @@ namespace RPG.Core
             {
                 foreach (var evaluator in evaluators)
                 {
-                    bool? result = evaluator.Evalueate(predicate, parameters);
+                    bool? result = evaluator.Evaluate(predicate, parameters);
 
-                    if (result == null) continue;
+                    if (result == null)
+                    {
+                        continue;
+                    }
 
                     if (result == negate) return false;
                 }

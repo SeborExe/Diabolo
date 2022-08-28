@@ -6,6 +6,6 @@ namespace RPG.Core
 {
     public interface IPredicateEvaluator
     {
-        bool? Evalueate(string predicate, string[] parameters);
+        bool? Evaluate(string predicate, string[] parameters);
     }
 }

@@ -181,7 +181,7 @@ namespace RPG.UI.Inventory
             return -1;
         }
 
-        public bool? Evalueate(string predicate, string[] parameters)
+        public bool? Evaluate(string predicate, string[] parameters)
         {
             switch (predicate)
             {
