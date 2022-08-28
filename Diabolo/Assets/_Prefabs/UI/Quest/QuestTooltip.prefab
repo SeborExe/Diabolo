@@ -823,7 +823,7 @@ MonoBehaviour:
   m_MinWidth: -1
   m_MinHeight: -1
   m_PreferredWidth: -1
-  m_PreferredHeight: 412
+  m_PreferredHeight: 452
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
@@ -842,5 +842,5 @@ MonoBehaviour:
   title: {fileID: 1725780930472103970}
   objectivesContainer: {fileID: 4073492291802340736}
   objectivePrefab: {fileID: 6095274522805111787, guid: 7bbdf9934e992cd4297ab71be402cc2e, type: 3}
-  objectiveIncompletePrefab: {fileID: 0}
+  objectiveIncompletePrefab: {fileID: 3749006988199909402, guid: 97b56e5e24429144a87f0f498c7aa65f, type: 3}
   rewardText: {fileID: 0}

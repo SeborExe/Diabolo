@@ -6609,15 +6609,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
---- !u!114 &4861243741106548790 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 715110999, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
+--- !u!1 &4861243741106548791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6176933500622585683, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
   m_PrefabInstance: {fileID: 4861243741106548789}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &4861243741106548792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4861243741106548791}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17d8e261facc5664d902b050c0532b89, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b8e5a63c7e549e4cb61b57700b9c53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!82 &4993021935974776437
@@ -10773,10 +10779,11 @@ GameObject:
   - component: {fileID: 8372309617732714627}
   - component: {fileID: 8372309617732714623}
   - component: {fileID: 8372309617732714626}
-  - component: {fileID: 8372309617732714657}
-  - component: {fileID: 8372309617732714660}
-  - component: {fileID: 8372309617732714658}
-  - component: {fileID: 8372309617732714661}
+  - component: {fileID: 8372309617732714630}
+  - component: {fileID: 8372309617732714628}
+  - component: {fileID: 8372309617732714629}
+  - component: {fileID: 8372309617732714632}
+  - component: {fileID: 8372309617732714631}
   m_Layer: 0
   m_Name: NPC
   m_TagString: Untagged
@@ -10862,7 +10869,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoAboveHead: {fileID: 546157358353333986}
---- !u!114 &8372309617732714657
+--- !u!114 &8372309617732714628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372309617732714620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b3f5e3c24ecea4a9ade137502d5986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 11400000, guid: a7c2786b380c8ba458d447cdab8487a7, type: 2}
+--- !u!114 &8372309617732714629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10878,7 +10898,7 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8372309617732714628}
         m_TargetAssemblyTypeName: RPG.Quests.QuestGiver, Assembly-CSharp
         m_MethodName: GiveQuest
         m_Mode: 1
@@ -10890,7 +10910,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8372309617732714658
+--- !u!114 &8372309617732714630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10902,23 +10922,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbecf3123a8a6774889e303ce708e9ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: Village
+  action: Attack
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RPG.Quests.QuestCompletion, Assembly-CSharp
-        m_MethodName: CompleteObjective
-        m_Mode: 1
+      - m_Target: {fileID: 58310980}
+        m_TargetAssemblyTypeName: RPG.Combat.AggroGroup, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &8372309617732714660
+--- !u!114 &8372309617732714631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10927,26 +10947,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8372309617732714620}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbecf3123a8a6774889e303ce708e9ef, type: 3}
+  m_Script: {fileID: 11500000, guid: 76feea8d2ddfd7c4db77a1b57b52cdb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  action: RemoveItem
-  OnTrigger:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4861243741106548790}
-        m_TargetAssemblyTypeName: RPG.UI.Inventory.Inventory, Assembly-CSharp
-        m_MethodName: RemoveItem
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 0cd2f5d2-6721-43b5-9452-9e747b5ddc7b
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &8372309617732714661
+  quest: {fileID: 11400000, guid: a7c2786b380c8ba458d447cdab8487a7, type: 2}
+  objective: Find old sword
+--- !u!114 &8372309617732714632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10962,7 +10968,7 @@ MonoBehaviour:
   OnTrigger:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8372309617732714631}
         m_TargetAssemblyTypeName: RPG.Quests.QuestCompletion, Assembly-CSharp
         m_MethodName: CompleteObjective
         m_Mode: 1

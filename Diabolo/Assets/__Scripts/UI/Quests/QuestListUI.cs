@@ -8,7 +8,6 @@ namespace RPG.UI.Quests
     public class QuestListUI : MonoBehaviour
     {
         [SerializeField] QuestItemUI questPrefab;
-        /*
         QuestList questList;
 
         private void Start()
@@ -31,6 +30,5 @@ namespace RPG.UI.Quests
                 questInstance.Setup(status);
             }
         }
-        */
     }
 }

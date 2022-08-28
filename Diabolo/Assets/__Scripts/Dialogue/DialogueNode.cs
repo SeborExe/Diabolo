@@ -14,7 +14,6 @@ namespace RPG.Dialogue
         [SerializeField] Rect rect = new Rect(100, 100, 200, 100);
         [SerializeField] string onEnterAction;
         [SerializeField] string onExitAction;
-        [SerializeField] bool isEnable = true;
 
         public Rect GetRect()
         {
@@ -44,16 +43,6 @@ namespace RPG.Dialogue
         public string GetOnExitAction()
         {
             return onExitAction;
-        }
-
-        public bool IsEnable()
-        {
-            return isEnable;
-        }
-
-        public void SetActive(bool active)
-        {
-            isEnable = active;
         }
 
 #if UNITY_EDITOR
