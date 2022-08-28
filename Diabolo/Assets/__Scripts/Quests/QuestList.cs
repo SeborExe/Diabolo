@@ -98,11 +98,19 @@ namespace RPG.Quests
             {
                 case "HasQuest":
                     return HasQuest(QuestSO.GetByName(parameters[0]));
-
+                        
                 case "CompletedQuest":
+                    if (!HasQuest(QuestSO.GetByName(parameters[0])))
+                    {
+                        return false;
+                    }
                     return GetQuestStatus(QuestSO.GetByName(parameters[0])).IsComplete();
 
                 case "CompleteObjective":
+                    if (!HasQuest(QuestSO.GetByName(parameters[0])))
+                    {
+                        return false;
+                    }
                     return GetQuestStatus(QuestSO.GetByName(parameters[0])).IsObjectiveComplete(parameters[1]);
             }
 

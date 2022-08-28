@@ -101,8 +101,8 @@ MonoBehaviour:
   - 25c543fc-20f9-4d3f-ad83-5f2b3866cda0
   rect:
     serializedVersion: 2
-    x: 1013
-    y: 189.00002
+    x: 1014
+    y: 190.00002
     width: 200
     height: 100
   onEnterAction: 
@@ -126,8 +126,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 794
-    y: 118.00003
+    x: 810
+    y: 116.00003
     width: 200
     height: 100
   onEnterAction: 
@@ -230,8 +230,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 778
-    y: 357
+    x: 785
+    y: 360
     width: 200
     height: 100
   onEnterAction: 
@@ -257,7 +257,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 559
-    y: 358
+    y: 360
     width: 200
     height: 100
   onEnterAction: 
@@ -265,9 +265,16 @@ MonoBehaviour:
   condition:
     and:
     - or:
-      - predicate: HasQuest
+      - predicate: CompleteObjective
         parameters:
         - OldSword
+        - Village
+        negate: 0
+    - or:
+      - predicate: CompleteObjective
+        parameters:
+        - OldSword
+        - FindSword
         negate: 1
 --- !u!114 &2990783298251452318
 MonoBehaviour:
@@ -287,7 +294,7 @@ MonoBehaviour:
   - ec181934-75e0-49ae-bb72-01d3b129f3b2
   rect:
     serializedVersion: 2
-    x: 574
+    x: 573
     y: 15
     width: 200
     height: 100
@@ -320,7 +327,18 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    and: []
+    and:
+    - or:
+      - predicate: HasQuest
+        parameters:
+        - OldSword
+        negate: 0
+    - or:
+      - predicate: CompleteObjective
+        parameters:
+        - OldSword
+        - Village
+        negate: 1
 --- !u!114 &4880105286329827370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,7 +381,7 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 788
+    x: 790
     y: 12
     width: 200
     height: 100
