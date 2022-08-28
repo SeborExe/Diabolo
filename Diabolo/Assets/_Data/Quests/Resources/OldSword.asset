@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: OldSword
   m_EditorClassIdentifier: 
   objectives:
-  - Go to Village
-  - Find old sword
+  - references: Village
+    description: Go to village.
+  - references: FindSword
+    description: Find old sword in some corps.
+  rewards:
+  - number: 1
+    item: {fileID: 11400000, guid: 419726ef0962a1042b9f6baa53855765, type: 2}

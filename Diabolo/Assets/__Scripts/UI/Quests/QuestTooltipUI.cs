@@ -24,21 +24,47 @@ namespace RPG.UI.Quests
                 Destroy(child.gameObject);
             }
 
-            foreach (string objective in quest.GetObjectives())
+            foreach (QuestSO.Objective objective in quest.GetObjectives())
             {
                 GameObject prefab = objectiveIncompletePrefab;
 
-                if (status.IsObjectiveComplete(objective))
+                if (status.IsObjectiveComplete(objective.references))
                 {
                     prefab = objectivePrefab;
                 }
 
                 GameObject objectiveInstance = Instantiate(prefab, objectivesContainer);
                 TMP_Text objectiveText = objectiveInstance.GetComponentInChildren<TMP_Text>();
-                objectiveText.text = objective;
+                objectiveText.text = objective.description;
             }
 
-            //rewardText.text = GetRewardText(quest);
+            rewardText.text = GetRewardText(quest);
+        }
+
+        private string GetRewardText(QuestSO quest)
+        {
+            string rewardText = "";
+            foreach (QuestSO.Reward reward in quest.GetRewards())
+            {
+                if (rewardText != "")
+                {
+                    rewardText += ", ";
+                }
+
+                if (reward.number > 1)
+                {
+                    rewardText += $"{reward.number}x";
+                }
+                rewardText += reward.item.GetDisplayName();
+            }
+
+            if (rewardText == "")
+            {
+                rewardText = "No reward";
+            }
+
+            rewardText += ".";
+            return rewardText;
         }
     }
 }
