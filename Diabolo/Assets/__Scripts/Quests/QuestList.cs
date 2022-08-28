@@ -3,11 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Core;
 using RPG.UI.Inventory;
 
 namespace RPG.Quests
 {
-    public class QuestList : MonoBehaviour, ISaveable
+    public class QuestList : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
         List<QuestStatus> statuses = new List<QuestStatus>();
 
@@ -89,6 +90,23 @@ namespace RPG.Quests
                     }
                 }
             }
+        }
+
+        public bool? Evalueate(string predicate, string[] parameters)
+        {
+            switch (predicate)
+            {
+                case "HasQuest":
+                    return HasQuest(QuestSO.GetByName(parameters[0]));
+
+                case "CompletedQuest":
+                    return GetQuestStatus(QuestSO.GetByName(parameters[0])).IsComplete();
+
+                case "CompleteObjective":
+                    return GetQuestStatus(QuestSO.GetByName(parameters[0])).IsObjectiveComplete(parameters[1]);
+            }
+
+            return null;
         }
 
         public object CaptureState()

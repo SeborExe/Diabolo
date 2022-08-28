@@ -64,10 +64,7 @@ namespace RPG.Quests
         {
             foreach (QuestSO quest in Resources.LoadAll<QuestSO>(""))
             {
-                if (quest.name == questName)
-                {
-                    return quest;
-                }
+                if (quest.name == questName) return quest;
             }
 
             return null;

@@ -27,6 +27,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &-7481543227577067435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53,6 +55,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &-5302186038313639626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,6 +81,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &-5168944530493872545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +107,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &-4337105181767722451
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +132,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: Village
+  condition:
+    and: []
 --- !u!114 &-2756478232439251842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +157,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: GiveQuest
+  condition:
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,6 +211,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &652959577166082281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +236,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: FindSword
+  condition:
+    and: []
 --- !u!114 &2134112003458789146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,12 +256,19 @@ MonoBehaviour:
   - 050aae5e-1a55-44fe-8fee-04e6a3a8cb69
   rect:
     serializedVersion: 2
-    x: 560
-    y: 355
+    x: 559
+    y: 358
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and:
+    - or:
+      - predicate: CompletedQuest
+        parameters:
+        - OldSword
+        negate: 1
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -270,6 +293,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &3082473140340507738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +319,8 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &4880105286329827370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,11 +339,13 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1224
-    y: 190.00002
+    y: 191.00002
     width: 200
     height: 100
   onEnterAction: 
   onExitAction: 
+  condition:
+    and: []
 --- !u!114 &7307048612191397865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,3 +369,5 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: Attack
+  condition:
+    and: []
