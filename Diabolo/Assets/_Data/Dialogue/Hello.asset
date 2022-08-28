@@ -82,7 +82,12 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    and: []
+    and:
+    - or:
+      - predicate: 3
+        parameters:
+        - OldSword
+        negate: 1
 --- !u!114 &-5168944530493872545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,13 +270,13 @@ MonoBehaviour:
   condition:
     and:
     - or:
-      - predicate: CompleteObjective
+      - predicate: 2
         parameters:
         - OldSword
         - Village
         negate: 0
     - or:
-      - predicate: CompleteObjective
+      - predicate: 3
         parameters:
         - OldSword
         - FindSword
@@ -329,12 +334,12 @@ MonoBehaviour:
   condition:
     and:
     - or:
-      - predicate: HasQuest
+      - predicate: 1
         parameters:
         - OldSword
         negate: 0
     - or:
-      - predicate: CompleteObjective
+      - predicate: 2
         parameters:
         - OldSword
         - Village

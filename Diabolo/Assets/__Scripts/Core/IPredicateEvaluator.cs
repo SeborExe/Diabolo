@@ -4,8 +4,21 @@ using UnityEngine;
 
 namespace RPG.Core
 {
+    public enum EPredicate
+    {
+        Select,
+        HasQuest,
+        CompletedObjective,
+        CompletedQuest,
+        HasLevel,
+        MinimumTrait,
+        HasItem,
+        HasItems,
+        HasItemEquipped
+    }
+
     public interface IPredicateEvaluator
     {
-        bool? Evaluate(string predicate, string[] parameters);
+        bool? Evaluate(EPredicate predicate, string[] parameters);
     }
 }

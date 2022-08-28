@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Core;
 using System;
 
 namespace RPG.UI.Inventory
 {
-    public class Equipment : MonoBehaviour, ISaveable
+    public class Equipment : MonoBehaviour, ISaveable, IPredicateEvaluator
     {
         Dictionary<EquipLocation, EquipableItem> equippedItems = new Dictionary<EquipLocation, EquipableItem>();
 
@@ -73,6 +74,22 @@ namespace RPG.UI.Inventory
                     equippedItems[pair.Key] = item;
                 }
             }
+        }
+
+        public bool? Evaluate(EPredicate predicate, string[] parameters)
+        {
+            if (predicate == EPredicate.HasItemEquipped)
+            {
+                foreach (var item in equippedItems.Values)
+                {
+                    if (item.GetItemID() == parameters[0])
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            return null;
         }
     }
 }
