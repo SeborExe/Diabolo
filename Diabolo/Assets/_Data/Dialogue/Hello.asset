@@ -82,7 +82,12 @@ MonoBehaviour:
   onEnterAction: 
   onExitAction: 
   condition:
-    and: []
+    and:
+    - or:
+      - predicate: 3
+        parameters:
+        - OldSword
+        negate: 1
 --- !u!114 &-5168944530493872545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,8 +106,8 @@ MonoBehaviour:
   - 25c543fc-20f9-4d3f-ad83-5f2b3866cda0
   rect:
     serializedVersion: 2
-    x: 1013
-    y: 189.00002
+    x: 1014
+    y: 190.00002
     width: 200
     height: 100
   onEnterAction: 
@@ -126,8 +131,8 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 794
-    y: 118.00003
+    x: 810
+    y: 116.00003
     width: 200
     height: 100
   onEnterAction: 
@@ -230,12 +235,12 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 778
-    y: 357
+    x: 785
+    y: 360
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: RemoveItem
+  onExitAction: FindSword
   condition:
     and: []
 --- !u!114 &2134112003458789146
@@ -256,22 +261,26 @@ MonoBehaviour:
   - 050aae5e-1a55-44fe-8fee-04e6a3a8cb69
   rect:
     serializedVersion: 2
-    x: 560
-    y: 355
+    x: 559
+    y: 360
     width: 200
     height: 100
   onEnterAction: 
-  onExitAction: FindSword
+  onExitAction: 
   condition:
     and:
     - or:
-      - predicate: HasQuest
+      - predicate: 2
         parameters:
-        - Find My Sword!
+        - OldSword
+        - Village
+        negate: 0
     - or:
-      - predicate: HasInventoryItem
+      - predicate: 3
         parameters:
-        - 0cd2f5d2-6721-43b5-9452-9e747b5ddc7b
+        - OldSword
+        - FindSword
+        negate: 1
 --- !u!114 &2990783298251452318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -290,8 +299,8 @@ MonoBehaviour:
   - ec181934-75e0-49ae-bb72-01d3b129f3b2
   rect:
     serializedVersion: 2
-    x: 574
-    y: 14
+    x: 573
+    y: 15
     width: 200
     height: 100
   onEnterAction: 
@@ -317,7 +326,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 571
-    y: 117.00003
+    y: 116.00003
     width: 200
     height: 100
   onEnterAction: 
@@ -325,9 +334,16 @@ MonoBehaviour:
   condition:
     and:
     - or:
-      - predicate: HasQuest
+      - predicate: 1
         parameters:
-        - Find My Sword!
+        - OldSword
+        negate: 0
+    - or:
+      - predicate: 2
+        parameters:
+        - OldSword
+        - Village
+        negate: 1
 --- !u!114 &4880105286329827370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,7 +362,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 1224
-    y: 190.00002
+    y: 191.00002
     width: 200
     height: 100
   onEnterAction: 
@@ -370,7 +386,7 @@ MonoBehaviour:
   children: []
   rect:
     serializedVersion: 2
-    x: 788
+    x: 790
     y: 12
     width: 200
     height: 100

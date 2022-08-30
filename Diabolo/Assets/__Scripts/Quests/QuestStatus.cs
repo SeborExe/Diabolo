@@ -29,11 +29,6 @@ namespace RPG.Quests
             completedObjectives = state.completedObjectives;
         }
 
-        public QuestSO GetQuest()
-        {
-            return quest;
-        }
-
         public bool IsComplete()
         {
             foreach (QuestSO.Objective objective in quest.GetObjectives())
@@ -45,6 +40,11 @@ namespace RPG.Quests
             }
 
             return true;
+        }
+
+        public QuestSO GetQuest()
+        {
+            return quest;
         }
 
         public int GetCompletedCount()
@@ -73,4 +73,5 @@ namespace RPG.Quests
             return state;
         }
     }
+
 }

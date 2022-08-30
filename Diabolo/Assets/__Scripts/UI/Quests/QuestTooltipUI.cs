@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using RPG.Quests;
-using TMPro;
-using System;
 
 namespace RPG.UI.Quests
 {
@@ -36,7 +35,7 @@ namespace RPG.UI.Quests
 
                 GameObject objectiveInstance = Instantiate(prefab, objectivesContainer);
                 TMP_Text objectiveText = objectiveInstance.GetComponentInChildren<TMP_Text>();
-                objectiveText.text = objective.description; 
+                objectiveText.text = objective.description;
             }
 
             rewardText.text = GetRewardText(quest);

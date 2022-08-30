@@ -37,11 +37,6 @@ namespace RPG.Quests
             return objectives.Count;
         }
 
-        public IEnumerable<Reward> GetRewards()
-        {
-            return rewards;
-        }
-
         public IEnumerable<Objective> GetObjectives()
         {
             return objectives;
@@ -51,10 +46,18 @@ namespace RPG.Quests
         {
             foreach (Objective objective in objectives)
             {
-                if (objective.references == objectiveRef) return true;
+                if (objective.references == objectiveRef)
+                {
+                    return true;
+                }
             }
 
             return false;
+        }
+
+        public IEnumerable<Reward> GetRewards()
+        {
+            return rewards;
         }
 
         public static QuestSO GetByName(string questName)

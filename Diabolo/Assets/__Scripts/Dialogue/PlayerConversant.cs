@@ -100,7 +100,7 @@ namespace RPG.Dialogue
 
         private IEnumerable<DialogueNode> FilterOnCondition(IEnumerable<DialogueNode> inputNode)
         {
-            foreach (var node in inputNode)
+            foreach (DialogueNode node in inputNode)
             {
                 if (node.CheckContition(GetEvaluators()))
                 {

@@ -11,6 +11,7 @@ namespace RPG.UI.Quests
         [SerializeField] private TMP_Text title;
         [SerializeField] private TMP_Text progress;
 
+        
         QuestStatus status;
 
         public void Setup(QuestStatus status)
@@ -18,6 +19,12 @@ namespace RPG.UI.Quests
             this.status = status;
             title.text = status.GetQuest().GetTitle();
             progress.text = $"{status.GetCompletedCount()}/{status.GetQuest().GetObjectivesCount()}";
+
+            if (status.IsComplete())
+            {
+                title.color = Color.gray;
+                progress.color = Color.gray;
+            }
         }
 
         public QuestStatus GetQuestStatus()

@@ -43,8 +43,8 @@ namespace RPG.Core
 
         [System.Serializable]
         class Predicate
-        {
-            [SerializeField] string predicate;
+        {   
+            [SerializeField] EPredicate predicate;
             [SerializeField] string[] parameters;
             [SerializeField] bool negate = false;
 
@@ -52,9 +52,12 @@ namespace RPG.Core
             {
                 foreach (var evaluator in evaluators)
                 {
-                    bool? result = evaluator.Evalueate(predicate, parameters);
+                    bool? result = evaluator.Evaluate(predicate, parameters);
 
-                    if (result == null) continue;
+                    if (result == null)
+                    {
+                        continue;
+                    }
 
                     if (result == negate) return false;
                 }

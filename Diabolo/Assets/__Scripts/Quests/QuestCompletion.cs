@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace RPG.Quests
 {
+    [DisallowMultipleComponent]
     public class QuestCompletion : MonoBehaviour
     {
         [SerializeField] QuestSO quest;
