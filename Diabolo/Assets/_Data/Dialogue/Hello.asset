@@ -19,6 +19,7 @@ MonoBehaviour:
   - 9af76bf1-825e-4e99-ab74-a9cc3b25585a
   - 84468dec-00a4-4231-8b7a-4b5c042d9f11
   - 13ce1559-6a28-4c6b-bed0-e3619e898b75
+  - 50323556-17b4-4862-ac7b-e19f17b24e7e
   rect:
     serializedVersion: 2
     x: 322
@@ -164,6 +165,31 @@ MonoBehaviour:
   onExitAction: GiveQuest
   condition:
     and: []
+--- !u!114 &-1684074238860414544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: a9a8b634-5227-471b-9ea0-88e96a2648cb
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 808
+    y: 468
+    width: 200
+    height: 100
+  onEnterAction: 
+  onExitAction: 
+  condition:
+    and: []
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +216,8 @@ MonoBehaviour:
   - {fileID: -4337105181767722451}
   - {fileID: 2134112003458789146}
   - {fileID: 652959577166082281}
+  - {fileID: 1678136519498396286}
+  - {fileID: -1684074238860414544}
   newNodeOffset: {x: 250, y: 0}
 --- !u!114 &645987054089403497
 MonoBehaviour:
@@ -241,6 +269,32 @@ MonoBehaviour:
     height: 100
   onEnterAction: 
   onExitAction: FindSword
+  condition:
+    and: []
+--- !u!114 &1678136519498396286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4917ef01ca37b3845a68fe37402c1c57, type: 3}
+  m_Name: 50323556-17b4-4862-ac7b-e19f17b24e7e
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: "Poka\u017C co masz na sprzeda\u017C."
+  children:
+  - a9a8b634-5227-471b-9ea0-88e96a2648cb
+  rect:
+    serializedVersion: 2
+    x: 558
+    y: 468
+    width: 200
+    height: 100
+  onEnterAction: Shop
+  onExitAction: 
   condition:
     and: []
 --- !u!114 &2134112003458789146
