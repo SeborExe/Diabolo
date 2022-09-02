@@ -19,6 +19,7 @@ namespace RPG.UI.Inventory
         [SerializeField] Pickup pickup = null;
         [Tooltip("If true, multiple items of this type can be stacked in the same inventory slot.")]
         [SerializeField] bool stackable = false;
+        [SerializeField] float price;
 
         static Dictionary<string, InventoryItem> itemLookupCache;
 
@@ -75,6 +76,11 @@ namespace RPG.UI.Inventory
         public string GetDescription()
         {
             return description;
+        }
+
+        public float GetPrice()
+        {
+            return price;
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()
