@@ -29,7 +29,7 @@ namespace RPG.UI.Shops
             itemName.text = item.GetName();
             itemAvailability.text = item.GetAvailability();
             itemPrice.text = $"${item.GetPrice():N2}";
-            itemQuantity.text = item.GetQuantityInTransaction();
+            itemQuantity.text = item.GetQuantityInTransaction().ToString();
         }
 
         private void OnEnable()

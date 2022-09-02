@@ -47,9 +47,9 @@ namespace RPG.Shops
             return item;
         }
 
-        public string GetQuantityInTransaction()
+        public int GetQuantityInTransaction()
         {
-            return quantityInTransaction.ToString();
+            return quantityInTransaction;
         }
     }
 }

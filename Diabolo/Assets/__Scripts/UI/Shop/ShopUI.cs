@@ -16,6 +16,7 @@ namespace RPG.UI.Shops
         [SerializeField] Button confirmBuyButton;
         [SerializeField] Transform contentContainer;
         [SerializeField] RowUI rowPrefab;
+        [SerializeField] TMP_Text totalText;
 
         GameObject player;
         Shopper shopper = null;
@@ -71,6 +72,8 @@ namespace RPG.UI.Shops
                 RowUI row = Instantiate(rowPrefab, contentContainer);
                 row.SetUp(currentShop, item);
             }
+
+            totalText.text = $"Total: ${currentShop.TransactionTotal():N2}";
         }
 
         public void Close()

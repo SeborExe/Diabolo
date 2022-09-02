@@ -22,6 +22,7 @@ namespace RPG.Consumable
                 if (particleEffect != null)
                 {
                     GameObject particle = Instantiate(particleEffect, user.transform);
+                    Destroy(particle, 2f);
                 }
             }
         }
