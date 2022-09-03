@@ -21,11 +21,13 @@ namespace RPG.UI.Shops
         GameObject player;
         Shopper shopper = null;
         Shop currentShop = null;
+        Color originalTotalTextColor;
 
         private void OnEnable()
         {
             player = GameObject.FindGameObjectWithTag("Player");
             shopper = player.GetComponent<Shopper>();
+            originalTotalTextColor = totalText.color;
 
             quitButton.onClick.AddListener(Close);
             confirmBuyButton.onClick.AddListener(ConfirmTransaction);
@@ -74,6 +76,8 @@ namespace RPG.UI.Shops
             }
 
             totalText.text = $"Total: ${currentShop.TransactionTotal():N2}";
+            totalText.color = currentShop.HasSufficientFund() ? originalTotalTextColor : Color.red;
+            confirmBuyButton.interactable = currentShop.CanTransact();
         }
 
         public void Close()
