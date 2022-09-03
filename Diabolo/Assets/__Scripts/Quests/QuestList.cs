@@ -46,6 +46,11 @@ namespace RPG.Quests
             return GetQuestStatus(quest) != null;
         }
 
+        public bool HasQuest(string quest)
+        {
+            return GetQuestStatus(QuestSO.GetByName(quest)) != null;
+        }
+
         private QuestStatus GetQuestStatus(QuestSO quest)
         {
             foreach (QuestStatus status in statuses)

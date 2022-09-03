@@ -10401,6 +10401,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopName: Sklep Wielkiego Leonarda
+  sellingDiscount: 80
   stockConfig:
   - item: {fileID: 11400000, guid: ae162a6b360cdc748ae7d19b81d9beaf, type: 2}
     initialStock: 35

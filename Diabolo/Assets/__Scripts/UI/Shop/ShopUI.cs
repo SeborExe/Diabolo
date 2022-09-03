@@ -14,6 +14,7 @@ namespace RPG.UI.Shops
         [SerializeField] TMP_Text shopName;
         [SerializeField] Button quitButton;
         [SerializeField] Button confirmBuyButton;
+        [SerializeField] Button swithcButton;
         [SerializeField] Transform contentContainer;
         [SerializeField] RowUI rowPrefab;
         [SerializeField] TMP_Text totalText;
@@ -31,6 +32,7 @@ namespace RPG.UI.Shops
 
             quitButton.onClick.AddListener(Close);
             confirmBuyButton.onClick.AddListener(ConfirmTransaction);
+            swithcButton.onClick.AddListener(SwitchMode);
 
             ShopChanged();
 
@@ -44,6 +46,7 @@ namespace RPG.UI.Shops
             shopper.OnActiveShopChange -= ShopChanged;
             quitButton.onClick.RemoveListener(Close);
             confirmBuyButton.onClick.RemoveListener(ConfirmTransaction);
+            swithcButton.onClick.RemoveListener(SwitchMode);
         }
 
         private void ShopChanged()
@@ -78,6 +81,19 @@ namespace RPG.UI.Shops
             totalText.text = $"Total: ${currentShop.TransactionTotal():N2}";
             totalText.color = currentShop.HasSufficientFund() ? originalTotalTextColor : Color.red;
             confirmBuyButton.interactable = currentShop.CanTransact();
+            TMP_Text swithcText = swithcButton.GetComponentInChildren<TMP_Text>();
+            TMP_Text confirmText = confirmBuyButton.GetComponentInChildren<TMP_Text>();
+
+            if (currentShop.IsBuyingMode())
+            {
+                swithcText.text = "Switch To Selling";
+                confirmText.text = "Buy";
+            }
+            else
+            {
+                swithcText.text = "Switch To Buying";
+                confirmText.text = "Sell";
+            }
         }
 
         public void Close()
@@ -88,6 +104,11 @@ namespace RPG.UI.Shops
         public void ConfirmTransaction()
         {
             currentShop.ConfirmTransation();
+        }
+
+        private void SwitchMode()
+        {
+            currentShop.SelectMode(!currentShop.IsBuyingMode());
         }
     }
 }
