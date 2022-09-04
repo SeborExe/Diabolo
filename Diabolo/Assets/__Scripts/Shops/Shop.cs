@@ -15,6 +15,7 @@ namespace RPG.Shops
         [SerializeField] StockItemConfig[] stockConfig;
 
         Shopper currentShopper = null;
+        ItemCategory filter = ItemCategory.None;
         bool isBuyingMode = true;
 
         Dictionary<InventoryItem, int> transaction = new Dictionary<InventoryItem, int>();
@@ -45,7 +46,14 @@ namespace RPG.Shops
 
         public IEnumerable<ShopItem> GetFilteredItems() 
         {
-            return GetAllItems();
+            foreach (ShopItem shopItem in GetAllItems())
+            {
+                InventoryItem item = shopItem.GetInventoryItem();
+                if (filter == ItemCategory.None || item.GetCategory() == filter)
+                {
+                    yield return shopItem;
+                }
+            }
         }
 
         public IEnumerable<ShopItem> GetAllItems()
@@ -97,9 +105,16 @@ namespace RPG.Shops
             return config.item.GetPrice() * (sellingDiscount / 100);
         }
 
-        public void SelectFilter(ItemCategory category) { }
+        public void SelectFilter(ItemCategory category) 
+        {
+            filter = category;
+            OnChange?.Invoke();
+        }
 
-        public ItemCategory GetFilter() { return ItemCategory.None; }
+        public ItemCategory GetFilter() 
+        {
+            return filter; 
+        }
 
         public void SelectMode(bool isBuying) 
         {
