@@ -15,5 +15,11 @@ namespace RPG.Quests
             QuestList questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
             questList.CompleteObjective(quest, objective);
         }
+
+        public void CompleteObjective(QuestSO questToComplete, string objectiveToComplete)
+        {
+            QuestList questList = GameObject.FindGameObjectWithTag("Player").GetComponent<QuestList>();
+            questList.CompleteObjective(questToComplete, objectiveToComplete);
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace RPG.Consumable
     public class HealPotion : ActionItem
     {
         [SerializeField] float amountToHeal = 50f;
+        [SerializeField] GameObject particleEffect;
 
         public override void Use(GameObject user)
         {
@@ -17,6 +18,12 @@ namespace RPG.Consumable
             if (health != null)
             {
                 health.Heal(amountToHeal);
+
+                if (particleEffect != null)
+                {
+                    GameObject particle = Instantiate(particleEffect, user.transform);
+                    Destroy(particle, 2f);
+                }
             }
         }
     }

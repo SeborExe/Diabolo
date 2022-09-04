@@ -1,4 +1,5 @@
 using RPG.Attributes;
+using RPG.Control;
 using RPG.Stats;
 using System.Collections;
 using System.Collections.Generic;
@@ -51,6 +52,8 @@ namespace RPG.UI.Inventory
 
         public void RandomDrop()
         {
+            if (health.GetComponent<PlayerController>() != null) return;
+
             var drops = dropLibrary.GetRandomDrops(baseStats.GetLevel());
 
             foreach (var drop in drops)
