@@ -14,6 +14,9 @@ namespace RPG.Abilities.Targeting
         private Vector2 cursorHotSpot;
         [SerializeField] LayerMask layerMask;
         [SerializeField] float areaAffectRadius;
+        [SerializeField] Transform targetingPrefab;
+
+        Transform targetingPrefabInstance = null;
 
         public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> finished)
         {
@@ -24,31 +27,47 @@ namespace RPG.Abilities.Targeting
         private IEnumerator Targeting(GameObject user, PlayerController playerController, Action<IEnumerable<GameObject>> finished)
         {
             playerController.enabled = false;
+
+            if (targetingPrefabInstance == null)
+            {
+                targetingPrefabInstance = Instantiate(targetingPrefab);
+            }
+            else
+            {
+                targetingPrefabInstance.gameObject.SetActive(true);
+            }
+
+            targetingPrefabInstance.localScale = new Vector3(areaAffectRadius * 2f, 1f, areaAffectRadius * 2f);
+
             while (true)
             {
                 Cursor.SetCursor(cursorTexture, cursorHotSpot, CursorMode.Auto);
-                if (Input.GetMouseButton(0))
+
+                RaycastHit raycasyHit;
+                if (Physics.Raycast(PlayerController.GetMouseRay(), out raycasyHit, 1000, layerMask))
                 {
-                    yield return new WaitWhile(() => Input.GetMouseButton(0));
-                    playerController.enabled = true;
-                    finished(GetGameObjectsInRadius());
-                    yield break;
+                    targetingPrefabInstance.position = raycasyHit.point;
+
+                    if (Input.GetMouseButton(0))
+                    {
+                        yield return new WaitWhile(() => Input.GetMouseButton(0));
+                        playerController.enabled = true;
+                        targetingPrefabInstance.gameObject.SetActive(false);
+                        finished(GetGameObjectsInRadius(raycasyHit.point));
+                        yield break;
+                    }
                 }
 
                 yield return null;
             }
         }
 
-        private IEnumerable<GameObject> GetGameObjectsInRadius()
+        private IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)
         {
-            RaycastHit raycasyHit;
-            if (Physics.Raycast(PlayerController.GetMouseRay(), out raycasyHit, 1000, layerMask))
+            RaycastHit[] hits = Physics.SphereCastAll(point, areaAffectRadius, Vector3.up, 0);
+            foreach (RaycastHit hit in hits)
             {
-                RaycastHit[] hits = Physics.SphereCastAll(raycasyHit.point, areaAffectRadius, Vector3.up, 0);
-                foreach (RaycastHit hit in hits)
-                {
-                    yield return hit.collider.gameObject;
-                }
+                yield return hit.collider.gameObject;
             }
         }
     }
