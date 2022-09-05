@@ -7,7 +7,7 @@ using System;
 
 namespace RPG.Abilities.Targeting
 {
-    [CreateAssetMenu(fileName = "DelayedClickStrategy", menuName = "Abilities/Targeting/Delayed Targeting")]
+    [CreateAssetMenu(fileName = "DelayedClickStrategy_", menuName = "Abilities/Targeting/Delayed Targeting")]
     public class DelayedClickTargeting : TargetingStrategy
     {
         [SerializeField] Texture2D cursorTexture;
@@ -18,13 +18,13 @@ namespace RPG.Abilities.Targeting
 
         Transform targetingPrefabInstance = null;
 
-        public override void StartTargeting(GameObject user, Action<IEnumerable<GameObject>> finished)
+        public override void StartTargeting(AbilityData data, Action finished)
         {
-            PlayerController playerController = user.GetComponent<PlayerController>();
-            playerController.StartCoroutine(Targeting(user, playerController, finished));
+            PlayerController playerController = data.GetUser().GetComponent<PlayerController>();
+            playerController.StartCoroutine(Targeting(data, playerController, finished));
         }
 
-        private IEnumerator Targeting(GameObject user, PlayerController playerController, Action<IEnumerable<GameObject>> finished)
+        private IEnumerator Targeting(AbilityData data, PlayerController playerController, Action finished)
         {
             playerController.enabled = false;
 
@@ -53,7 +53,9 @@ namespace RPG.Abilities.Targeting
                         yield return new WaitWhile(() => Input.GetMouseButton(0));
                         playerController.enabled = true;
                         targetingPrefabInstance.gameObject.SetActive(false);
-                        finished(GetGameObjectsInRadius(raycasyHit.point));
+                        data.SetTargetedPoint(raycasyHit.point);
+                        data.SetTargets(GetGameObjectsInRadius(raycasyHit.point));
+                        finished();
                         yield break;
                     }
                 }

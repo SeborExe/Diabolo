@@ -5860,6 +5860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Core
       objectReference: {fileID: 0}
+    - target: {fileID: 3569001837081301934, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
+      propertyPath: levelUpParticles
+      value: 
+      objectReference: {fileID: 1624714524768532, guid: c9eb15264aa6c4348b00d5b9b3daab2a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73341f15de0bb644dac3d43fbb45b5fe, type: 3}
 --- !u!82 &4993021935974776437

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 542a6ff3bb05b844da4faaf20021acc9, type: 3}
-  m_Name: Mega Splash
+  m_Name: Dark Crystal Explosion
   m_EditorClassIdentifier: 
   itemID: 3d10e900-6c29-4eb7-8738-3afe202c09e2
-  displayName: Mega Splash
+  displayName: Dark Crystal Explosion
   description: Deal MEGA damage
   icon: {fileID: 21300000, guid: 5485e2f56028a3c4cb54f5caa167377e, type: 3}
   pickup: {fileID: 0}
@@ -25,3 +25,6 @@ MonoBehaviour:
   targetingStrategy: {fileID: 11400000, guid: 907d961fa80185a4b884d7684d12d69c, type: 2}
   filterStrategies:
   - {fileID: 11400000, guid: 58c473b57b164584aa83f56cc0f4bc2f, type: 2}
+  effectStrategies:
+  - {fileID: 11400000, guid: 90f23336380d0d2419033d731c821d15, type: 2}
+  - {fileID: 11400000, guid: e3fe86ab79c722e4e80a3d7e4fa0778a, type: 2}
