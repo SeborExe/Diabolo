@@ -14,6 +14,7 @@ namespace RPG.Control
         Mover mover;
         Fighter fighter;
         Health health;
+        ActionStore actionStore;
 
         [System.Serializable]
         struct CursorMapping
@@ -29,12 +30,14 @@ namespace RPG.Control
 
         bool movementStarted = false;
         bool isDraggingUI = false;
+        int numberOfAbilities = 6;
 
         private void Awake()
         {
             mover = GetComponent<Mover>();
             fighter = GetComponent<Fighter>();
             health = GetComponent<Health>();
+            actionStore = GetComponent<ActionStore>();
         }
 
         private void Update()
@@ -103,7 +106,7 @@ namespace RPG.Control
             return true;
         }
 
-        private static Ray GetMouseRay()
+        public static Ray GetMouseRay()
         {
             return Camera.main.ScreenPointToRay(Input.mousePosition);
         }
@@ -174,33 +177,14 @@ namespace RPG.Control
 
         private void CheckSpecialAbilityKeys()
         {
-            ActionStore actionStore = GetComponent<ActionStore>();
-
-            if (Input.GetKeyDown(KeyCode.Alpha1))
+            for (int i = 0; i < numberOfAbilities; i++)
             {
-                actionStore.Use(0, gameObject);
+                if (Input.GetKeyDown(KeyCode.Alpha1 + i))
+                {
+                    actionStore.Use(i, gameObject);
+                }
             }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                actionStore.Use(1, gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                actionStore.Use(2, gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha4))
-            {
-                actionStore.Use(3, gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                actionStore.Use(4, gameObject);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                actionStore.Use(5, gameObject);
-            }
-        }
+        }   
 
         RaycastHit[] RaycastAllSorted()
         {

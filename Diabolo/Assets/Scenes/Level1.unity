@@ -2012,7 +2012,7 @@ GameObject:
   - component: {fileID: 699054330}
   - component: {fileID: 699054329}
   - component: {fileID: 699054328}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10414,6 +10414,10 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 419726ef0962a1042b9f6baa53855765, type: 2}
     initialStock: 20
     buyingDiscountPercentage: 90
+    levelToUnlock: 0
+  - item: {fileID: 11400000, guid: a3aca4da998f89b45aec16277266a6b4, type: 2}
+    initialStock: 2
+    buyingDiscountPercentage: 0
     levelToUnlock: 0
 --- !u!114 &8372309617732714635
 MonoBehaviour:
