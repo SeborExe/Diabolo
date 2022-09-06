@@ -10,6 +10,7 @@ namespace RPG.Abilities
         GameObject user;
         Vector3 targetedPoint;
         IEnumerable<GameObject> targets;
+        float timeToCast;
 
         public AbilityData(GameObject user)
         {
@@ -44,6 +45,16 @@ namespace RPG.Abilities
         public void StartCoroutine(IEnumerator coroutine)
         {
             user.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);
+        }
+
+        public void SetTimeToCast(float timeToCast)
+        {
+            this.timeToCast = timeToCast;
+        }
+
+        public float GetTimeToCast()
+        {
+            return timeToCast;
         }
     }
 }

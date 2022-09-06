@@ -6,7 +6,7 @@ using System;
 
 namespace RPG.Abilities.Effects
 {
-    [CreateAssetMenu(fileName = "Effect_", menuName = "Abilities/Effects/Spawn Efect Prefab")]
+    [CreateAssetMenu(fileName = "SpawnTargetEffect_", menuName = "Abilities/Effects/Spawn Efect Prefab")]
     public class SpawnTargetPrefabEffect : EffectStrategy
     {
         [SerializeField] Transform effectPrefab;
@@ -19,6 +19,8 @@ namespace RPG.Abilities.Effects
 
         private IEnumerator Effect(AbilityData data, Action finished)
         {
+            yield return new WaitForSeconds(data.GetTimeToCast());
+
             Transform instance = Instantiate(effectPrefab);
             instance.position = data.GetTargetedPoint();
             if (destroyDelay > 0)
