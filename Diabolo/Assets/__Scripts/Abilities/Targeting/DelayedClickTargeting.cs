@@ -39,9 +39,11 @@ namespace RPG.Abilities.Targeting
 
             targetingPrefabInstance.localScale = new Vector3(areaAffectRadius * 2f, 1f, areaAffectRadius * 2f);
 
-            while (true)
+            while (!data.IsCancelled())
             {
                 Cursor.SetCursor(cursorTexture, cursorHotSpot, CursorMode.Auto);
+
+                if (ButtonToCancelHasBeenPressed()) data.Cancel();
 
                 RaycastHit raycasyHit;
                 if (Physics.Raycast(PlayerController.GetMouseRay(), out raycasyHit, 1000, layerMask))
@@ -51,17 +53,26 @@ namespace RPG.Abilities.Targeting
                     if (Input.GetMouseButton(0))
                     {
                         yield return new WaitWhile(() => Input.GetMouseButton(0));
-                        playerController.enabled = true;
-                        targetingPrefabInstance.gameObject.SetActive(false);
                         data.SetTargetedPoint(raycasyHit.point);
                         data.SetTargets(GetGameObjectsInRadius(raycasyHit.point));
-                        finished();
-                        yield break;
+                        break;
                     }
                 }
 
                 yield return null;
             }
+
+            targetingPrefabInstance.gameObject.SetActive(false);
+            playerController.enabled = true;
+            finished();
+        }
+
+        private bool ButtonToCancelHasBeenPressed()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape) ||
+                Input.GetMouseButtonDown(1)) return true;
+
+            return false;
         }
 
         private IEnumerable<GameObject> GetGameObjectsInRadius(Vector3 point)

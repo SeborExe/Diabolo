@@ -20,26 +20,18 @@ namespace RPG.Abilities.Effects
                 Health health = target.GetComponent<Health>();
                 if (health != null)
                 {
-                    data.StartCoroutine(DealDamage(data, health));
+                    if (healthChange < 0)
+                    {
+                        health.TakeDamage(data.GetUser(), -healthChange);
+                    }
+                    else
+                    {
+                        health.Heal(healthChange);
+                    }
                 }
             }
 
             finished();
-        }
-
-        IEnumerator DealDamage(AbilityData data, Health health)
-        {
-            Debug.Log("Bleeee");
-            yield return new WaitForSeconds(data.GetTimeToCast());
-
-            if (healthChange < 0)
-            {
-                health.TakeDamage(data.GetUser(), -healthChange);
-            }
-            else
-            {
-                health.Heal(healthChange);
-            }
         }
     }
 }

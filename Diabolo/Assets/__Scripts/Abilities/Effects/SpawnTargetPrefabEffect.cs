@@ -19,8 +19,6 @@ namespace RPG.Abilities.Effects
 
         private IEnumerator Effect(AbilityData data, Action finished)
         {
-            yield return new WaitForSeconds(data.GetTimeToCast());
-
             Transform instance = Instantiate(effectPrefab);
             instance.position = data.GetTargetedPoint();
             if (destroyDelay > 0)

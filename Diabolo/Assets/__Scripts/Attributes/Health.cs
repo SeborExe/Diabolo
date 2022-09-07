@@ -5,6 +5,8 @@ using RPG.Core;
 using RPG.Utils;
 using UnityEngine.Events;
 using System;
+using System.Collections.Generic;
+using System.Collections;
 
 namespace RPG.Attributes
 {
@@ -104,6 +106,20 @@ namespace RPG.Attributes
         public void Heal(float amount)
         {
             healthPoints.value = Mathf.Min(healthPoints.value + amount, GetMaxHealthPoints()); 
+        }
+
+        public void StartHealCoroutine(float amoutToHeal, int perioid, float timeBetweenHeal)
+        {
+            StartCoroutine(HealRoutine(amoutToHeal, perioid, timeBetweenHeal));
+        }
+
+        private IEnumerator HealRoutine(float amoutToHeal, int perioid, float timeBetweenHeal)
+        {
+            for (int i = 0; i < perioid; i++)
+            {
+                Heal(amoutToHeal);
+                yield return new WaitForSeconds(timeBetweenHeal);
+            }
         }
 
         public float GetHealthPoints()

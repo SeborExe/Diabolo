@@ -1,3 +1,4 @@
+using RPG.Core;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,12 +6,12 @@ using UnityEngine;
 
 namespace RPG.Abilities
 {
-    public class AbilityData
+    public class AbilityData : IAction
     {
         GameObject user;
         Vector3 targetedPoint;
         IEnumerable<GameObject> targets;
-        float timeToCast;
+        bool cancelled = false;
 
         public AbilityData(GameObject user)
         {
@@ -47,14 +48,14 @@ namespace RPG.Abilities
             user.GetComponent<MonoBehaviour>().StartCoroutine(coroutine);
         }
 
-        public void SetTimeToCast(float timeToCast)
+        public void Cancel()
         {
-            this.timeToCast = timeToCast;
+            cancelled = true;
         }
 
-        public float GetTimeToCast()
+        public bool IsCancelled()
         {
-            return timeToCast;
+            return cancelled;
         }
     }
 }

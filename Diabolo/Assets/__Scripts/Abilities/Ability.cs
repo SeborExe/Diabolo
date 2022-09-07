@@ -1,4 +1,5 @@
 using RPG.Attributes;
+using RPG.Core;
 using RPG.UI.Inventory;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,6 @@ namespace RPG.Abilities
         [SerializeField] EffectStrategy[] effectStrategies;
         [SerializeField] float cooldownTime = 5f;
         [SerializeField] float manaCost = 20f;
-        [SerializeField] float timeToCast = 1f;
 
         public override void Use(GameObject user)
         {
@@ -29,15 +29,18 @@ namespace RPG.Abilities
 
             AbilityData data = new AbilityData(user);
 
+            ActionScheduler actionScheduler = user.GetComponent<ActionScheduler>();
+            actionScheduler.StartAction(data);
+
             targetingStrategy.StartTargeting(data, () => TargetAquired(data));
         }
 
         private void TargetAquired(AbilityData data)
         {
+            if (data.IsCancelled()) return;
+
             Mana mana = data.GetUser().GetComponent<Mana>();
             if (!mana.UseMana(manaCost)) return;
-
-            data.SetTimeToCast(timeToCast);
 
             CooldownStore cooldownStore = data.GetUser().GetComponent<CooldownStore>();
             cooldownStore.StartCooldown(this, cooldownTime);

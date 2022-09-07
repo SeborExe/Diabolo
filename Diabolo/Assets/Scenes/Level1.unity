@@ -10196,6 +10196,10 @@ MonoBehaviour:
     initialStock: 2
     buyingDiscountPercentage: 0
     levelToUnlock: 0
+  - item: {fileID: 11400000, guid: decb44e0a4aa4bc4fa679f34d3bd96c5, type: 2}
+    initialStock: 1
+    buyingDiscountPercentage: 0
+    levelToUnlock: 0
 --- !u!114 &8372309617732714635
 MonoBehaviour:
   m_ObjectHideFlags: 0
