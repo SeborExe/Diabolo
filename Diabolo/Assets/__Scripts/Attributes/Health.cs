@@ -65,7 +65,7 @@ namespace RPG.Attributes
 
         private void OnEnable()
         {
-            baseStats.onLevelUp += RegenerateHealth;
+            baseStats.OnLevelUp += RegenerateHealth;
 
             OnDie += PlayDieClip;
             OnTakeDamage += PlayTakeDamageClip;
@@ -73,7 +73,7 @@ namespace RPG.Attributes
 
         private void OnDisable()
         {
-            baseStats.onLevelUp -= RegenerateHealth;
+            baseStats.OnLevelUp -= RegenerateHealth;
 
             OnDie -= PlayDieClip;
             OnTakeDamage -= PlayTakeDamageClip;

@@ -16,7 +16,7 @@ namespace RPG.Stats
 
         Experience experience;
 
-        public event Action onLevelUp;
+        public event Action OnLevelUp;
 
         LazyValue<int> currentLevel;
 
@@ -40,7 +40,7 @@ namespace RPG.Stats
                 experience.onExperienceGained += UpdateLevel;
             }
 
-            onLevelUp += LevelUpEffect;
+            OnLevelUp += LevelUpEffect;
         }
 
         private void OnDisable()
@@ -50,7 +50,7 @@ namespace RPG.Stats
                 experience.onExperienceGained -= UpdateLevel;
             }
 
-            onLevelUp -= LevelUpEffect;
+            OnLevelUp -= LevelUpEffect;
         }
 
         private void UpdateLevel()
@@ -59,7 +59,7 @@ namespace RPG.Stats
             if (newLevel > currentLevel.value)
             {
                 currentLevel.value = newLevel;
-                onLevelUp();
+                OnLevelUp();
             }
         }
 

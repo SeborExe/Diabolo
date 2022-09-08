@@ -11,6 +11,8 @@ namespace RPG.Stats
         ExperienceToLevelUp,
         Damage,
         Mana,
-        ManaRegeneration
+        ManaRegeneration,
+        TotalTraitPoints,
+        BuyingDiscountPercentage
     }
 }
