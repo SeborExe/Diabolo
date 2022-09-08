@@ -1,3 +1,4 @@
+using RPG.Stats;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,22 +13,30 @@ namespace RPG.UI.Stats
         [SerializeField] Button commitButton;
 
         TraitStore traitStore;
+        GameObject player;
 
         private void Awake()
         {
-            traitStore = GameObject.FindGameObjectWithTag("Player").GetComponent<TraitStore>();
+            player = GameObject.FindGameObjectWithTag("Player");
+            traitStore = player.GetComponent<TraitStore>();
         }
 
         private void OnEnable()
         {
             commitButton.onClick.AddListener(traitStore.Commit);
             commitButton.onClick.AddListener(RefreshUI);
+
+            if (player != null)
+                player.GetComponent<BaseStats>().OnLevelUp += RefreshUI;
         }
 
         private void OnDisable()
         {
             commitButton.onClick.RemoveListener(traitStore.Commit);
             commitButton.onClick.RemoveListener(RefreshUI);
+
+            if (player != null)
+                player.GetComponent<BaseStats>().OnLevelUp -= RefreshUI;
         }
 
         public void RefreshUI()
