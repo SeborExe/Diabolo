@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c40a353fe7bb4bf41917b1a1b3231668, type: 3}
+  m_Name: DarkCrystalExplosionTargeting
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 2a2b4775272c890448e1bd6239fdfc84, type: 3}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  areaAffectRadius: 2.5
+  targetingPrefab: {fileID: 5581034166711924756, guid: b6fb5d3097557d643b0eb6009aef27f1, type: 3}

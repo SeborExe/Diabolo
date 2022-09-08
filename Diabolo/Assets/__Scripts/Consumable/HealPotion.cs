@@ -10,14 +10,18 @@ namespace RPG.Consumable
     public class HealPotion : ActionItem
     {
         [SerializeField] float amountToHeal = 50f;
+        [SerializeField, Min(1)] int perioid = 5;
+        [SerializeField] float timeBetweenHeal = 1f;
         [SerializeField] GameObject particleEffect;
 
         public override void Use(GameObject user)
         {
+            float heal = amountToHeal / perioid;
+
             Health health = user.GetComponent<Health>();
             if (health != null)
             {
-                health.Heal(amountToHeal);
+                health.StartHealCoroutine(heal, perioid, timeBetweenHeal);
 
                 if (particleEffect != null)
                 {
@@ -26,5 +30,7 @@ namespace RPG.Consumable
                 }
             }
         }
+
+
     }
 }

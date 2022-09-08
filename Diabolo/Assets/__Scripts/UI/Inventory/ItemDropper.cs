@@ -13,11 +13,13 @@ namespace RPG.UI.Inventory
 
         public void DropItem(InventoryItem item, int number)
         {
+            if (item.IsAbility()) return;
             SpawnPickup(item, GetDropLocation(), number);
         }
 
         public void DropItem(InventoryItem item)
         {
+            if (item.IsAbility()) return;
             SpawnPickup(item, GetDropLocation(), 1);
         }
 

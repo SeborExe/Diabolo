@@ -1,7 +1,9 @@
+using RPG.Abilities;
 using RPG.UI.Inventory.Utils;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RPG.UI.Inventory
 {
@@ -9,13 +11,23 @@ namespace RPG.UI.Inventory
     {
         [SerializeField] InventoryItemIcon icon = null;
         [SerializeField] int index = 0;
+        [SerializeField] Image cooldownOverlay = null;
 
         ActionStore store;
+        CooldownStore cooldownStore;
 
         private void Awake()
         {
-            store = GameObject.FindGameObjectWithTag("Player").GetComponent<ActionStore>();
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            store = player.GetComponent<ActionStore>();
+            cooldownStore = player.GetComponent<CooldownStore>();
             store.storeUpdated += UpdateIcon;
+        }
+
+        private void Update()
+        {
+            if (cooldownOverlay != null)
+                cooldownOverlay.fillAmount = cooldownStore.GetFractionRemaining(GetItem());
         }
 
         public void AddItems(InventoryItem item, int number)

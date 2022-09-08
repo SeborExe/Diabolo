@@ -21,6 +21,7 @@ namespace RPG.UI.Inventory
         [SerializeField] bool stackable = false;
         [SerializeField] float price;
         [SerializeField] ItemCategory category = ItemCategory.None;
+        [SerializeField] bool isAbility = false;
 
         static Dictionary<string, InventoryItem> itemLookupCache;
 
@@ -87,6 +88,11 @@ namespace RPG.UI.Inventory
         public ItemCategory GetCategory()
         {
             return category;
+        }
+
+        public bool IsAbility()
+        {
+            return isAbility;
         }
 
         void ISerializationCallbackReceiver.OnBeforeSerialize()

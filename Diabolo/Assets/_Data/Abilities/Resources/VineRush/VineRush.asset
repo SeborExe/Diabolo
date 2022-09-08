@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542a6ff3bb05b844da4faaf20021acc9, type: 3}
+  m_Name: VineRush
+  m_EditorClassIdentifier: 
+  itemID: 9f1ce9d6-1f6c-4d6a-8da2-bb06a85dbaf0
+  displayName: VineRush
+  description: Launch wild vines that surround enemies, dealing high damage.
+  icon: {fileID: 21300000, guid: 9415af11d73bb804c8d24343e1351132, type: 3}
+  pickup: {fileID: 0}
+  stackable: 0
+  price: 5
+  category: 5
+  isAbility: 1
+  consumable: 0
+  targetingStrategy: {fileID: 11400000, guid: 6e221daae56ae304f934bf15f87b8ab3, type: 2}
+  filterStrategies: []
+  effectStrategies:
+  - {fileID: 11400000, guid: a032871f1180e4541ae99752c4dc639d, type: 2}
+  - {fileID: 11400000, guid: 1d36a11fa42405f48adcdca653ec1cc7, type: 2}
+  - {fileID: 11400000, guid: ba1e62f5348268a4c8f9489e7f02b8c9, type: 2}
+  cooldownTime: 20
+  manaCost: 45

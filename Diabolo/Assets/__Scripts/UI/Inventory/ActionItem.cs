@@ -12,7 +12,7 @@ namespace RPG.UI.Inventory
 
         public virtual void Use(GameObject user)
         {
-            Debug.Log("Using action: " + this);
+            
         }
 
         public bool isConsumable()

@@ -181,6 +181,18 @@ namespace RPG.Combat
             return target;
         }
 
+        public Transform GetHandTransform(bool isRightHand)
+        {
+            if (isRightHand)
+            {
+                return rightHandTransform;
+            }
+            else
+            {
+                return leftHandTransform;
+            }
+        }
+
         public object CaptureState()
         {
             return currentWeaponConfig.name;
