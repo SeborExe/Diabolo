@@ -13,6 +13,7 @@ namespace RPG.UI.MainMenu
         [Header("Views")]
         [SerializeField] GameObject mainMenu;
         [SerializeField] GameObject newGame;
+        [SerializeField] GameObject loadGame;
 
         [Header("Buttons")]
         [SerializeField] Button continueButton;
@@ -37,6 +38,7 @@ namespace RPG.UI.MainMenu
         {
             continueButton.onClick.AddListener(ContinueGame);
             newGameButton.onClick.AddListener(() => uISwitcher.SwitchTo(newGame));
+            loadGameButton.onClick.AddListener(() => uISwitcher.SwitchTo(loadGame));
             startNewGameButton.onClick.AddListener(NewGame);
 
             foreach (Button button in backToMainMenuButtons)
@@ -49,6 +51,7 @@ namespace RPG.UI.MainMenu
         {
             continueButton.onClick.RemoveListener(ContinueGame);
             newGameButton.onClick.RemoveAllListeners();
+            loadGameButton.onClick.RemoveAllListeners();
             startNewGameButton.onClick.RemoveListener(NewGame);
 
             foreach (Button button in backToMainMenuButtons)
