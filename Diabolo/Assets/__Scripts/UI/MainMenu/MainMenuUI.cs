@@ -40,6 +40,7 @@ namespace RPG.UI.MainMenu
             newGameButton.onClick.AddListener(() => uISwitcher.SwitchTo(newGame));
             loadGameButton.onClick.AddListener(() => uISwitcher.SwitchTo(loadGame));
             startNewGameButton.onClick.AddListener(NewGame);
+            quitButton.onClick.AddListener(QuitGame);
 
             foreach (Button button in backToMainMenuButtons)
             {
@@ -53,6 +54,7 @@ namespace RPG.UI.MainMenu
             newGameButton.onClick.RemoveAllListeners();
             loadGameButton.onClick.RemoveAllListeners();
             startNewGameButton.onClick.RemoveListener(NewGame);
+            quitButton.onClick.RemoveListener(QuitGame);
 
             foreach (Button button in backToMainMenuButtons)
             {
@@ -73,6 +75,11 @@ namespace RPG.UI.MainMenu
         public void NewGame()
         {
             savingWrapper.value.NewGame(gameNameInputField.text);
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
         }
     }
 }

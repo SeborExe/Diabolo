@@ -14,12 +14,14 @@ namespace RPG.UI.MainMenu
 
         private void OnEnable()
         {
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            if (savingWrapper == null) return;
+
             foreach (Transform child in contentRoot)
             {
                 Destroy(child.gameObject);
             }
 
-            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
             foreach (string save in savingWrapper.ListSaves())
             {
                 GameObject saveInstance = Instantiate(saveButtonPrefab, contentRoot);

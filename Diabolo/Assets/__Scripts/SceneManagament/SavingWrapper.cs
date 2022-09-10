@@ -35,6 +35,11 @@ namespace RPG.SceneManagement
             ContinueGame();
         }
 
+        public void LoadMenu()
+        {
+            StartCoroutine(LoadMenuScene());
+        }
+
         private void SetCurrentSave(string saveFile)
         {
             PlayerPrefs.SetString(currentSaveFile, saveFile);
@@ -60,6 +65,15 @@ namespace RPG.SceneManagement
 
             yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(1);
+            yield return fader.FadeIn(fadeInTime);
+        }
+
+        IEnumerator LoadMenuScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return fader.FadeOut(fadeOutTime);
+            yield return SceneManager.LoadSceneAsync(0);
             yield return fader.FadeIn(fadeInTime);
         }
 
