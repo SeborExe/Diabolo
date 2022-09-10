@@ -33,6 +33,7 @@ namespace RPG.SceneManagement
         {
             SetCurrentSave(saveName);
             ContinueGame();
+            Time.timeScale = 1;
         }
 
         public void LoadMenu()

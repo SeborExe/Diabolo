@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
+using RPG.Attributes;
 
 namespace RPG.Dialogue
 {
@@ -20,6 +21,8 @@ namespace RPG.Dialogue
         public bool HandleRaycast(PlayerController callingController)
         {
             if (dialogue == null) return false;
+
+            if (GetComponent<Health>().IsDead()) return false;
 
             if (Input.GetMouseButtonDown(0))
             {
