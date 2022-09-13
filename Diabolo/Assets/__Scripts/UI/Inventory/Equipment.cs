@@ -74,6 +74,8 @@ namespace RPG.UI.Inventory
                     equippedItems[pair.Key] = item;
                 }
             }
+
+            equipmentUpdated?.Invoke();
         }
 
         public bool? Evaluate(EPredicate predicate, string[] parameters)

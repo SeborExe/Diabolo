@@ -55,6 +55,7 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+  isSpell: 1
 --- !u!65 &5280260717983636626
 BoxCollider:
   m_ObjectHideFlags: 0

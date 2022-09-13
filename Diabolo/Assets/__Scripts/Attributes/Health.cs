@@ -97,10 +97,8 @@ namespace RPG.Attributes
                 Die();
                 AwardExperience(instigator);
             }
-            else
-            {
-                takeDamage.Invoke(damage);
-            }
+
+            takeDamage.Invoke(damage);
         }
 
         public void Heal(float amount)

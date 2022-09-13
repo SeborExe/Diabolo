@@ -20,11 +20,13 @@ MonoBehaviour:
   stackable: 0
   price: 6.99
   category: 2
+  isAbility: 0
   allowedEquipLocation: 5
   animatorOverride: {fileID: 22100000, guid: 7a0d8ca627e6ebc4dacec27c5803da52, type: 2}
   equippedPrefab: {fileID: 5720112004884696865, guid: 433b52b52c382d84eace1ab511870e3d, type: 3}
   weaponDamage: 2
   percentageBonus: 50
   weaponRange: 2
+  weaponAttacSpeed: 100
   isRightHand: 1
   projectile: {fileID: 0}

@@ -6,7 +6,7 @@ using RPG.Attributes;
 
 namespace RPG.Consumable
 {
-    [CreateAssetMenu(menuName = ("ScriptableObjects/Action Item/Heal Potion"))]
+    [CreateAssetMenu(menuName = ("Equipment/Action Item/Heal Potion"))]
     public class HealPotion : ActionItem
     {
         [SerializeField] float amountToHeal = 50f;

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace RPG.UI.Inventory
 {
-    [CreateAssetMenu(menuName = ("ScriptableObjects/Inventory/EQ Item"))]
+    [CreateAssetMenu(menuName = ("Equipment/Inventory/EQ Item"))]
     public class StatsEquipableItem : EquipableItem, IModifierProvider
     {
         [SerializeField] Modifier[] additiveModifier;
@@ -29,6 +29,14 @@ namespace RPG.UI.Inventory
             }
         }
 
+        public IEnumerable<string> GetAdditiveModifiers()
+        {
+            foreach (var modifier in additiveModifier)
+            {
+                yield return $"{modifier.stat}: +{modifier.value}";
+            }
+        }
+
         public IEnumerable<float> GetPercentageModifiers(Stat stat)
         {
             foreach (var modifier in percentageModifier)
@@ -37,6 +45,14 @@ namespace RPG.UI.Inventory
                 {
                     yield return modifier.value;
                 }
+            }
+        }
+
+        public IEnumerable<string> GetPercentageModifiers()
+        {
+            foreach (var modifier in percentageModifier)
+            {
+                yield return $"{modifier.stat}: +{modifier.value}%";
             }
         }
 

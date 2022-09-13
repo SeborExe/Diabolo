@@ -20,9 +20,18 @@ namespace RPG.UI.Inventory
 
                 bodyText.text += '\n';
                 bodyText.text += '\n';
-                bodyText.text += itemEQ.AdditiveModifier();
-                bodyText.text += '\n';
-                bodyText.text += itemEQ.PercentageModifier();
+
+                foreach (string additiveModifier in itemEQ.GetAdditiveModifiers())
+                {
+                    bodyText.text += additiveModifier;
+                    bodyText.text += '\n';
+                }
+
+                foreach(string percentageModifier in itemEQ.GetPercentageModifiers())
+                {
+                    bodyText.text += '\n';
+                    bodyText.text += percentageModifier;
+                }
             }
 
             if (item is WeaponConfig)
@@ -32,6 +41,8 @@ namespace RPG.UI.Inventory
                 bodyText.text += '\n';
                 bodyText.text += '\n';
                 bodyText.text += $"Damage: {weapon.GetDamage()}";
+                bodyText.text += '\n';
+                bodyText.text += $"Attack Speed: {weapon.GetAttackSpeed()}%";
                 bodyText.text += '\n';
                 bodyText.text += $"Percent Bonus: {weapon.GetPercentageBonus()}";
             }

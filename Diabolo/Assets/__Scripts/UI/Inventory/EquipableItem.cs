@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace RPG.UI.Inventory
 {
-    [CreateAssetMenu(menuName = ("ScriptableObjects/Inventory/Equipable Item"))]
     public class EquipableItem : InventoryItem
     {
         [Tooltip("Where are we allowed to put this item.")]

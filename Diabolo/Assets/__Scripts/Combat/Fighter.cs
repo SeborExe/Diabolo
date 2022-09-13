@@ -7,10 +7,11 @@ using RPG.Stats;
 using System.Collections.Generic;
 using RPG.Utils;
 using RPG.UI.Inventory;
+using System;
 
 namespace RPG.Combat
 {
-    public class Fighter : MonoBehaviour, IAction, ISaveable
+    public class Fighter : MonoBehaviour, IAction
     {
         Mover mover;
         Health target;
@@ -21,10 +22,11 @@ namespace RPG.Combat
         Equipment equipment;
         LazyValue <Weapon> currentWeapon;
 
-        [SerializeField] float timeBetweenAttacks = 1.3f;
+        float attackSpeed;
         [SerializeField] Transform rightHandTransform = null;
         [SerializeField] Transform leftHandTransform = null;
         [SerializeField] WeaponConfig defaultWeapon = null;
+        [SerializeField] float autoAttackRange = 2.5f;
 
         float timeSinceLastAttack = Mathf.Infinity;
 
@@ -55,7 +57,12 @@ namespace RPG.Combat
             timeSinceLastAttack += Time.deltaTime;
 
             if (target == null) return;
-            if (target.IsDead()) return;
+            if (target.IsDead())
+            {
+                target = FindNewTargetInRange();
+
+                if (target == null) return;
+            }
 
             MoveToAttack();
         }
@@ -76,7 +83,10 @@ namespace RPG.Combat
                 mover.Cancel();
                 transform.LookAt(target.transform);
 
-                if (timeSinceLastAttack > timeBetweenAttacks)
+                attackSpeed = 1f / baseStats.GetStat(Stat.AttackSpeed) + (100 / currentWeaponConfig.GetAttackSpeed()); //Do przebudowy
+                Debug.Log(attackSpeed);
+
+                if (timeSinceLastAttack > attackSpeed)
                 {
                     //Trigger Hit event
                     TriggerAttack();
@@ -97,6 +107,12 @@ namespace RPG.Combat
             if (target == null) { return; }
 
             float damage = baseStats.GetStat(Stat.Damage);
+            BaseStats targetBaseStats = target.GetComponent<BaseStats>();
+            if (targetBaseStats != null)
+            {
+                float defence = targetBaseStats.GetStat(Stat.Defence);
+                damage /= 1 + defence / damage;
+            }
 
             if (currentWeapon.value != null)
             {
@@ -110,6 +126,40 @@ namespace RPG.Combat
             else
             {
                 target.TakeDamage(gameObject, damage);
+            }
+        }
+
+        private Health FindNewTargetInRange()
+        {
+            Health best = null;
+            float bestDistance = Mathf.Infinity;
+
+            foreach (Health canditate in FindAllTargetsInRange())
+            {
+                float candidateDinstance = Vector3.Distance(transform.position, canditate.transform.position);
+                if (candidateDinstance < bestDistance)
+                {
+                    best = canditate;
+                    bestDistance = candidateDinstance;
+                } 
+            }
+
+            return best;
+        }
+
+        private IEnumerable<Health> FindAllTargetsInRange()
+        {
+            RaycastHit[] raycastHits = Physics.SphereCastAll(transform.position, autoAttackRange, Vector3.up);
+
+            foreach (RaycastHit hit in raycastHits)
+            {
+                Health health = hit.transform.GetComponent<Health>();
+
+                if (health == null) continue;
+                if (health.IsDead()) continue;
+                if (health.gameObject == gameObject) continue;
+
+                yield return health;
             }
         }
 
@@ -191,18 +241,6 @@ namespace RPG.Combat
             {
                 return leftHandTransform;
             }
-        }
-
-        public object CaptureState()
-        {
-            return currentWeaponConfig.name;
-        }
-
-        public void RestoreState(object state)
-        {
-            string weaponName = (string)state;
-            WeaponConfig weapon = Resources.Load<WeaponConfig>(weaponName);
-            EquipWeapon(weapon);
         }
     }
 }
