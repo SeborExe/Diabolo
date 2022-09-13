@@ -41,7 +41,7 @@ public class LoadButton : MonoBehaviour
 
     private void DeleteSave(string fileName)
     {
-        SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+        SavingWrapper savingWrapper = GameManager.Instance.GetSavingWrapper();
         savingWrapper.Delete(fileName);
 
         SaveLoadUI saveLoad = FindObjectOfType<SaveLoadUI>();

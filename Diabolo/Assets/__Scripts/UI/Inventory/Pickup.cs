@@ -11,9 +11,9 @@ namespace RPG.UI.Inventory
 
         int number = 1;
 
-        private void Awake()
+        private void Start()
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
+            var player = GameManager.Instance.GetPlayer();
             inventory = player.GetComponent<Inventory>();
         }
 

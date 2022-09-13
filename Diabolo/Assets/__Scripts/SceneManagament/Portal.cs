@@ -36,9 +36,9 @@ namespace RPG.SceneManagement
 
             DontDestroyOnLoad(gameObject);
 
-            Fader fader = FindObjectOfType<Fader>();
-            SavingWrapper wrapper = FindObjectOfType<SavingWrapper>();
-            PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            Fader fader = GameManager.Instance.GetFader();
+            SavingWrapper wrapper = GameManager.Instance.GetSavingWrapper();
+            PlayerController playerController = GameManager.Instance.GetPlayer().GetComponent<PlayerController>();
             playerController.enabled = false;
 
             yield return fader.FadeOut(fadeOutTime);
@@ -47,7 +47,7 @@ namespace RPG.SceneManagement
             wrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
-            PlayerController newPlayerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+            PlayerController newPlayerController = GameManager.Instance.GetPlayer().GetComponent<PlayerController>();
             newPlayerController.enabled = false;
 
             //Load current level

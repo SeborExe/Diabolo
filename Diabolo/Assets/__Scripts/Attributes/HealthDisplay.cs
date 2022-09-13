@@ -10,9 +10,9 @@ namespace RPG.Attributes
     {
         Health health;
 
-        private void Awake()
+        private void Start()
         {
-            health = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+            health = GameManager.Instance.GetPlayer().GetComponent<Health>();
         }
 
         private void Update()

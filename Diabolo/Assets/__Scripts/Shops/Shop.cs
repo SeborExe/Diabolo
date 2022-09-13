@@ -236,7 +236,7 @@ namespace RPG.Shops
 
         public void OpenShop()
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Shopper>().SetActiveShop(this);
+            GameManager.Instance.GetPlayer().GetComponent<Shopper>().SetActiveShop(this);
         }
 
         public string GetShopeName()
