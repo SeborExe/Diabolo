@@ -9,6 +9,7 @@ namespace RPG.UI.Inventory
         [SerializeField] KeyCode[] toggleKey;
         [SerializeField] GameObject uiContainer = null;
         [SerializeField] GameObject statsPanel = null;
+        [SerializeField] bool isPauseMenu = false;
 
         void Start()
         {
@@ -29,7 +30,7 @@ namespace RPG.UI.Inventory
                 }
             }
 
-            if (uiContainer.activeSelf)
+            if (uiContainer.activeSelf && !isPauseMenu)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
