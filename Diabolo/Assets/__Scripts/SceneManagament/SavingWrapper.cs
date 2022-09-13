@@ -78,24 +78,6 @@ namespace RPG.SceneManagement
             yield return fader.FadeIn(fadeInTime);
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyDown(KeyCode.L))
-            {
-                Load();
-            }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Save();
-            }
-
-            if (Input.GetKeyDown(KeyCode.Delete))
-            {
-                Delete();
-            }
-        }
-
         public void Save()
         {
             GetComponent<SavingSystem>().Save(GetCurrentSave());
@@ -106,9 +88,9 @@ namespace RPG.SceneManagement
             GetComponent<SavingSystem>().Load(GetCurrentSave());
         }
 
-        public void Delete()
+        public void Delete(string fileName)
         {
-            GetComponent<SavingSystem>().Delete(GetCurrentSave());
+            GetComponent<SavingSystem>().Delete(fileName);
         }
 
         public IEnumerable<string> ListSaves()

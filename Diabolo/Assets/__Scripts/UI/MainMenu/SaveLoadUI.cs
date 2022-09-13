@@ -1,4 +1,5 @@
 using RPG.SceneManagement;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -12,11 +13,21 @@ namespace RPG.UI.MainMenu
         [SerializeField] Transform contentRoot;
         [SerializeField] GameObject saveButtonPrefab;
 
+        SavingWrapper savingWrapper;
+
+        public event Action OnMenuChanges;
+
         private void OnEnable()
         {
-            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            savingWrapper = FindObjectOfType<SavingWrapper>();
             if (savingWrapper == null) return;
 
+            OnMenuChanges += RefreshUI;
+            OnMenuChanges_Invoke();
+        }
+
+        private void RefreshUI()
+        {
             foreach (Transform child in contentRoot)
             {
                 Destroy(child.gameObject);
@@ -30,6 +41,11 @@ namespace RPG.UI.MainMenu
                 Button button = saveInstance.GetComponentInChildren<Button>();
                 button.onClick.AddListener(() => savingWrapper.LoadGame(save));
             }
+        }
+
+        public void OnMenuChanges_Invoke()
+        {
+            OnMenuChanges?.Invoke();
         }
     }
 
