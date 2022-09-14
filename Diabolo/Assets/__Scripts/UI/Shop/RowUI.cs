@@ -1,4 +1,5 @@
 using RPG.Shops;
+using RPG.UI.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace RPG.UI.Shops
 {
     public class RowUI : MonoBehaviour
     {
-        [SerializeField] Image itemIcon;
+        [SerializeField] ShopTooltipSpawner itemIcon;
         [SerializeField] TMP_Text itemName;
         [SerializeField] TMP_Text itemAvailability;
         [SerializeField] TMP_Text itemPrice;
@@ -25,7 +26,7 @@ namespace RPG.UI.Shops
         {
             this.currentShop = currentShop;
             this.item = item;
-            itemIcon.sprite = item.GetImage();
+            itemIcon.GetComponent<Image>().sprite = item.GetImage();
             itemName.text = item.GetName();
             itemAvailability.text = item.GetAvailability();
             itemPrice.text = $"${item.GetPrice():N2}";
@@ -52,6 +53,11 @@ namespace RPG.UI.Shops
         public void Remove()
         {
             currentShop.AddToTransaction(item.GetInventoryItem(), -1);
+        }
+
+        public ShopItem GetShopItem()
+        {
+            return item;
         }
     }
 }

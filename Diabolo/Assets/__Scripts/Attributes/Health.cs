@@ -20,6 +20,11 @@ namespace RPG.Attributes
         [SerializeField] AudioClip[] OnHitClips;
         [SerializeField] AudioClip[] OnDieClips;
 
+        [Header("Health Regeneration")]
+        [SerializeField] float timeToRegeneration = 5f;
+        [SerializeField] float maxRegenerationPercent = 60f;
+        float regenerationTimer = 0;
+
         public event Action OnTakeDamage;
         public event Action OnDie;
 
@@ -56,7 +61,13 @@ namespace RPG.Attributes
             {
                 infoAboveHead.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
             }
-        }        
+        }
+
+        private void Update()
+        {
+            UpdateTimers();
+            HealthRegeneration();
+        }
 
         private float GetInitialHealth()
         {
@@ -83,6 +94,8 @@ namespace RPG.Attributes
         {
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
 
+            regenerationTimer = timeToRegeneration;
+
             OnTakeDamage?.Invoke();
 
             if (infoAboveHead != null)
@@ -101,9 +114,36 @@ namespace RPG.Attributes
             takeDamage.Invoke(damage);
         }
 
+        private void HealthRegeneration()
+        {
+            if (healthPoints.value < GetMaxHealthPoints() && regenerationTimer == 0)
+            {
+                if (healthPoints.value >= GetMaxHealthPoints() * (maxRegenerationPercent / 100f)) return;
+
+                healthPoints.value += Time.deltaTime * GetRegenerate();
+
+                if (healthPoints.value > GetMaxHealthPoints()) healthPoints.value = GetMaxHealthPoints();
+            }
+        }
+
+        private void UpdateTimers()
+        {
+            if (regenerationTimer > 0)
+            {
+                regenerationTimer -= Time.deltaTime;
+
+                if (regenerationTimer < 0) regenerationTimer = 0;
+            } 
+        }
+
         public void Heal(float amount)
         {
             healthPoints.value = Mathf.Min(healthPoints.value + amount, GetMaxHealthPoints()); 
+        }
+
+        private float GetRegenerate()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.HealthRegeneration);
         }
 
         public void StartHealCoroutine(float amoutToHeal, int perioid, float timeBetweenHeal)

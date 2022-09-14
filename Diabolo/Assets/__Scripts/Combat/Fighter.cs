@@ -83,10 +83,11 @@ namespace RPG.Combat
                 mover.Cancel();
                 transform.LookAt(target.transform);
 
-                attackSpeed = 1f / baseStats.GetStat(Stat.AttackSpeed) + (100 / currentWeaponConfig.GetAttackSpeed()); //Do przebudowy
-                Debug.Log(attackSpeed);
+                //TODO: Przebudowaæ szybkoœæ ataku
+                attackSpeed = baseStats.GetStat(Stat.AttackSpeed) + (currentWeaponConfig.GetAttackSpeed() / 100f);
+                //Debug.Log(attackSpeed);
 
-                if (timeSinceLastAttack > attackSpeed)
+                if (timeSinceLastAttack > 2.5f / attackSpeed)
                 {
                     //Trigger Hit event
                     TriggerAttack();

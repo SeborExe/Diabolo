@@ -27,6 +27,6 @@ MonoBehaviour:
   weaponDamage: 2
   percentageBonus: 50
   weaponRange: 2
-  weaponAttacSpeed: 100
+  weaponAttackSpeed: 80
   isRightHand: 1
   projectile: {fileID: 0}

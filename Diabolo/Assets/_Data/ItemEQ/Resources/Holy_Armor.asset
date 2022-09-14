@@ -25,6 +25,8 @@ MonoBehaviour:
   additiveModifier:
   - stat: 0
     value: 25
+  - stat: 12
+    value: 2
   percentageModifier:
   - stat: 3
     value: 30

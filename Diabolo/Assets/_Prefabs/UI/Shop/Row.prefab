@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6589825396293287982}
   - component: {fileID: 256976017030750373}
   - component: {fileID: 6690449989389244300}
+  - component: {fileID: 7188172176607974477}
   m_Layer: 5
   m_Name: ItemIcon
   m_TagString: Untagged
@@ -91,6 +92,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AspectMode: 2
   m_AspectRatio: 1
+--- !u!114 &7188172176607974477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7955070750690374997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f8846683a74b834490bd159c7539cd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltipPrefab: {fileID: 5177999843158437296, guid: f3d24aa08a40f0742b55b8ba186bb8b2, type: 3}
+  rowUI: {fileID: -5352565142355115411}
 --- !u!1001 &1551833628112441591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30db83efae5fe2944bde382525eb8ddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemIcon: {fileID: 256976017030750373}
+  itemIcon: {fileID: 7188172176607974477}
   itemName: {fileID: 567682818658248277}
   itemAvailability: {fileID: 9085741378293476325}
   itemPrice: {fileID: 8389416113228911144}

@@ -17,6 +17,7 @@ namespace RPG.Stats
         Defence,
         SpellDamage,
         AttackSpeed,
-        MovementSpeed
+        MovementSpeed,
+        HealthRegeneration
     }
 }
