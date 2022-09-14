@@ -30,3 +30,5 @@ MonoBehaviour:
   percentageModifier:
   - stat: 3
     value: 30
+  - stat: 13
+    value: 60

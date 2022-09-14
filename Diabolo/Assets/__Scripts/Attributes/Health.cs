@@ -92,8 +92,9 @@ namespace RPG.Attributes
 
         public void TakeDamage(GameObject instigator, float damage)
         {
-            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+            CheckBlock(damage, out damage);
 
+            healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
             regenerationTimer = timeToRegeneration;
 
             OnTakeDamage?.Invoke();
@@ -149,6 +150,21 @@ namespace RPG.Attributes
         public void StartHealCoroutine(float amoutToHeal, int perioid, float timeBetweenHeal)
         {
             StartCoroutine(HealRoutine(amoutToHeal, perioid, timeBetweenHeal));
+        }
+
+        private float CheckBlock(float damage, out float ChangedDamage)
+        {
+            float chanceToBlock = baseStats.GetStat(Stat.ChanceToBlockBlow);
+            float randomChance = UnityEngine.Random.Range(1.0001f, 2.01f);
+
+            if (randomChance <= chanceToBlock)
+            {
+                return ChangedDamage = 0;
+            }
+            else
+            {
+                return ChangedDamage = damage;
+            }
         }
 
         private IEnumerator HealRoutine(float amoutToHeal, int perioid, float timeBetweenHeal)

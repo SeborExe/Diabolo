@@ -18,6 +18,7 @@ namespace RPG.Stats
         SpellDamage,
         AttackSpeed,
         MovementSpeed,
-        HealthRegeneration
+        HealthRegeneration,
+        ChanceToBlockBlow
     }
 }
