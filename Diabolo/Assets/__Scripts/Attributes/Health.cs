@@ -152,6 +152,15 @@ namespace RPG.Attributes
             StartCoroutine(HealRoutine(amoutToHeal, perioid, timeBetweenHeal));
         }
 
+        private IEnumerator HealRoutine(float amoutToHeal, int perioid, float timeBetweenHeal)
+        {
+            for (int i = 0; i < perioid; i++)
+            {
+                Heal(amoutToHeal);
+                yield return new WaitForSeconds(timeBetweenHeal);
+            }
+        }
+
         private float CheckBlock(float damage, out float ChangedDamage)
         {
             float chanceToBlock = baseStats.GetStat(Stat.ChanceToBlockBlow);
@@ -164,15 +173,6 @@ namespace RPG.Attributes
             else
             {
                 return ChangedDamage = damage;
-            }
-        }
-
-        private IEnumerator HealRoutine(float amoutToHeal, int perioid, float timeBetweenHeal)
-        {
-            for (int i = 0; i < perioid; i++)
-            {
-                Heal(amoutToHeal);
-                yield return new WaitForSeconds(timeBetweenHeal);
             }
         }
 

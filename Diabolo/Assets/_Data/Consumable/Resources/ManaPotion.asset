@@ -9,15 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b36ffc0b3f006aa4287865a75baf5c1d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2320b939892b39043ab877e239e11533, type: 3}
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
-  itemID: 4842c4ff-bfc6-4828-8c0f-8d60c3456c67
+  itemID: qwe
   displayName: Mana Potion
-  description: Restor small amount of mana.
+  description: Restore small amount of mana.
   icon: {fileID: 21300000, guid: f1dd815974b2d4240a6bc912d6585497, type: 3}
   pickup: {fileID: 83718740482330157, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
   stackable: 1
-  price: 2.39
+  price: 4.8
   category: 3
+  isAbility: 0
   consumable: 1
+  amountToRestore: 50
+  perioid: 10
+  timeBetweenHeal: 2
+  particleEffect: {fileID: 1881552412633134, guid: da7875cab77480d49972b42ca872af40, type: 3}

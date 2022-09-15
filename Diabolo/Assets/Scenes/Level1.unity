@@ -2384,10 +2384,10 @@ PrefabInstance:
     - target: {fileID: 756778125656237822, guid: 41760704405ab7f4486fb597f8eaa5ff, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: c9554c54dce3d3b4da8676351ff6fe3d, type: 2}
+      objectReference: {fileID: 11400000, guid: c19a5eed951194e459f3e2ab73bc900c, type: 2}
     - target: {fileID: 756778125656237822, guid: 41760704405ab7f4486fb597f8eaa5ff, type: 3}
       propertyPath: number
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5230228408385948602, guid: 41760704405ab7f4486fb597f8eaa5ff, type: 3}
       propertyPath: uniqueIdentifier
@@ -10348,6 +10348,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b58fa8783b46ccf47bce520207b2454b, type: 3}
   - {fileID: 8300000, guid: b58fa8783b46ccf47bce520207b2454b, type: 3}
   - {fileID: 8300000, guid: b58fa8783b46ccf47bce520207b2454b, type: 3}
+  timeToRegeneration: 5
+  maxRegenerationPercent: 60
 --- !u!114 &8372309617732714567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10721,6 +10723,10 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: eaf8b9c25b158d24cad575a3ac79d1ae, type: 2}
     initialStock: 2
     buyingDiscountPercentage: 0
+    levelToUnlock: 0
+  - item: {fileID: 11400000, guid: 268b531b2ab741f46984da8073ba88b3, type: 2}
+    initialStock: 25
+    buyingDiscountPercentage: 5
     levelToUnlock: 0
 --- !u!114 &8372309617732714635
 MonoBehaviour:

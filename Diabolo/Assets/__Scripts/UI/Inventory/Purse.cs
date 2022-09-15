@@ -6,7 +6,7 @@ using RPG.Saving;
 
 namespace RPG.UI.Inventory
 {
-    public class Purse : MonoBehaviour, ISaveable
+    public class Purse : MonoBehaviour, ISaveable, IItemStore
     {
         [SerializeField] float startingBalance = 100f;
 
@@ -38,6 +38,17 @@ namespace RPG.UI.Inventory
         public void RestoreState(object state)
         {
             balance = (float)state;
+        }
+
+        public int AddItems(InventoryItem item, int number)
+        {
+            if (item is CurrencyItem)
+            {
+                UpdateBalance(item.GetPrice() * number);
+                return number;
+            }
+
+            return 0;
         }
     }
 }

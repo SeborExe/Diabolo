@@ -1,27 +1,27 @@
+using RPG.Attributes;
+using RPG.UI.Inventory;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.UI.Inventory;
-using RPG.Attributes;
 
-namespace RPG.Consumable
+namespace RPG.Consumabl
 {
-    [CreateAssetMenu(menuName = ("Equipment/Action Item/Potions/Heal Potion"))]
-    public class HealPotion : ActionItem
+    [CreateAssetMenu(menuName = ("Equipment/Action Item/Potions/Mana Potion"))]
+    public class ManaPotion : ActionItem
     {
-        [SerializeField] float amountToHeal = 50f;
+        [SerializeField] float amountToRestore = 50f;
         [SerializeField, Min(1)] int perioid = 5;
         [SerializeField] float timeBetweenHeal = 1f;
         [SerializeField] GameObject particleEffect;
 
         public override bool Use(GameObject user)
         {
-            float heal = amountToHeal / perioid;
+            float manaToRestore = amountToRestore / perioid;
 
-            Health health = user.GetComponent<Health>();
-            if (health != null)
+            Mana mana = user.GetComponent<Mana>();
+            if (mana != null)
             {
-                health.StartHealCoroutine(heal, perioid, timeBetweenHeal);
+                mana.StartRestoreManaCoroutine(manaToRestore, perioid, timeBetweenHeal);
 
                 if (particleEffect != null)
                 {

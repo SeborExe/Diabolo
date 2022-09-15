@@ -49,6 +49,25 @@ namespace RPG.Attributes
             return true;
         }
 
+        public void RestoreMana(float amount)
+        {
+            currentMana.value = Mathf.Min(currentMana.value + amount, GetMaxMana());
+        }
+
+        public void StartRestoreManaCoroutine(float amoutToRestore, int perioid, float timeBetweenHeal)
+        {
+            StartCoroutine(RestoreManaRoutine(amoutToRestore, perioid, timeBetweenHeal));
+        }
+
+        private IEnumerator RestoreManaRoutine(float amoutToRestore, int perioid, float timeBetweenHeal)
+        {
+            for (int i = 0; i < perioid; i++)
+            {
+                RestoreMana(amoutToRestore);
+                yield return new WaitForSeconds(timeBetweenHeal);
+            }
+        }
+
         public object CaptureState()
         {
             return currentMana.value;
