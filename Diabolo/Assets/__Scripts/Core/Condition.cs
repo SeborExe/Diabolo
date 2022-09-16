@@ -7,7 +7,7 @@ namespace RPG.Core
     [System.Serializable]
     public class Condition
     {
-        [SerializeField] Disjunction[] and;
+        public Disjunction[] and;
 
         public bool Check(IEnumerable<IPredicateEvaluator> evaluators)
         {
@@ -23,9 +23,9 @@ namespace RPG.Core
         }
 
         [System.Serializable]
-        class Disjunction
+        public class Disjunction
         {
-            [SerializeField] Predicate[] or;
+            public Predicate[] or;
 
             public bool Check(IEnumerable<IPredicateEvaluator> evaluators)
             {
@@ -42,11 +42,11 @@ namespace RPG.Core
         }
 
         [System.Serializable]
-        class Predicate
-        {   
-            [SerializeField] EPredicate predicate;
-            [SerializeField] string[] parameters;
-            [SerializeField] bool negate = false;
+        public class Predicate
+        {
+            public EPredicate predicate;
+            public string[] parameters;
+            public bool negate = false;
 
             public bool Check(IEnumerable<IPredicateEvaluator> evaluators)
             {

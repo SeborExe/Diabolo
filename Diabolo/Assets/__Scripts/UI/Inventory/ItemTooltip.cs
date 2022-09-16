@@ -1,6 +1,8 @@
 using TMPro;
 using UnityEngine;
 using RPG.Combat;
+using RPG.Core;
+using UnityEngine.UI;
 
 namespace RPG.UI.Inventory
 {
@@ -17,6 +19,12 @@ namespace RPG.UI.Inventory
             if (item is StatsEquipableItem)
             {
                 StatsEquipableItem itemEQ = (StatsEquipableItem)item;
+                Equipment equipment = GameManager.Instance.GetPlayer().GetComponent<Equipment>();
+
+                if (!itemEQ.CanEquip(equipment))
+                {
+                    GetComponent<Image>().color = Color.red;
+                }
 
                 bodyText.text += '\n';
                 bodyText.text += '\n';
@@ -32,11 +40,45 @@ namespace RPG.UI.Inventory
                     bodyText.text += '\n';
                     bodyText.text += percentageModifier;
                 }
+
+                if (itemEQ.GetConditions().and.Length != 0)
+                {
+                    bodyText.text += '\n';
+                    bodyText.text += '\n';
+                }
+
+                foreach (var disjunction in itemEQ.GetConditions().and)
+                {
+                    foreach (var predicate in disjunction.or)
+                    {
+                        bodyText.text += $"{predicate.predicate}: ";
+
+                        if (predicate.predicate == EPredicate.MinimumTrait)
+                        {
+                            bodyText.text += $"{predicate.parameters[0]} : {predicate.parameters[1]}";
+                            bodyText.text += '\n';
+                        }
+                        else
+                        {
+                            foreach (var parameter in predicate.parameters)
+                            {
+                                bodyText.text += parameter;
+                                bodyText.text += '\n';
+                            }
+                        }
+                    }
+                }
             }
 
             if (item is WeaponConfig)
             {
                 WeaponConfig weapon = (WeaponConfig)item;
+                Equipment equipment = GameManager.Instance.GetPlayer().GetComponent<Equipment>();
+
+                if (!weapon.CanEquip(equipment))
+                {
+                    GetComponent<Image>().color = Color.red;
+                }
 
                 bodyText.text += '\n';
                 bodyText.text += '\n';
@@ -45,6 +87,34 @@ namespace RPG.UI.Inventory
                 bodyText.text += $"Attack Speed: {weapon.GetAttackSpeed()}%";
                 bodyText.text += '\n';
                 bodyText.text += $"Percent Bonus: {weapon.GetPercentageBonus()}";
+
+                if (weapon.GetConditions().and.Length != 0)
+                {
+                    bodyText.text += '\n';
+                    bodyText.text += '\n';
+                }
+
+                foreach (var disjunction in weapon.GetConditions().and)
+                {
+                    foreach (var predicate in disjunction.or)
+                    {
+                        bodyText.text += $"{predicate.predicate}: ";
+
+                        if (predicate.predicate == EPredicate.MinimumTrait)
+                        {
+                            bodyText.text += $"{predicate.parameters[0]} : {predicate.parameters[1]}";
+                            bodyText.text += '\n';
+                        }
+                        else
+                        {
+                            foreach (var parameter in predicate.parameters)
+                            {
+                                bodyText.text += parameter;
+                                bodyText.text += '\n';
+                            }
+                        }
+                    }
+                }
             }
         }
     }
