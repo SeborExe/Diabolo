@@ -156,6 +156,11 @@ namespace RPG.Control
             return false;
         }
 
+        public bool GetIsDraggingUI()
+        {
+            return isDraggingUI;
+        }
+
         private bool InteractWithComponent()
         {
             RaycastHit[] hits = RaycastAllSorted();
