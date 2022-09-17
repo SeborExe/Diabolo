@@ -2975,9 +2975,21 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5492663605363562836, guid: 790cff60f2c659143a882fd35775a483, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492663605363562836, guid: 790cff60f2c659143a882fd35775a483, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5492663605363562836, guid: 790cff60f2c659143a882fd35775a483, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 207543564}
+    - target: {fileID: 5492663605363562836, guid: 790cff60f2c659143a882fd35775a483, type: 3}
+      propertyPath: OnDieEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5492663605363562836, guid: 790cff60f2c659143a882fd35775a483, type: 3}
       propertyPath: takeDamage.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: Aggrevate
@@ -10350,6 +10362,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b58fa8783b46ccf47bce520207b2454b, type: 3}
   timeToRegeneration: 5
   maxRegenerationPercent: 60
+  OnDieEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &8372309617732714567
 MonoBehaviour:
   m_ObjectHideFlags: 0

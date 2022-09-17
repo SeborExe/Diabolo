@@ -27,6 +27,7 @@ namespace RPG.Attributes
 
         public event Action OnTakeDamage;
         public event Action OnDie;
+        public UnityEvent OnDieEvent;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -107,7 +108,8 @@ namespace RPG.Attributes
 
             if (healthPoints.value == 0)
             {
-                OnDie.Invoke();
+                OnDie?.Invoke();
+                OnDieEvent?.Invoke();
                 Die();
                 AwardExperience(instigator);
             }
