@@ -25,6 +25,8 @@ namespace RPG.UI.Inventory
         [SerializeField] ItemCategory category = ItemCategory.None;
         [SerializeField] bool isAbility = false;
 
+        [NonSerialized] GUIStyle contentStyle;
+
         static Dictionary<string, InventoryItem> itemLookupCache;
 
         public static InventoryItem GetFromID(string itemID)
@@ -77,7 +79,12 @@ namespace RPG.UI.Inventory
             return displayName;
         }
 
-        public string GetDescription()
+        public virtual string GetDescription()
+        {
+            return description;
+        }
+
+        public string GetRawDescription()
         {
             return description;
         }
@@ -190,16 +197,20 @@ namespace RPG.UI.Inventory
         public GUIStyle foldoutStyle;
         public virtual void DrawCustomInspector()
         {
+            contentStyle = new GUIStyle { padding = new RectOffset(15, 15, 0, 0) };
+
             foldoutStyle = new GUIStyle(EditorStyles.foldout);
             foldoutStyle.fontStyle = FontStyle.Bold;
             drawInventoryItem = EditorGUILayout.Foldout(drawInventoryItem, "InventoryItem Data", foldoutStyle);
             if (!drawInventoryItem) return;
+            EditorGUILayout.BeginVertical(contentStyle);
             SetItemID(EditorGUILayout.TextField("ItemID (clear to reset", GetItemID()));
             SetDisplayName(EditorGUILayout.TextField("Display name", GetDisplayName()));
-            SetDescription(EditorGUILayout.TextField("Description", GetDescription()));
+            SetDescription(EditorGUILayout.TextField("Description", GetRawDescription()));
             SetIcon((Sprite)EditorGUILayout.ObjectField("Icon", GetIcon(), typeof(Sprite), false));
             SetPickup((Pickup)EditorGUILayout.ObjectField("Pickup", pickup, typeof(Pickup), false));
             SetStackable(EditorGUILayout.Toggle("Stackable", IsStackable()));
+            EditorGUILayout.EndVertical();
         }
 #endif
     }

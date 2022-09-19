@@ -117,6 +117,21 @@ namespace RPG.Combat
             }
         }
 
+        public override string GetDescription()
+        {
+            string result = projectile ? "Ranged Weapon" : "Melee Weapon";
+            result += $"\n\n{GetRawDescription()}\n";
+            result += $"\nRange {weaponRange} meters";
+            result += $"\nBase Damage {weaponDamage} points";
+            if ((int)percentageBonus != 0)
+            {
+                string bonus = percentageBonus > 0 ? "<color=#8888ff>bonus</color>" : "<color=#ff8888>penalty</color>";
+                result += $"\n{(int)percentageBonus} percent {bonus} to attack.";
+            }
+
+            return result;
+        }
+
 #if UNITY_EDITOR
 
         void SetWeaponRange(float newWeaponRange)
@@ -175,8 +190,9 @@ namespace RPG.Combat
             Dirty();
         }
 
-        void SetProjectile(GameObject possibleProjectile)
+        void SetProjectile(Projectile possibleProjectile)
         {
+            if (possibleProjectile == null) return;
             if (!possibleProjectile.TryGetComponent<Projectile>(out Projectile newProjectile)) return;
             if (newProjectile == projectile) return;
             SetUndo("Set Projectile");
@@ -206,7 +222,7 @@ namespace RPG.Combat
             SetPercentageBonus(EditorGUILayout.IntSlider("Percentage Bonus", (int)percentageBonus, -10, 100));
             SetIsRightHanded(EditorGUILayout.Toggle("Is Right Handed", isRightHand));
             SetAnimatorOverride((AnimatorOverrideController)EditorGUILayout.ObjectField("Animator Override", animatorOverride, typeof(AnimatorOverrideController), false));
-            SetProjectile((GameObject)EditorGUILayout.ObjectField("Projectile", projectile, typeof(Projectile), false));
+            SetProjectile((Projectile)EditorGUILayout.ObjectField("Projectile", projectile, typeof(Projectile), false));
         }
 
 #endif

@@ -16,9 +16,11 @@ namespace RPG.Consumable
 
         public override bool Use(GameObject user)
         {
+            if (!user.TryGetComponent(out Health health)) return false;
+            if (health.IsDead() || health.GetPercentage() >= 100.0f) return false;
+                
             float heal = amountToHeal / perioid;
 
-            Health health = user.GetComponent<Health>();
             if (health != null)
             {
                 health.StartHealCoroutine(heal, perioid, timeBetweenHeal);

@@ -14,7 +14,7 @@ namespace RPG.UI.Inventory
         public void Setup(InventoryItem item)
         {
             titleText.text = item.GetDisplayName();
-            bodyText.text = item.GetDescription();
+            bodyText.text = item.GetRawDescription();
 
             if (item is StatsEquipableItem)
             {
