@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace RPG.UI.Inventory
@@ -90,6 +92,11 @@ namespace RPG.UI.Inventory
             return category;
         }
 
+        public Pickup GetPickup()
+        {
+            return pickup;
+        }
+
         public bool IsAbility()
         {
             return isAbility;
@@ -109,5 +116,91 @@ namespace RPG.UI.Inventory
             // Require by the ISerializationCallbackReceiver but we don't need
             // to do anything with it.
         }
+
+#if UNITY_EDITOR
+
+        public void SetUndo(string message)
+        {
+            Undo.RecordObject(this, message);
+        }
+
+        public void Dirty()
+        {
+            EditorUtility.SetDirty(this);
+        }
+
+        public bool FloatEquals(float value1, float value2)
+        {
+            return Math.Abs(value1 - value2) < .001f;
+        }
+
+        #region Setters
+
+        public void SetDisplayName(string newDisplayName)
+        {
+            if (newDisplayName == displayName) return;
+            SetUndo("Change Display Name");
+            displayName = newDisplayName;
+            Dirty();
+        }
+
+        public void SetDescription(string newDescription)
+        {
+            if (newDescription == description) return;
+            SetUndo("Change Description");
+            description = newDescription;
+            Dirty();
+        }
+
+        public void SetIcon(Sprite newIcon)
+        {
+            if (icon == newIcon) return;
+            SetUndo("Change Icon");
+            icon = newIcon;
+            Dirty();
+        }
+
+        public void SetPickup(Pickup newPickup)
+        {
+            if (pickup == newPickup) return;
+            SetUndo("Change Pickup");
+            pickup = newPickup;
+            Dirty();
+        }
+
+        public void SetItemID(string newItemID)
+        {
+            if (itemID == newItemID) return;
+            SetUndo("Change ItemID");
+            itemID = newItemID;
+            Dirty();
+        }
+
+        public void SetStackable(bool newStackable)
+        {
+            if (stackable == newStackable) return;
+            SetUndo(stackable ? "Set Not Stackable" : "Set Stackable");
+            stackable = newStackable;
+            Dirty();
+        }
+
+        #endregion
+
+        bool drawInventoryItem = true;
+        public GUIStyle foldoutStyle;
+        public virtual void DrawCustomInspector()
+        {
+            foldoutStyle = new GUIStyle(EditorStyles.foldout);
+            foldoutStyle.fontStyle = FontStyle.Bold;
+            drawInventoryItem = EditorGUILayout.Foldout(drawInventoryItem, "InventoryItem Data", foldoutStyle);
+            if (!drawInventoryItem) return;
+            SetItemID(EditorGUILayout.TextField("ItemID (clear to reset", GetItemID()));
+            SetDisplayName(EditorGUILayout.TextField("Display name", GetDisplayName()));
+            SetDescription(EditorGUILayout.TextField("Description", GetDescription()));
+            SetIcon((Sprite)EditorGUILayout.ObjectField("Icon", GetIcon(), typeof(Sprite), false));
+            SetPickup((Pickup)EditorGUILayout.ObjectField("Pickup", pickup, typeof(Pickup), false));
+            SetStackable(EditorGUILayout.Toggle("Stackable", IsStackable()));
+        }
+#endif
     }
 }
