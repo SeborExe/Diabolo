@@ -8,9 +8,9 @@ namespace RPG.Stats
     {
         BaseStats baseStats;
 
-        private void Awake()
+        private void Start()
         {
-            baseStats = GameObject.FindGameObjectWithTag("Player").GetComponent<BaseStats>();
+            baseStats = GameManager.Instance.GetPlayer().GetComponent<BaseStats>();
         }
 
         private void Update()

@@ -1,0 +1,107 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7d791273cff1f42b864de95f1473d6, type: 3}
+  m_Name: Wooden_Shield
+  m_EditorClassIdentifier: 
+  itemID: 4afa2f34-c5e1-450f-9ca5-a6c6f0cab811
+  displayName: Wooden Shield
+  description: 
+  icon: {fileID: 21300000, guid: 886ffb608498aa04c9c0913d5ac3c394, type: 3}
+  pickup: {fileID: 83718740482330157, guid: ab73185f2dadf4445ae07e78eb669c1f, type: 3}
+  stackable: 0
+  price: 8
+  category: 1
+  isAbility: 0
+  foldoutStyle:
+    m_Name: Foldout
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -6801349707174745596, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -1674602421990392834, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.29803923, g: 0.49411765, b: 1, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 3684442412078439994, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 8938427661926886800, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -8680445939362908933, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.29803923, g: 0.49411765, b: 1, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 6561537487811827939, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Border:
+      m_Left: 14
+      m_Right: 0
+      m_Top: 13
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 4
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 14
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -2
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 12
+    m_FontStyle: 1
+    m_Alignment: 3
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
+  allowedEquipLocation: 6
+  equipCondition:
+    and: []
+  additiveModifiers:
+  - stat: 8
+    value: 5
+  - stat: 0
+    value: 50
+  percentageModifiers:
+  - stat: 10
+    value: 50

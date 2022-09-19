@@ -10,9 +10,9 @@ namespace RPG.Attributes
     {
         Mana mana;
 
-        private void Awake()
+        private void Start()
         {
-            mana = GameObject.FindGameObjectWithTag("Player").GetComponent<Mana>();
+            mana = GameManager.Instance.GetPlayer().GetComponent<Mana>();
         }
 
         private void Update()

@@ -14,17 +14,94 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: a9664974-900c-4a40-9862-7f210de04c1f
   displayName: Old Bow
-  description: 'Wood old bow. '
+  description: 
   icon: {fileID: 21300000, guid: ec22508be0cdfba4abbaeb770bef08aa, type: 3}
   pickup: {fileID: 3762661548565864693, guid: 54d895810ba3f6f45846c1dd187d69f3, type: 3}
   stackable: 0
   price: 19.5
   category: 2
+  isAbility: 0
+  foldoutStyle:
+    m_Name: Foldout
+    m_Normal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -6801349707174745596, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Hover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Active:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -1674602421990392834, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.29803923, g: 0.49411765, b: 1, a: 1}
+    m_Focused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 3684442412078439994, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnNormal:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 8938427661926886800, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnHover:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds: []
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_OnActive:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: -8680445939362908933, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.29803923, g: 0.49411765, b: 1, a: 1}
+    m_OnFocused:
+      m_Background: {fileID: 0}
+      m_ScaledBackgrounds:
+      - {fileID: 6561537487811827939, guid: 0000000000000000d000000000000000, type: 0}
+      m_TextColor: {r: 0.8235294, g: 0.8235294, b: 0.8235294, a: 1}
+    m_Border:
+      m_Left: 14
+      m_Right: 0
+      m_Top: 13
+      m_Bottom: 0
+    m_Margin:
+      m_Left: 0
+      m_Right: 4
+      m_Top: 0
+      m_Bottom: 0
+    m_Padding:
+      m_Left: 14
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    m_Overflow:
+      m_Left: 0
+      m_Right: 0
+      m_Top: -2
+      m_Bottom: 0
+    m_Font: {fileID: 0}
+    m_FontSize: 12
+    m_FontStyle: 1
+    m_Alignment: 3
+    m_WordWrap: 0
+    m_RichText: 0
+    m_TextClipping: 0
+    m_ImagePosition: 0
+    m_ContentOffset: {x: 0, y: 0}
+    m_FixedWidth: 0
+    m_FixedHeight: 0
+    m_StretchWidth: 1
+    m_StretchHeight: 0
   allowedEquipLocation: 5
+  equipCondition:
+    and: []
   animatorOverride: {fileID: 22100000, guid: c039da52a85098b4b9e8476f618126ec, type: 2}
   equippedPrefab: {fileID: 6335796956712247721, guid: b7f710ecf1ae04a4c88535e76edc7a57, type: 3}
   weaponDamage: 1
   percentageBonus: 45
   weaponRange: 15
+  weaponAttackSpeed: 100
   isRightHand: 0
   projectile: {fileID: 4574566148285577935, guid: 19badfb8cec5cca439f90cc9e01119f8, type: 3}

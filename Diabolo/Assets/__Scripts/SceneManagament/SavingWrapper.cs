@@ -53,7 +53,7 @@ namespace RPG.SceneManagement
 
         IEnumerator LoadLastScene()
         {
-            Fader fader = FindObjectOfType<Fader>();
+            Fader fader = GameManager.Instance.GetFader();
 
             yield return fader.FadeOut(fadeOutTime);
             yield return GetComponent<SavingSystem>().LoadLastScene(GetCurrentSave());
@@ -62,7 +62,7 @@ namespace RPG.SceneManagement
 
         IEnumerator LoadFirstScene()
         {
-            Fader fader = FindObjectOfType<Fader>();
+            Fader fader = GameManager.Instance.GetFader();
 
             yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(1);
@@ -71,7 +71,7 @@ namespace RPG.SceneManagement
 
         IEnumerator LoadMenuScene()
         {
-            Fader fader = FindObjectOfType<Fader>();
+            Fader fader = GameManager.Instance.GetFader();
 
             yield return fader.FadeOut(fadeOutTime);
             yield return SceneManager.LoadSceneAsync(0);

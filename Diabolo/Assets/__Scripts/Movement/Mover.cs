@@ -3,20 +3,21 @@ using UnityEngine;
 using UnityEngine.AI;
 using RPG.Saving;
 using RPG.Attributes;
+using RPG.Stats;
 
 namespace RPG.Movement
 {
     public class Mover : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] Transform target;
-
-        [SerializeField] float maxSpeed = 5f;
+        [SerializeField] float speed = 0;
         [SerializeField] float maxNavPathLenght = 40f;
 
         Animator animator;
         NavMeshAgent navMeshAgent;
         ActionScheduler actionScheduler;
         Health health;
+        BaseStats baseStats;
 
         private void Awake()
         {
@@ -24,6 +25,7 @@ namespace RPG.Movement
             animator = GetComponent<Animator>();
             actionScheduler = GetComponent<ActionScheduler>();
             health = GetComponent<Health>();
+            baseStats = GetComponent<BaseStats>();
         }
 
         private void Update()
@@ -53,7 +55,16 @@ namespace RPG.Movement
         public void MoveTo(Vector3 destination, float speedFraction)
         {
             navMeshAgent.destination = destination;
-            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
+
+            if (speed == 0)
+            {
+                navMeshAgent.speed = baseStats.GetStat(Stat.MovementSpeed) * Mathf.Clamp01(speedFraction);
+            }
+            else
+            {
+                navMeshAgent.speed = speed * Mathf.Clamp01(speedFraction);
+            }
+
             navMeshAgent.isStopped = false;
         }
 

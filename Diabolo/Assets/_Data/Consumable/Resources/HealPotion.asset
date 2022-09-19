@@ -20,6 +20,9 @@ MonoBehaviour:
   stackable: 1
   price: 1.99
   category: 3
+  isAbility: 0
   consumable: 1
   amountToHeal: 50
+  perioid: 10
+  timeBetweenHeal: 1
   particleEffect: {fileID: 1055585006069982, guid: c7f93a0255162fd47bbe40874f339bf4, type: 3}

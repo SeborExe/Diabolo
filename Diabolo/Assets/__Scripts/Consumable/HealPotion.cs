@@ -6,7 +6,7 @@ using RPG.Attributes;
 
 namespace RPG.Consumable
 {
-    [CreateAssetMenu(menuName = ("ScriptableObjects/Action Item/Heal Potion"))]
+    [CreateAssetMenu(menuName = ("Equipment/Action Item/Potions/Heal Potion"))]
     public class HealPotion : ActionItem
     {
         [SerializeField] float amountToHeal = 50f;
@@ -14,11 +14,13 @@ namespace RPG.Consumable
         [SerializeField] float timeBetweenHeal = 1f;
         [SerializeField] GameObject particleEffect;
 
-        public override void Use(GameObject user)
+        public override bool Use(GameObject user)
         {
+            if (!user.TryGetComponent(out Health health)) return false;
+            if (health.IsDead() || health.GetPercentage() >= 100.0f) return false;
+                
             float heal = amountToHeal / perioid;
 
-            Health health = user.GetComponent<Health>();
             if (health != null)
             {
                 health.StartHealCoroutine(heal, perioid, timeBetweenHeal);
@@ -29,8 +31,8 @@ namespace RPG.Consumable
                     Destroy(particle, 2f);
                 }
             }
+
+            return true;
         }
-
-
     }
 }

@@ -13,6 +13,12 @@ namespace RPG.Stats
         Mana,
         ManaRegeneration,
         TotalTraitPoints,
-        BuyingDiscountPercentage
+        BuyingDiscountPercentage,
+        Defence,
+        SpellDamage,
+        AttackSpeed,
+        MovementSpeed,
+        HealthRegeneration,
+        ChanceToBlockBlow
     }
 }

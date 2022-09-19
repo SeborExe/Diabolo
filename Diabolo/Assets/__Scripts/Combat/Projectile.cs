@@ -1,4 +1,5 @@
 using RPG.Attributes;
+using RPG.Stats;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,8 +14,10 @@ namespace RPG.Combat
         [SerializeField] float maxLifeTime = 10f;
         [SerializeField] GameObject[] destroyOnHit = null;
         [SerializeField] UnityEvent onHit;
+        [SerializeField] bool isSpell = false;
 
         Health target = null;
+        BaseStats baseStats;
 
         Vector3 targetPoint;
         GameObject instigator = null;
@@ -23,6 +26,8 @@ namespace RPG.Combat
         private void Start()
         {
             transform.LookAt(GetAimLocation());
+
+            baseStats = instigator.GetComponent<BaseStats>();
         }
 
         private void Update()
@@ -76,6 +81,11 @@ namespace RPG.Combat
             if (target != null && health != target) return;
             if (health == null || health.IsDead()) return;
             if (other.gameObject == instigator) return;
+
+            if (isSpell)
+            {
+                damage = damage + baseStats.GetStat(Stat.SpellDamage);
+            }
 
             health.TakeDamage(instigator, damage);
 

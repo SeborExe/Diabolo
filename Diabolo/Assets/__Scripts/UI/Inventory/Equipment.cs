@@ -25,7 +25,7 @@ namespace RPG.UI.Inventory
 
         public void AddItem(EquipLocation slot, EquipableItem item)
         {
-            Debug.Assert(item.GetAllowedEquipLocation() == slot);
+            Debug.Assert(item.CanEquip(slot, this));
 
             equippedItems[slot] = item;
 
@@ -74,6 +74,8 @@ namespace RPG.UI.Inventory
                     equippedItems[pair.Key] = item;
                 }
             }
+
+            equipmentUpdated?.Invoke();
         }
 
         public bool? Evaluate(EPredicate predicate, string[] parameters)

@@ -20,7 +20,7 @@ namespace RPG.UI.Dialogue
 
         private void Start()
         {
-            playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();
+            playerConversant = GameManager.Instance.GetPlayer().GetComponent<PlayerConversant>();
             playerConversant.OnConversationUpdated += UpdateUI;
             nextButton.onClick.AddListener(playerConversant.Next);
             quitButton.onClick.AddListener(playerConversant.Quit);

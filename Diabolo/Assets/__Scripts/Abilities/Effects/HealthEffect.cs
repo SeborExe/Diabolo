@@ -4,6 +4,7 @@ using UnityEngine;
 using RPG.Abilities;
 using System;
 using RPG.Attributes;
+using RPG.Stats;
 
 namespace RPG.Abilities.Effects
 {
@@ -18,15 +19,20 @@ namespace RPG.Abilities.Effects
             foreach (GameObject target in data.GetTargets())
             {
                 Health health = target.GetComponent<Health>();
+
+                float spellDamage = data.GetUser().GetComponent<BaseStats>().GetStat(Stat.SpellDamage);
+
                 if (health != null)
                 {
                     if (healthChange < 0)
                     {
-                        health.TakeDamage(data.GetUser(), -healthChange);
+                        float damage = -healthChange + spellDamage;
+                        health.TakeDamage(data.GetUser(), damage);
                     }
                     else
                     {
-                        health.Heal(healthChange);
+                        float heal = healthChange + spellDamage;
+                        health.Heal(heal);
                     }
                 }
             }

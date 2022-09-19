@@ -20,8 +20,14 @@ namespace RPG.Attributes
         [SerializeField] AudioClip[] OnHitClips;
         [SerializeField] AudioClip[] OnDieClips;
 
+        [Header("Health Regeneration")]
+        [SerializeField] float timeToRegeneration = 5f;
+        [SerializeField] float maxRegenerationPercent = 60f;
+        float regenerationTimer = 0;
+
         public event Action OnTakeDamage;
         public event Action OnDie;
+        public UnityEvent OnDieEvent;
 
         [System.Serializable]
         public class TakeDamageEvent : UnityEvent<float>
@@ -56,7 +62,13 @@ namespace RPG.Attributes
             {
                 infoAboveHead.UpdateHealthBar(GetHealthPoints(), GetMaxHealthPoints());
             }
-        }        
+        }
+
+        private void Update()
+        {
+            UpdateTimers();
+            HealthRegeneration();
+        }
 
         private float GetInitialHealth()
         {
@@ -81,7 +93,10 @@ namespace RPG.Attributes
 
         public void TakeDamage(GameObject instigator, float damage)
         {
+            CheckBlock(damage, out damage);
+
             healthPoints.value = Mathf.Max(healthPoints.value - damage, 0);
+            regenerationTimer = timeToRegeneration;
 
             OnTakeDamage?.Invoke();
 
@@ -93,19 +108,45 @@ namespace RPG.Attributes
 
             if (healthPoints.value == 0)
             {
-                OnDie.Invoke();
+                OnDie?.Invoke();
+                OnDieEvent?.Invoke();
                 Die();
                 AwardExperience(instigator);
             }
-            else
+
+            takeDamage.Invoke(damage);
+        }
+
+        private void HealthRegeneration()
+        {
+            if (healthPoints.value < GetMaxHealthPoints() && regenerationTimer == 0)
             {
-                takeDamage.Invoke(damage);
+                if (healthPoints.value >= GetMaxHealthPoints() * (maxRegenerationPercent / 100f)) return;
+
+                healthPoints.value += Time.deltaTime * GetRegenerate();
+
+                if (healthPoints.value > GetMaxHealthPoints()) healthPoints.value = GetMaxHealthPoints();
             }
+        }
+
+        private void UpdateTimers()
+        {
+            if (regenerationTimer > 0)
+            {
+                regenerationTimer -= Time.deltaTime;
+
+                if (regenerationTimer < 0) regenerationTimer = 0;
+            } 
         }
 
         public void Heal(float amount)
         {
             healthPoints.value = Mathf.Min(healthPoints.value + amount, GetMaxHealthPoints()); 
+        }
+
+        private float GetRegenerate()
+        {
+            return GetComponent<BaseStats>().GetStat(Stat.HealthRegeneration);
         }
 
         public void StartHealCoroutine(float amoutToHeal, int perioid, float timeBetweenHeal)
@@ -119,6 +160,21 @@ namespace RPG.Attributes
             {
                 Heal(amoutToHeal);
                 yield return new WaitForSeconds(timeBetweenHeal);
+            }
+        }
+
+        private float CheckBlock(float damage, out float ChangedDamage)
+        {
+            float chanceToBlock = baseStats.GetStat(Stat.ChanceToBlockBlow);
+            float randomChance = UnityEngine.Random.Range(1.0001f, 2.01f);
+
+            if (randomChance <= chanceToBlock)
+            {
+                return ChangedDamage = 0;
+            }
+            else
+            {
+                return ChangedDamage = damage;
             }
         }
 

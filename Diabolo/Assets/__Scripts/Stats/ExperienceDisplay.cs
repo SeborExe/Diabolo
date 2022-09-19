@@ -10,9 +10,9 @@ namespace RPG.Stats
     {
         Experience experience;
 
-        private void Awake()
+        private void Start()
         {
-            experience = GameObject.FindGameObjectWithTag("Player").GetComponent<Experience>();
+            experience = GameManager.Instance.GetPlayer().GetComponent<Experience>();
         }
 
         private void Update()

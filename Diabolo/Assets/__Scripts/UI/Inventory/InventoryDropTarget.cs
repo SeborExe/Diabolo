@@ -9,7 +9,7 @@ namespace RPG.UI.Inventory
     {
         public void AddItems(InventoryItem item, int number)
         {
-            var player = GameObject.FindGameObjectWithTag("Player");
+            var player = GameManager.Instance.GetPlayer();
             player.GetComponent<ItemDropper>().DropItem(item, number);
         }
 
