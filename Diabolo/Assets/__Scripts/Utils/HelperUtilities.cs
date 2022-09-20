@@ -11,7 +11,7 @@ namespace RPG.Utils
             switch (rarity)
             {
                 case ItemRarity.Common:
-                    return Color.black;
+                    return Color.white;
 
                 case ItemRarity.Rare:
                     return Color.blue;
@@ -26,7 +26,7 @@ namespace RPG.Utils
                     return Color.yellow;
 
                 default:
-                    return Color.black;
+                    return Color.white;
             }
         }
     }
