@@ -109,6 +109,7 @@ namespace RPG.Combat
 
             float damage = baseStats.GetStat(Stat.Damage);
             BaseStats targetBaseStats = target.GetComponent<BaseStats>();
+
             if (targetBaseStats != null)
             {
                 float defence = targetBaseStats.GetStat(Stat.Defence);

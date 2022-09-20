@@ -82,7 +82,7 @@ namespace RPG.UI.Inventory
 
                 bodyText.text += '\n';
                 bodyText.text += '\n';
-                bodyText.text += $"Damage: {weapon.GetDamage()}";
+                bodyText.text += $"Damage: {weapon.GetMinDamage()} - {weapon.GetMaxDamage()}";
                 bodyText.text += '\n';
                 bodyText.text += $"Attack Speed: {weapon.GetAttackSpeed()}%";
                 bodyText.text += '\n';

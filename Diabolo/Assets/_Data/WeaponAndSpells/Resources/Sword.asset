@@ -101,17 +101,18 @@ MonoBehaviour:
       - predicate: 5
         parameters:
         - Strenght
-        - 2
+        - 3
         negate: 0
     - or:
       - predicate: 4
         parameters:
-        - 3
+        - 2
         negate: 0
   animatorOverride: {fileID: 22100000, guid: 7a0d8ca627e6ebc4dacec27c5803da52, type: 2}
   equippedPrefab: {fileID: 5720112004884696865, guid: 433b52b52c382d84eace1ab511870e3d, type: 3}
-  weaponDamage: 2
-  percentageBonus: 50
+  minWeaponDamage: 1
+  maxWeaponDamage: 5
+  percentageBonus: 0
   weaponRange: 2
   weaponAttackSpeed: 80
   isRightHand: 1
