@@ -13,7 +13,6 @@ namespace RPG.Combat
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equippedPrefab = null;
-        //[SerializeField] float weaponDamage = 10f;
         [SerializeField] int minWeaponDamage = 2;
         [SerializeField] int maxWeaponDamage = 3;
         [SerializeField] float percentageBonus = 0f;

@@ -20,6 +20,7 @@ MonoBehaviour:
   stackable: 0
   price: 6.99
   category: 2
+  rarity: 0
   isAbility: 0
   foldoutStyle:
     m_Name: Foldout

@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using RPG.Combat;
 using RPG.Core;
+using RPG.Utils;
 using UnityEngine.UI;
 
 namespace RPG.UI.Inventory
@@ -15,6 +16,8 @@ namespace RPG.UI.Inventory
         {
             titleText.text = item.GetDisplayName();
             bodyText.text = item.GetRawDescription();
+
+            titleText.color = HelperUtilities.GetItemColorNameBasedOnRarity(item.GetItemRarity());
 
             if (item is StatsEquipableItem)
             {
