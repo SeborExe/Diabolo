@@ -13,6 +13,7 @@ namespace RPG.Stats
         [SerializeField] Progression progression;
         [SerializeField] GameObject levelUpParticles;
         [SerializeField] bool shouldUseModifiers = false;
+        [SerializeField] string characterName = null;
 
         Experience experience;
 
@@ -81,6 +82,16 @@ namespace RPG.Stats
         public int GetLevel()
         {
             return currentLevel.value;
+        }
+
+        public string GetCharacterName()
+        {
+            return characterName;
+        }
+
+        public CharacterClass GetCharacterClass()
+        {
+            return characterClass;
         }
 
         private float GetAdditiveModifier(Stat stat)

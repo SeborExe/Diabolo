@@ -13,6 +13,7 @@ namespace RPG.UI.Inventory
         [SerializeField] InventoryItem item = null;
         [SerializeField] int number = 1;
         [SerializeField] TMP_Text itemInfoDisplay;
+        [SerializeField] Canvas InfoCanvas;
 
         private void Awake()
         {
@@ -35,6 +36,7 @@ namespace RPG.UI.Inventory
         {
             var spawnedPickup = item.SpawnPickup(transform.position, number);
             spawnedPickup.transform.SetParent(transform);
+            InfoCanvas.gameObject.SetActive(true);
         }
 
         private void DisplayInfoInBox()
@@ -57,6 +59,11 @@ namespace RPG.UI.Inventory
             {
                 Destroy(GetPickup().gameObject);
             }
+        }
+
+        public Canvas GetInfoCanvas()
+        {
+            return InfoCanvas;
         }
 
         object ISaveable.CaptureState()

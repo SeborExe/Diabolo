@@ -44,6 +44,7 @@ namespace RPG.UI.Inventory
             if (foundSlot)
             {
                 Destroy(gameObject);
+                GetComponentInParent<PickupSpawner>().GetInfoCanvas().gameObject.SetActive(false);
             }
         }
 
