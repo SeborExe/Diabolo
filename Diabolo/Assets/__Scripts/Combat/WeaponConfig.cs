@@ -13,7 +13,8 @@ namespace RPG.Combat
     {
         [SerializeField] AnimatorOverrideController animatorOverride = null;
         [SerializeField] Weapon equippedPrefab = null;
-        [SerializeField] float weaponDamage = 10f;
+        [SerializeField] int minWeaponDamage = 2;
+        [SerializeField] int maxWeaponDamage = 3;
         [SerializeField] float percentageBonus = 0f;
         [SerializeField] float weaponRange = 2f;
         [SerializeField] float weaponAttackSpeed = 100f;
@@ -81,9 +82,21 @@ namespace RPG.Combat
             Destroy(oldWeapon.gameObject);
         }
 
+        /*
         public float GetDamage()
         {
             return weaponDamage;
+        }
+        */
+
+        public int GetMinDamage()
+        {
+            return minWeaponDamage;
+        }
+
+        public int GetMaxDamage()
+        {
+            return maxWeaponDamage;
         }
 
         public float GetAttackSpeed()
@@ -105,7 +118,8 @@ namespace RPG.Combat
         {
             if (stat == Stat.Damage)
             {
-                yield return weaponDamage;
+                float randomDamage = UnityEngine.Random.Range(minWeaponDamage, maxWeaponDamage + 1);
+                yield return randomDamage;
             }
         }
 
@@ -122,7 +136,7 @@ namespace RPG.Combat
             string result = projectile ? "Ranged Weapon" : "Melee Weapon";
             result += $"\n\n{GetRawDescription()}\n";
             result += $"\nRange {weaponRange} meters";
-            result += $"\nBase Damage {weaponDamage} points";
+            result += $"\nBase Damage {minWeaponDamage} - {maxWeaponDamage} points";
             if ((int)percentageBonus != 0)
             {
                 string bonus = percentageBonus > 0 ? "<color=#8888ff>bonus</color>" : "<color=#ff8888>penalty</color>";
@@ -150,11 +164,19 @@ namespace RPG.Combat
             Dirty();
         }
 
-        void SetWeaponDamage(float newWeaponDamage)
+        void SetMinWeaponDamage(int newWeaponDamage)
         {
-            if (FloatEquals(weaponDamage, newWeaponDamage)) return;
-            SetUndo("Set Weapon Damage");
-            weaponDamage = newWeaponDamage;
+            if (minWeaponDamage == newWeaponDamage) return;
+            SetUndo("Set Min Weapon Damage");
+            minWeaponDamage = newWeaponDamage;
+            Dirty();
+        }
+
+        void SetMaxWeaponDamage(int newWeaponDamage)
+        {
+            if (maxWeaponDamage == newWeaponDamage) return;
+            SetUndo("Set Max Weapon Damage");
+            maxWeaponDamage = newWeaponDamage;
             Dirty();
         }
 
@@ -216,7 +238,8 @@ namespace RPG.Combat
             drawInventoryItem = EditorGUILayout.Foldout(drawInventoryItem, "Weapon Config", foldoutStyle);
             if (!drawInventoryItem) return;
             SetEquippedPrefab((Weapon)EditorGUILayout.ObjectField("Equipped Prefab", equippedPrefab, typeof(System.Object), false));
-            SetWeaponDamage(EditorGUILayout.Slider("Weapon Damage", weaponDamage, 0, 100));
+            SetMinWeaponDamage(EditorGUILayout.IntSlider("Weapon Damage Min", minWeaponDamage, 0, 100));
+            SetMaxWeaponDamage(EditorGUILayout.IntSlider("Weapon Damage Max", maxWeaponDamage, 0, 100));
             SetWeaponRange(EditorGUILayout.Slider("Weapon Range", weaponRange, 1, 40));
             SetWeaponAttackSpeed(EditorGUILayout.Slider("Weapon Attack Speed", weaponAttackSpeed, 10, 300));
             SetPercentageBonus(EditorGUILayout.IntSlider("Percentage Bonus", (int)percentageBonus, -10, 100));

@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using RPG.Saving;
+using RPG.Utils;
+using TMPro;
+using System;
 
 namespace RPG.UI.Inventory
 {
@@ -9,11 +12,14 @@ namespace RPG.UI.Inventory
     {
         [SerializeField] InventoryItem item = null;
         [SerializeField] int number = 1;
+        [SerializeField] TMP_Text itemInfoDisplay;
+        [SerializeField] Canvas InfoCanvas;
 
         private void Awake()
         {
             // Spawn in Awake so can be destroyed by save system after.
             SpawnPickup();
+            DisplayInfoInBox();
         }
 
         public Pickup GetPickup()
@@ -30,6 +36,21 @@ namespace RPG.UI.Inventory
         {
             var spawnedPickup = item.SpawnPickup(transform.position, number);
             spawnedPickup.transform.SetParent(transform);
+            InfoCanvas.gameObject.SetActive(true);
+        }
+
+        private void DisplayInfoInBox()
+        {
+            itemInfoDisplay.color = HelperUtilities.GetItemColorNameBasedOnRarity(item.GetItemRarity());
+
+            if (number > 1)
+            {
+                itemInfoDisplay.text = $"{item.GetDisplayName()} ({number})";
+            }
+            else
+            {
+                itemInfoDisplay.text = item.GetDisplayName();
+            }
         }
 
         private void DestroyPickup()
@@ -38,6 +59,11 @@ namespace RPG.UI.Inventory
             {
                 Destroy(GetPickup().gameObject);
             }
+        }
+
+        public Canvas GetInfoCanvas()
+        {
+            return InfoCanvas;
         }
 
         object ISaveable.CaptureState()

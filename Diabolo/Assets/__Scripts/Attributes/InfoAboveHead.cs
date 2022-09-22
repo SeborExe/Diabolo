@@ -13,7 +13,7 @@ namespace RPG.Attributes
         Slider slider;
         Canvas rootCanvas;
 
-        [SerializeField] TMP_Text levelText;
+        [SerializeField] TMP_Text characterDataText;
         [SerializeField] BaseStats baseStats;
 
         [HideInInspector] public bool isDamaged = false;
@@ -28,7 +28,15 @@ namespace RPG.Attributes
 
         private void Start()
         {
-            levelText.text = baseStats.CurrentLevel.ToString();
+            if (baseStats.GetCharacterName() == null || baseStats.GetCharacterName() == string.Empty)
+            {
+                characterDataText.text = $"{baseStats.GetCharacterClass()} LvL.{baseStats.GetLevel()}";
+            }
+            else
+            {
+                characterDataText.text = $"{baseStats.GetCharacterName()} Lvl.{baseStats.GetLevel()}";
+            }
+
             rootCanvas.enabled = false;
         }
 

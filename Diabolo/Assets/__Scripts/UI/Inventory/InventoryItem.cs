@@ -1,3 +1,4 @@
+using RPG.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace RPG.UI.Inventory
         [SerializeField] bool stackable = false;
         [SerializeField] float price;
         [SerializeField] ItemCategory category = ItemCategory.None;
+        [SerializeField] ItemRarity rarity = ItemRarity.Common;
         [SerializeField] bool isAbility = false;
 
         [NonSerialized] GUIStyle contentStyle;
@@ -99,6 +101,11 @@ namespace RPG.UI.Inventory
             return category;
         }
 
+        public ItemRarity GetItemRarity()
+        {
+            return rarity;
+        }
+
         public Pickup GetPickup()
         {
             return pickup;
@@ -139,6 +146,14 @@ namespace RPG.UI.Inventory
         public bool FloatEquals(float value1, float value2)
         {
             return Math.Abs(value1 - value2) < .001f;
+        }
+
+        public void SetItemRarity(ItemRarity newRarity)
+        {
+            if (rarity == newRarity) return;
+            SetUndo("Change Item Rarity");
+            rarity = newRarity;
+            Dirty();
         }
 
         #region Setters
@@ -209,6 +224,7 @@ namespace RPG.UI.Inventory
             SetDescription(EditorGUILayout.TextField("Description", GetRawDescription()));
             SetIcon((Sprite)EditorGUILayout.ObjectField("Icon", GetIcon(), typeof(Sprite), false));
             SetPickup((Pickup)EditorGUILayout.ObjectField("Pickup", pickup, typeof(Pickup), false));
+            SetItemRarity((ItemRarity)EditorGUILayout.EnumPopup(new GUIContent("Item Rarity"), rarity));
             SetStackable(EditorGUILayout.Toggle("Stackable", IsStackable()));
             EditorGUILayout.EndVertical();
         }

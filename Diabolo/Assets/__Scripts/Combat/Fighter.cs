@@ -30,6 +30,11 @@ namespace RPG.Combat
 
         float timeSinceLastAttack = Mathf.Infinity;
 
+        [SerializeField] private string lastAttack = string.Empty;
+        private const string stopAttack = "stopAttack";
+        private const string firstAttack = "attack";
+        private const string secondAttack = "attack2";
+
         private void Awake()
         {
             mover = GetComponent<Mover>();
@@ -98,8 +103,33 @@ namespace RPG.Combat
 
         private void TriggerAttack()
         {
-            animator.ResetTrigger("stopAttack");
-            animator.SetTrigger("attack");
+            if (lastAttack == string.Empty || lastAttack == secondAttack)
+            {
+                animator.ResetTrigger(stopAttack);
+                animator.SetTrigger(firstAttack);
+                lastAttack = firstAttack;
+            }
+
+            else if (lastAttack == firstAttack)
+            {
+                animator.ResetTrigger(stopAttack);
+                animator.SetTrigger(secondAttack);
+                lastAttack = secondAttack;
+            }
+        }
+
+        public void Cancel()
+        {
+            StopAttack();
+            target = null;
+            mover.Cancel();
+        }
+
+        private void StopAttack()
+        {
+            animator.ResetTrigger(lastAttack);
+            animator.SetTrigger(stopAttack);
+            lastAttack = string.Empty;
         }
 
         //Animation Event
@@ -109,6 +139,7 @@ namespace RPG.Combat
 
             float damage = baseStats.GetStat(Stat.Damage);
             BaseStats targetBaseStats = target.GetComponent<BaseStats>();
+
             if (targetBaseStats != null)
             {
                 float defence = targetBaseStats.GetStat(Stat.Defence);
@@ -187,19 +218,6 @@ namespace RPG.Combat
 
             Health targetToTest = combatTarget.GetComponent<Health>();
             return targetToTest != null && !targetToTest.IsDead();
-        }
-
-        public void Cancel()
-        {
-            StopAttack();
-            target = null;
-            mover.Cancel();
-        }
-
-        private void StopAttack()
-        {
-            animator.ResetTrigger("attack");
-            animator.SetTrigger("stopAttack");
         }
 
         public void EquipWeapon(WeaponConfig weapon)

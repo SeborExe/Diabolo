@@ -99,7 +99,8 @@ MonoBehaviour:
     and: []
   animatorOverride: {fileID: 22100000, guid: c039da52a85098b4b9e8476f618126ec, type: 2}
   equippedPrefab: {fileID: 6335796956712247721, guid: b7f710ecf1ae04a4c88535e76edc7a57, type: 3}
-  weaponDamage: 1
+  minWeaponDamage: 1
+  maxWeaponDamage: 20
   percentageBonus: 45
   weaponRange: 15
   weaponAttackSpeed: 100
