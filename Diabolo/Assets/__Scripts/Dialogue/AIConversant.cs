@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using RPG.Movement;
 using RPG.Attributes;
+using RPG.Stats;
 
 namespace RPG.Dialogue
 {
@@ -11,7 +12,6 @@ namespace RPG.Dialogue
     {
         [SerializeField] DialogueSO dialogue = null;
         [SerializeField] float distanceToTalk = 2f;
-        [SerializeField] string npcName;
 
         public CursorType GetCursorType()
         {
@@ -40,7 +40,7 @@ namespace RPG.Dialogue
 
         public string GetNPCName()
         {
-            return npcName;
+            return GetComponent<BaseStats>().GetCharacterName();
         }
     }
 }

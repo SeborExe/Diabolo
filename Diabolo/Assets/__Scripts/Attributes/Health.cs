@@ -17,8 +17,12 @@ namespace RPG.Attributes
         [SerializeField] float regenerationPercentage = 100;
         [SerializeField] public TakeDamageEvent takeDamage;
         [SerializeField] InfoAboveHead infoAboveHead = null;
+
+        [Header("Audio")]
         [SerializeField] AudioClip[] OnHitClips;
         [SerializeField] AudioClip[] OnDieClips;
+        [SerializeField] Vector2 onHitsVolume = new Vector2(0.2f, 1f);
+        [SerializeField] Vector2 onDieVolume = new Vector2(0.2f, 1f);
 
         [Header("Health Regeneration")]
         [SerializeField] float timeToRegeneration = 5f;
@@ -205,12 +209,14 @@ namespace RPG.Attributes
         private void PlayDieClip()
         {
             audioSource.clip = GetRandomDieClip();
+            audioSource.volume = GetRandomVolume(onDieVolume);
             audioSource.Play();
         }
 
         private void PlayTakeDamageClip()
         {
             audioSource.clip = GetRandomTakeDamageClip();
+            audioSource.volume = GetRandomVolume(onHitsVolume);
             audioSource.Play();
         }
 
@@ -224,6 +230,12 @@ namespace RPG.Attributes
         {
             int randomIndex = UnityEngine.Random.Range(0, OnHitClips.Length);
             return OnHitClips[randomIndex];
+        }
+
+        private float GetRandomVolume(Vector2 volume)
+        {
+            float randomVolume = UnityEngine.Random.Range(volume.x, volume.y);
+            return randomVolume;
         }
 
         private void RegenerateHealth()

@@ -4,13 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using RPG.Core;
+using RPG.Stats;
 
 namespace RPG.Dialogue
 {
     public class PlayerConversant : MonoBehaviour
     {
-        [SerializeField] string playerName;
-
         DialogueSO currentDialogue;
         DialogueNode currentNode = null;
         AIConversant currentConversant = null;
@@ -50,7 +49,7 @@ namespace RPG.Dialogue
 
         public string GetCurrentConversantName()
         {
-            if (isChoosing) return playerName;
+            if (isChoosing) return GetComponent<BaseStats>().GetCharacterName();
             else return currentConversant.GetNPCName();
         }
 
