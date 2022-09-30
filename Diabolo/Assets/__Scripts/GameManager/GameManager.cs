@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using RPG.SceneManagement;
-using RPG.UI.MainMenu;
 using UnityEngine.SceneManagement;
+using RPG.Stats;
 
 [DisallowMultipleComponent]
 public class GameManager : SingletonMonobehaviour<GameManager>
@@ -11,6 +9,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     public GameObject player;
     public SavingWrapper savingWrapper;
     public Fader fader;
+    public BaseStats baseStat;
 
     public delegate void Change();
 
@@ -24,6 +23,7 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     private void ChangedActiveScene(Scene current, Scene next)
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        baseStat = player.GetComponent<BaseStats>();
     }
 
     private void Start()
@@ -46,4 +46,31 @@ public class GameManager : SingletonMonobehaviour<GameManager>
     {
         return fader;
     }
+
+    /*
+    public float GetDefense()
+    {
+        return GetPlayer().GetComponent<BaseStats>().GetStat(Stat.Damage);
+    }
+
+    public float GetHealthRegeneration()
+    {
+        return GetPlayer().GetComponent<BaseStats>().GetStat(Stat.HealthRegeneration);
+    }
+
+    public float GetManaRegeneration()
+    {
+        return GetPlayer().GetComponent<BaseStats>().GetStat(Stat.ManaRegeneration);
+    }
+
+    public float GetHealth()
+    {
+        return GetPlayer().GetComponent<Health>().GetMaxHealthPoints();
+    }
+
+    public float Mana()
+    {
+        return GetPlayer().GetComponent<Mana>().GetMaxMana();
+    }
+    */
 }

@@ -101,6 +101,11 @@ namespace RPG.Combat
             }
         }
 
+        public float GetPlayerAttackSpeed()
+        {
+            return baseStats.GetStat(Stat.AttackSpeed) + (currentWeaponConfig.GetAttackSpeed() / 100f);
+        }
+
         private void TriggerAttack()
         {
             if (lastAttack == string.Empty || lastAttack == secondAttack)
@@ -260,6 +265,11 @@ namespace RPG.Combat
             {
                 return leftHandTransform;
             }
+        }
+
+        public WeaponConfig GetWeaponConfig()
+        {
+            return currentWeaponConfig;
         }
     }
 }
