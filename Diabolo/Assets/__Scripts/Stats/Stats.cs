@@ -19,6 +19,6 @@ namespace RPG.Stats
         AttackSpeed,
         MovementSpeed,
         HealthRegeneration,
-        ChanceToBlockBlow
+        ChanceToBlock
     }
 }
