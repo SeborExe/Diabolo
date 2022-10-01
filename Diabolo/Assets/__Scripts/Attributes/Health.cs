@@ -169,7 +169,7 @@ namespace RPG.Attributes
 
         private float CheckBlock(float damage, out float ChangedDamage)
         {
-            float chanceToBlock = baseStats.GetStat(Stat.ChanceToBlockBlow);
+            float chanceToBlock = baseStats.GetStat(Stat.ChanceToBlock);
             float randomChance = UnityEngine.Random.Range(1.0001f, 2.01f);
 
             if (randomChance <= chanceToBlock)
